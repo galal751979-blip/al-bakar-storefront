@@ -1,0 +1,123 @@
+/* ===========================
+   موقع ال بكار - أنيميشن وحركة
+   =========================== */
+
+/* --- Keyframes --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* --- Hero entrance (orchestrated, on load) --- */
+.hero-text h1,
+.hero-text p,
+.hero-text .btn {
+  opacity: 0;
+  animation: fadeInUp .7s ease forwards;
+}
+.hero-text h1   { animation-delay: .05s; }
+.hero-text p    { animation-delay: .2s; }
+.hero-text .btn { animation-delay: .35s; }
+
+.hero-image {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+/* --- Scroll reveal (triggered via JS adding .in-view) --- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+[data-reveal].in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* تأخير متدرج للعناصر داخل شبكة (كروت الأقسام/المنتجات) */
+[data-reveal-group] > *:nth-child(1) { transition-delay: .05s; }
+[data-reveal-group] > *:nth-child(2) { transition-delay: .12s; }
+[data-reveal-group] > *:nth-child(3) { transition-delay: .19s; }
+[data-reveal-group] > *:nth-child(4) { transition-delay: .26s; }
+[data-reveal-group] > *:nth-child(5) { transition-delay: .33s; }
+[data-reveal-group] > *:nth-child(6) { transition-delay: .40s; }
+
+/* --- Header: يتكثف الظل عند التمرير --- */
+.site-header {
+  transition: box-shadow .25s ease;
+}
+.site-header.scrolled {
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- Cards --- */
+.category-card,
+.product-card {
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+
+/* --- Cart bump --- */
+.cart-count {
+  transition: transform .2s ease;
+}
+.cart-count.bump {
+  animation: popIn .3s ease;
+}
+
+/* --- Toast (تأكيد الإضافة للسلة) --- */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--color-primary);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: .9rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: 999;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* --- Mobile nav slide --- */
+.main-nav ul {
+  animation: none;
+}
+@media (max-width: 700px) {
+  .main-nav.open ul {
+    animation: fadeInUp .3s ease;
+  }
+}
+
+/* --- احترام تقليل الحركة --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

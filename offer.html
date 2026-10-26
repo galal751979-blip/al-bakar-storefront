@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#F7FAF8">
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تفاصيل عروض ال بكار للأجهزة المنزلية</title>
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:site_name" content="مؤسسة ال بكار">
+  <meta property="og:locale" content="ar_EG">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="تفاصيل عروض ال بكار للأجهزة المنزلية">
+  <meta property="og:description" content="تفاصيل عروض مؤسسة ال بكار على الأجهزة المنزلية: المنتجات المشمولة، الأسعار، وقيمة التوفير.">
+  <meta property="og:image" content="https://al-bakar.web.app/assets/images/refrigerator.jpg">
+
+  <meta name="description" content="تفاصيل عروض مؤسسة ال بكار على الأجهزة المنزلية: المنتجات المشمولة، الأسعار، وقيمة التوفير.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="bottom-nav.css">
+
+  <style>
+    :root {
+      --bg-base: #0a0a0a !important;
+      --bg-surface: #141414 !important;
+      --bg-elevated: #1e1e1e !important;
+      --gold-primary: #D4AF37 !important;
+      --gold-hover: #b5952f !important;
+      --burgundy: #800020 !important;
+      --silver: #A0A0A0 !important;
+      --text-main: #ffffff !important;
+      --text-muted: #888888 !important;
+      --border-dark: #2a2a2a !important;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --transition-fast: 0.2s ease;
+      --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Cairo', sans-serif;
+      overflow-x: hidden;
+      margin: 0; padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .site-header {
+      background: rgba(10, 10, 10, 0.8) !important;
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border-dark) !important;
+      position: sticky; top: 0; z-index: 1000; padding: 12px 0;
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+    .logo { font-size: 1.8rem; font-weight: 800; color: var(--text-main) !important; text-decoration: none; }
+    .logo span { color: var(--gold-primary); }
+    .header-actions { display: flex; gap: 20px; }
+    .icon-btn { background: none; border: none; color: var(--text-main) !important; font-size: 1.4rem; cursor: pointer; text-decoration: none; position: relative; transition: var(--transition-fast); }
+    .icon-btn:hover { color: var(--gold-primary) !important; }
+    .cart-badge-premium { position: absolute; top: -6px; right: -8px; background: var(--burgundy); color: #fff; font-size: 0.7rem; font-weight: 800; min-width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-base); transition: transform 0.2s ease; }
+
+    .offer-detail-page { padding: 40px 0 100px; }
+    .container-offer { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+    .offer-layout {
+      display: grid;
+      grid-template-columns: 55% 40%;
+      gap: 5%;
+      align-items: start;
+    }
+    @media (max-width: 992px) {
+      .offer-layout { grid-template-columns: 1fr; gap: 30px; }
+    }
+
+    .offer-gallery { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 15px; }
+    @media (max-width: 992px) { .offer-gallery { position: static; } }
+
+    .main-image-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-xl);
+      aspect-ratio: 4 / 3;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      perspective: 1000px;
+    }
+
+    .main-image-wrapper {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out;
+    }
+    .main-image-wrapper img {
+      width: 85%; height: 85%; object-fit: contain;
+      filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
+      transition: opacity var(--transition-smooth);
+    }
+
+    .badge-premium-deal {
+      position: absolute; top: 20px; right: 20px;
+      background: var(--burgundy); color: #fff;
+      padding: 8px 16px; border-radius: var(--radius-sm);
+      font-weight: 800; font-size: 0.95rem; letter-spacing: 1px;
+      box-shadow: 0 10px 20px rgba(128,0,32,0.4); z-index: 10;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .thumbnails { display: flex; gap: 12px; overflow-x: auto; scrollbar-width: none; padding-bottom: 5px; }
+    .thumbnails::-webkit-scrollbar { display: none; }
+    .thumb-box { width: 90px; height: 90px; flex-shrink: 0; background: var(--bg-surface); border: 2px solid transparent; border-radius: var(--radius-md); padding: 10px; cursor: pointer; transition: var(--transition-fast); display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
+    .thumb-box img { width: 100%; height: 100%; object-fit: contain; }
+    .thumb-box.active { border-color: var(--gold-primary); background: var(--bg-elevated); }
+
+    .offer-info { display: flex; flex-direction: column; gap: 20px; }
+    .offer-title { font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 800; color: var(--text-main); line-height: 1.2; margin: 0; }
+    .offer-desc { font-size: 1.05rem; color: var(--silver); line-height: 1.6; margin: 0; }
+
+    .pricing-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      padding: 25px;
+      display: flex; flex-direction: column; gap: 15px;
+      position: relative; overflow: hidden;
+    }
+    .pricing-box::before { content: ''; position: absolute; top: 0; right: 0; width: 4px; height: 100%; background: var(--gold-primary); }
+
+    .price-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 15px; flex-wrap: wrap; }
+    .old-price-block { display: flex; flex-direction: column; }
+    .old-price-label { color: var(--silver); font-size: 0.9rem; margin-bottom: 2px; }
+    .old-price-value { color: var(--text-muted); font-size: 1.2rem; text-decoration: line-through; }
+
+    .new-price-block { display: flex; flex-direction: column; align-items: flex-start; }
+    .new-price-label { color: var(--gold-primary); font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
+    .new-price-value { color: var(--text-main); font-size: 2.8rem; font-weight: 800; line-height: 1; }
+
+    .savings-banner {
+      background: rgba(128, 0, 32, 0.1);
+      border: 1px solid rgba(128, 0, 32, 0.3);
+      color: #ff4d4d;
+      padding: 12px; border-radius: var(--radius-md);
+      display: flex; justify-content: space-between; align-items: center;
+      font-weight: 700; font-size: 1.05rem;
+    }
+    .savings-banner .percent { background: var(--burgundy); color: #fff; padding: 4px 10px; border-radius: var(--radius-sm); font-size: 0.9rem; }
+
+    .countdown-wrapper { display: none; margin-top: 10px; }
+    .countdown-wrapper.active { display: block; }
+    .countdown-title { color: var(--gold-primary); font-size: 0.9rem; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .countdown-timer { display: flex; gap: 10px; }
+    .cd-box { background: var(--bg-elevated); border: 1px solid var(--border-dark); border-radius: var(--radius-sm); width: 60px; height: 60px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .cd-num { color: var(--gold-primary); font-size: 1.5rem; font-weight: 800; line-height: 1; }
+    .cd-label { color: var(--silver); font-size: 0.7rem; margin-top: 2px; }
+    .countdown-urgent .cd-num { color: #ff4d4d; }
+
+    .included-section { margin-top: 10px; }
+    .section-title { font-size: 1.3rem; color: var(--text-main); margin: 0 0 15px; display: flex; align-items: center; gap: 10px; }
+    .section-title i { color: var(--gold-primary); }
+
+    .included-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+    .inc-product-card {
+      background: var(--bg-surface); border: 1px solid var(--border-dark);
+      border-radius: var(--radius-md); padding: 15px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      text-decoration: none; transition: var(--transition-fast);
+    }
+    .inc-product-card:hover { border-color: var(--silver); transform: translateY(-3px); background: var(--bg-elevated); }
+    .inc-product-card img { width: 100px; height: 100px; object-fit: contain; margin-bottom: 15px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3)); }
+    .inc-product-card h4 { color: var(--text-main); font-size: 0.95rem; margin: 0 0 5px; font-weight: 600; }
+    .inc-product-card span { color: var(--silver); font-size: 0.9rem; }
+
+    .main-actions { margin-top: 10px; display: flex; gap: 15px; }
+    .btn-add-offer {
+      flex: 1; padding: 18px 24px; border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 1.15rem; font-weight: 800; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: var(--transition-fast); border: none;
+      background: var(--gold-primary); color: var(--bg-base);
+    }
+    .btn-add-offer:hover:not(:disabled) { background: var(--gold-hover); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3); }
+    .btn-add-offer:disabled { opacity: 0.5; cursor: not-allowed; }
+    .offer-stock-notice { color:#ff8a8a;background:rgba(128,0,32,.16);border:1px solid rgba(255,77,77,.35);border-radius:9px;padding:10px 13px;margin:0 0 12px;line-height:1.7; }
+
+    .sticky-offer-bar { display: none; }
+
+    @media (max-width: 992px) {
+      .main-actions { display: none; }
+      .sticky-offer-bar {
+        position: fixed; bottom: 0; left: 0; width: 100%; box-sizing: border-box;
+        background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
+        border-top: 1px solid var(--border-dark);
+        padding: 15px 20px; align-items: center; justify-content: space-between; gap: 15px;
+        z-index: 1000; box-shadow: 0 -10px 30px rgba(0,0,0,0.6);
+      }
+      .sticky-offer-bar.ready { display: flex; }
+      .sticky-price { display: flex; flex-direction: column; }
+      .sticky-price span { color: var(--silver); font-size: 0.75rem; }
+      .sticky-price strong { color: var(--gold-primary); font-size: 1.4rem; font-weight: 800; line-height: 1; }
+      .sticky-offer-bar .btn-add-offer { flex: 1; padding: 14px; font-size: 1.05rem; }
+    }
+
+    .benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 10px; }
+    .benefit-item { display: flex; align-items: flex-start; gap: 12px; background: var(--bg-surface); padding: 15px; border-radius: var(--radius-md); border: 1px solid var(--border-dark); }
+    .benefit-item i { color: var(--gold-primary); font-size: 1.4rem; margin-top: 2px; }
+    .benefit-item div h4 { margin: 0 0 5px; color: var(--text-main); font-size: 0.95rem; }
+    .benefit-item div p { margin: 0; color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; }
+
+    .toast-container { position: fixed; bottom: 90px; left: 20px; z-index: 10001; display: flex; flex-direction: column; gap: 10px; }
+    @media (min-width: 993px) { .toast-container { bottom: 20px; } }
+
+    .toast-premium { background: var(--burgundy); color: #fff; border-radius: var(--radius-md); padding: 12px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 15px; min-width: 280px; transform: translateY(100px); opacity: 0; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); border: 1px solid rgba(255,255,255,0.1); }
+    .toast-premium.show { transform: translateY(0); opacity: 1; }
+    .toast-img { width: 45px; height: 45px; background: #fff; border-radius: var(--radius-sm); padding: 3px; object-fit: contain; }
+    .toast-text h4 { margin: 0; font-size: 0.9rem; font-weight: 700; }
+    .toast-text p { margin: 4px 0 0; font-size: 0.8rem; color: rgba(255,255,255,0.8); }
+
+    .loading-state { text-align: center; padding: 100px 20px; color: var(--silver); }
+    .loading-state i { font-size: 3rem; color: var(--gold-primary); margin-bottom: 20px; }
+  </style>
+  <script>
+    (() => {
+      let theme = 'light';
+      try {
+        const savedTheme = localStorage.getItem('bakar-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') theme = savedTheme;
+      } catch {
+        // Keep the light theme if browser storage is unavailable.
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">ال بكار<span>.</span></a>
+      <div class="header-actions">
+        <a href="cart.html" class="icon-btn" aria-label="السلة">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge-premium cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="offer-detail-page">
+    <div class="container-offer" id="offerDetailContainer">
+      <div class="loading-state">
+        <i class="fas fa-circle-notch fa-spin"></i>
+        <h2 style="color: var(--text-main); font-weight: 600;">جاري تجهيز العرض الاستثنائي...</h2>
+      </div>
+    </div>
+  </section>
+
+  <div class="sticky-offer-bar" id="mobileStickyBar">
+    <div class="sticky-price">
+      <span>سعر العرض</span>
+      <strong id="mobilePrice">0 ج.م</strong>
+    </div>
+    <button class="btn-add-offer" id="mobileAddBtn">
+      حجز العرض <i class="fas fa-shopping-bag"></i>
+    </button>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script type="module" src="main.js"></script>
+  <script type="module">
+    import { logClientError } from './client-logger.js';
+    import { apiFetch, getProducts } from './api.js';
+    import { safeImageUrl } from './html-utils.js';
+
+    const PLACEHOLDER = 'assets/images/placeholder.svg';
+    const detailContainer = document.getElementById('offerDetailContainer');
+    const mobileStickyBar = document.getElementById('mobileStickyBar');
+    const params = new URLSearchParams(window.location.search);
+    const offerId = params.get('id');
+
+    window.currentOffer = null;
+    window.offerImages = [];
+    window.currentImageIndex = 0;
+    window.offerExpired = false;
+
+    function esc(value) {
+      if (value === null || value === undefined) return '';
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    const fmt = (n) => Number(n).toLocaleString('ar-EG');
+
+    function onReady(fn) {
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+      else fn();
+    }
+
+    onReady(() => {
+      updateCartBadge();
+      renderOfferDetails();
+    });
+
+    async function renderOfferDetails() {
+      try {
+        if (!offerId) throw new Error('لا يوجد معرف للعرض.');
+
+        const offers = await apiFetch('/offers');
+        const foundOffer = offers.find(item => String(item.id) === String(offerId));
+        if (!foundOffer || foundOffer.is_active === false) {
+          renderErrorState('العرض غير موجود أو انتهت صلاحيته.');
+          return;
+        }
+
+        const offer = foundOffer;
+        const productIds = Array.isArray(offer.product_ids)
+          ? offer.product_ids
+          : offer.product_id ? [offer.product_id] : [];
+        const products = await getProducts(productIds);
+        window.currentOffer = offer;
+        document.title = `${offer.title} | عروض ال بكار الفاخرة`;
+        const offerDescription = String(offer.description || `استفد من عرض ${offer.title} من مؤسسة ال بكار على الأجهزة المنزلية. اطلب أونلاين الآن.`).replace(/\s+/g, ' ').slice(0, 300);
+        const offerUrl = new URL(`offer.html?id=${encodeURIComponent(String(offer.id))}`, window.location.href).href;
+        const offerImage = safeImageUrl(offer.image_urls?.[0] || offer.image_url || 'assets/images/refrigerator.jpg');
+        document.querySelector('meta[name="description"]')?.setAttribute('content', offerDescription);
+        document.querySelector('meta[property="og:title"]')?.setAttribute('content', document.title);
+        document.querySelector('meta[property="og:description"]')?.setAttribute('content', offerDescription);
+        document.querySelector('meta[property="og:image"]')?.setAttribute('content', offerImage);
+        document.querySelector('meta[property="og:url"]')?.setAttribute('content', offerUrl);
+        let canonical = document.querySelector('link[rel="canonical"]');
+        if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.append(canonical); }
+        canonical.href = offerUrl;
+
+        const includedProducts = [];
+        let originalTotalPrice = 0;
+
+        if (Array.isArray(offer.product_ids) && offer.product_ids.length > 0) {
+          offer.product_ids.forEach(pid => {
+            const pData = products.find(product => String(product.id) === String(pid));
+            if (pData) {
+              includedProducts.push(pData);
+              originalTotalPrice += Number(pData.price || 0);
+            }
+          });
+        }
+        const availableProductIds = new Set(includedProducts.filter(isOfferProductAvailable).map(product => String(product.id)));
+        const configuredProductIds = Array.isArray(offer.product_ids) ? offer.product_ids : [];
+        window.currentOfferAvailable = configuredProductIds.length > 0
+          && configuredProductIds.every(id => availableProductIds.has(String(id)));
+
+        let fallbackImg = PLACEHOLDER;
+        if (includedProducts.length > 0) {
+            const p = includedProducts[0];
+            fallbackImg = safeImageUrl((p.image_urls && p.image_urls[0]) || p.image_url);
+        }
+
+        window.offerImages = (Array.isArray(offer.image_urls) && offer.image_urls.length > 0)
+          ? offer.image_urls.map(url => safeImageUrl(url))
+          : [safeImageUrl(offer.image_url || fallbackImg)];
+
+        const offerPrice = Number(offer.offer_price);
+        if (!Number.isFinite(offerPrice)) throw new Error('سعر العرض غير صالح.');
+
+        const hasSavings = originalTotalPrice > offerPrice;
+        const savingsAmount = originalTotalPrice - offerPrice;
+        const discountPercent = hasSavings ? Math.round((savingsAmount / originalTotalPrice) * 100) : 0;
+
+        detailContainer.innerHTML = buildOfferHTML(offer, includedProducts, originalTotalPrice, offerPrice, hasSavings, savingsAmount, discountPercent);
+        if (!window.currentOfferAvailable) {
+          const notice = document.createElement('p');
+          notice.className = 'offer-stock-notice';
+          notice.textContent = 'أحد أجهزة العرض غير متوفر حاليًا في المخزون. لن يمكن إتمام طلب العرض حتى يتوفر.';
+          detailContainer.querySelector('.main-actions')?.prepend(notice);
+          document.getElementById('desktopAddBtn').disabled = true;
+          document.getElementById('mobileAddBtn').disabled = true;
+        }
+
+        document.getElementById('mobilePrice').textContent = `${fmt(offerPrice)} ج.م`;
+        const mobileBtn = document.getElementById('mobileAddBtn');
+        mobileBtn.onclick = () => window.handleOfferAddToCart(mobileBtn);
+        mobileStickyBar.classList.add('ready');
+
+        setupInteractions();
+        setupCountdown(offer.end_date);
+
+      } catch (error) {
+        logClientError('offer.details.load_failed', error);
+        renderErrorState('تعذر تحميل بيانات العرض الآن. يرجى التحقق من الاتصال وإعادة المحاولة.');
+      }
+    }
+
+    function isOfferProductAvailable(product) {
+      const stock = product.stock ?? product.quantity ?? product.inventory;
+      return product.is_active !== false && product.isActive !== false
+        && (stock == null || (Number.isFinite(Number(stock)) && Number(stock) > 0));
+    }
+
+    function buildOfferHTML(offer, products, originalTotal, offerPrice, hasSavings, savingsAmount, discountPercent) {
+      const badgeHTML = hasSavings
+        ? `<div class="badge-premium-deal"><i class="fas fa-tag"></i> خصم ${discountPercent}%</div>`
+        : `<div class="badge-premium-deal"><i class="fas fa-star"></i> عرض حصري</div>`;
+
+      let thumbnailsHTML = '';
+      if (window.offerImages.length > 1) {
+        const thumbsList = window.offerImages.map((img, idx) => {
+          const activeClass = idx === 0 ? 'active' : '';
+          return `<div class="thumb-box ${activeClass}" onclick="window.changeMainImage(${idx})">
+                    <img src="${esc(img)}" alt="صورة ${idx + 1}">
+                  </div>`;
+        }).join('');
+        thumbnailsHTML = `<div class="thumbnails">${thumbsList}</div>`;
+      }
+
+      const savingsHTML = hasSavings
+        ? `<div class="savings-banner">
+             <span><i class="fas fa-gift" style="margin-left:8px;"></i>قيمة التوفير الفعلي:</span>
+             <span class="percent">وفر ${fmt(savingsAmount)} ج.م</span>
+           </div>`
+        : '';
+
+      const oldPriceHTML = hasSavings
+        ? `<div class="old-price-block">
+             <span class="old-price-label">السعر الأصلي للمنتجات:</span>
+             <span class="old-price-value">${fmt(originalTotal)} ج.م</span>
+           </div>`
+        : '';
+
+      let includedHTML = '';
+      if (products.length > 0) {
+        const cardsList = products.map(p => {
+          const imgUrl = safeImageUrl((p.image_urls && p.image_urls[0]) || p.image_url);
+          return `<a href="product.html?id=${encodeURIComponent(p.id)}" class="inc-product-card">
+                    <img src="${esc(imgUrl)}" alt="${esc(p.name)}">
+                    <h4>${esc(p.name)}</h4>
+                    <span>${fmt(p.price || 0)} ج.م</span>
+                  </a>`;
+        }).join('');
+
+        includedHTML = `<div class="included-section">
+             <h3 class="section-title"><i class="fas fa-box-open"></i> العرض يشمل:</h3>
+             <div class="included-grid">${cardsList}</div>
+           </div>`;
+      }
+
+      const desc = offer.description || 'احصل على هذه الباقة الحصرية بأفضل سعر من مؤسسة ال بكار. العرض ساري لفترة محدودة أو حتى نفاذ الكمية.';
+
+      return `
+        <div class="offer-layout">
+          <div class="offer-gallery">
+            <div class="main-image-container" id="mainImageContainer">
+              ${badgeHTML}
+              <div class="main-image-wrapper" id="mainImageWrapper">
+                <img src="${esc(window.offerImages[0])}" id="mainOfferImage" alt="${esc(offer.title)}">
+              </div>
+            </div>
+            ${thumbnailsHTML}
+          </div>
+
+          <div class="offer-info">
+            <h1 class="offer-title">${esc(offer.title)}</h1>
+            <p class="offer-desc">${esc(desc)}</p>
+
+            <div class="pricing-box">
+              <div class="price-row">
+                ${oldPriceHTML}
+                <div class="new-price-block">
+                  <span class="new-price-label">سعر العرض الحصري:</span>
+                  <span class="new-price-value">${fmt(offerPrice)} <small style="font-size:1.2rem;">ج.م</small></span>
+                </div>
+              </div>
+              ${savingsHTML}
+
+              <div class="countdown-wrapper" id="countdownWrapper">
+                <div class="countdown-title"><i class="fas fa-stopwatch"></i> ينتهي هذا العرض خلال:</div>
+                <div class="countdown-timer">
+                  <div class="cd-box"><span class="cd-num" id="cdDays">00</span><span class="cd-label">يوم</span></div>
+                  <div class="cd-box"><span class="cd-num" id="cdHours">00</span><span class="cd-label">ساعة</span></div>
+                  <div class="cd-box"><span class="cd-num" id="cdMins">00</span><span class="cd-label">دقيقة</span></div>
+                  <div class="cd-box"><span class="cd-num" id="cdSecs">00</span><span class="cd-label">ثانية</span></div>
+                </div>
+              </div>
+            </div>
+
+            ${includedHTML}
+
+            <div class="main-actions">
+              <button class="btn-add-offer" id="desktopAddBtn" onclick="window.handleOfferAddToCart(this)">
+                أضف العرض للسلة <i class="fas fa-cart-plus"></i>
+              </button>
+            </div>
+
+            <div class="benefits-grid">
+              <div class="benefit-item">
+                <i class="fas fa-truck-fast"></i>
+                <div><h4>شحن آمن</h4><p>توصيل سريع ومضمون.</p></div>
+              </div>
+              <div class="benefit-item">
+                <i class="fas fa-shield-halved"></i>
+                <div><h4>تفاصيل الضمان</h4><p>تختلف حسب المنتج، وتجدها في الشهادة المرفقة.</p></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      `;
+    }
+
+    function setupInteractions() {
+      const container = document.getElementById('mainImageContainer');
+      const wrapper = document.getElementById('mainImageWrapper');
+      if (!container || !wrapper) return;
+
+      container.addEventListener('mousemove', (e) => {
+        if (window.innerWidth <= 992) return;
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -8;
+        const rotateY = ((x - centerX) / centerX) * 8;
+        wrapper.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+      container.addEventListener('mouseleave', () => {
+        wrapper.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      });
+    }
+
+    window.changeMainImage = function (index) {
+      if (index === window.currentImageIndex) return;
+      window.currentImageIndex = index;
+
+      const mainImg = document.getElementById('mainOfferImage');
+      const thumbs = document.querySelectorAll('.thumb-box');
+      if (!mainImg) return;
+
+      mainImg.style.opacity = '0';
+      setTimeout(() => {
+        mainImg.src = window.offerImages[index];
+        mainImg.style.opacity = '1';
+      }, 200);
+
+      thumbs.forEach((t, i) => t.classList.toggle('active', i === index));
+    };
+
+    function parseEndDate(value) {
+      if (!value) return NaN;
+      if (typeof value.toDate === 'function') return value.toDate().getTime();
+      return new Date(value).getTime();
+    }
+
+    function setupCountdown(endDateValue) {
+      const endDate = parseEndDate(endDateValue);
+      if (isNaN(endDate)) return;
+
+      const wrapper = document.getElementById('countdownWrapper');
+      if (!wrapper) return;
+      wrapper.classList.add('active');
+
+      const pad = (n) => String(n).padStart(2, '0');
+      let timer = null;
+
+      const tick = () => {
+        const distance = endDate - Date.now();
+
+        if (distance <= 0) {
+          if (timer) clearInterval(timer);
+          window.offerExpired = true;
+          wrapper.innerHTML = '<div class="savings-banner" style="color:var(--text-main); background:var(--bg-surface); border-color:var(--border-dark);">انتهى هذا العرض</div>';
+          ['desktopAddBtn', 'mobileAddBtn'].forEach(id => {
+            const b = document.getElementById(id);
+            if (b) b.disabled = true;
+          });
+          return;
+        }
+
+        const days = Math.floor(distance / 86400000);
+        const hours = Math.floor((distance % 86400000) / 3600000);
+        const minutes = Math.floor((distance % 3600000) / 60000);
+        const seconds = Math.floor((distance % 60000) / 1000);
+
+        document.getElementById('cdDays').textContent = pad(days);
+        document.getElementById('cdHours').textContent = pad(hours);
+        document.getElementById('cdMins').textContent = pad(minutes);
+        document.getElementById('cdSecs').textContent = pad(seconds);
+
+        wrapper.classList.toggle('countdown-urgent', days === 0);
+      };
+
+      tick();
+      timer = setInterval(tick, 1000);
+    }
+
+    window.handleOfferAddToCart = function (btn) {
+      const offer = window.currentOffer;
+      if (!offer || window.offerExpired) return;
+      if (window.currentOfferAvailable === false) {
+        window.alert('أحد أجهزة العرض غير متوفر في المخزون حاليًا.');
+        return;
+      }
+      if (!Number.isFinite(Number(offer.offer_price)) || Number(offer.offer_price) <= 0) {
+        window.alert('لا يمكن إضافة عرض قبل تحديد سعره.');
+        return;
+      }
+
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الحجز...';
+      btn.style.pointerEvents = 'none';
+
+      setTimeout(() => {
+        try {
+          const data = localStorage.getItem('bakar_cart');
+          const cart = data ? JSON.parse(data) : [];
+          const existingIndex = cart.findIndex(item => String(item.id) === String(offer.id) && item.isOffer);
+
+          if (existingIndex > -1) {
+            cart[existingIndex].qty = (parseInt(cart[existingIndex].qty) || 1) + 1;
+          } else {
+            cart.push({
+              id: String(offer.id),
+              name: `عرض: ${offer.title}`,
+              price: Number(offer.offer_price),
+              image: window.offerImages[0],
+              qty: 1,
+              isOffer: true
+            });
+          }
+
+          localStorage.setItem('bakar_cart', JSON.stringify(cart));
+          updateCartBadge();
+          showPremiumToast(window.offerImages[0], offer.title);
+        } catch (e) {
+          logClientError('offer.cart.add_failed', e);
+        }
+
+        btn.innerHTML = '<i class="fas fa-check"></i> تمت الإضافة';
+        btn.style.background = 'var(--burgundy)';
+        btn.style.color = '#fff';
+
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.background = '';
+          btn.style.color = '';
+          btn.style.pointerEvents = 'auto';
+        }, 2000);
+      }, 400);
+    };
+
+    function updateCartBadge() {
+      try {
+        const data = localStorage.getItem('bakar_cart');
+        const cart = data ? JSON.parse(data) : [];
+        const totalQty = cart.reduce((sum, item) => sum + (parseInt(item.qty) || 1), 0);
+        document.querySelectorAll('.cart-count').forEach(el => {
+          el.textContent = totalQty;
+          el.style.transform = 'scale(1.3)';
+          setTimeout(() => { el.style.transform = 'scale(1)'; }, 200);
+        });
+      } catch (e) { /* ignore */ }
+    }
+
+    function showPremiumToast(imgSrc, title) {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'toast-premium';
+      toast.innerHTML = `
+        <img src="${esc(imgSrc)}" class="toast-img" alt="العرض">
+        <div class="toast-text">
+          <h4>تم حجز العرض بنجاح</h4>
+          <p>${esc(title)}</p>
+        </div>
+      `;
+
+      container.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 10);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+
+    function renderErrorState(msg) {
+      detailContainer.innerHTML = `
+        <div style="text-align: center; padding: 100px 20px;">
+          <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--burgundy); margin-bottom: 20px;"></i>
+          <h2 style="color: var(--text-main); font-weight: 700; margin-bottom: 20px;">${esc(msg)}</h2>
+          <a href="offers.html" style="background: var(--gold-primary); color: var(--bg-base); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700;">تصفح باقي العروض</a>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

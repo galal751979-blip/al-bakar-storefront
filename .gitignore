@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.env*
+!.env.example
+.firebase/
+firebase-debug*.log
+.firebaserc
+firebase.json
+firestore.rules
+firestore.indexes.json
+storage.rules
+functions/
+backend/
+android/
+ios/
+WHATSAPP_SETUP.md

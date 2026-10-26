@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#F7FAF8">
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عروض الأجهزة المنزلية والكهربائية | ال بكار</title>
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:site_name" content="مؤسسة ال بكار">
+  <meta property="og:locale" content="ar_EG">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="عروض الأجهزة المنزلية والكهربائية | ال بكار">
+  <meta property="og:description" content="اكتشف أحدث عروض مؤسسة ال بكار على الأجهزة المنزلية والكهربائية، وتصفح الصفقات المتاحة وتفاصيل كل عرض.">
+  <meta property="og:image" content="https://al-bakar.web.app/assets/images/refrigerator.jpg">
+  <link rel="canonical" href="https://al-bakar.web.app/offers.html">
+  <meta property="og:url" content="https://al-bakar.web.app/offers.html">
+
+  <meta name="description" content="اكتشف أحدث عروض مؤسسة ال بكار على الأجهزة المنزلية والكهربائية، وتصفح الصفقات المتاحة وتفاصيل كل عرض.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="products.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="bottom-nav.css">
+
+  <style>
+    /* =========================================
+       1. PREMIUM DESIGN SYSTEM (Charcoal, Gold, Burgundy)
+    ========================================= */
+    :root {
+      --bg-base: #0a0a0a !important;        
+      --bg-surface: #141414 !important;     
+      --bg-elevated: #1e1e1e !important;    
+      
+      --gold-primary: #D4AF37 !important;   
+      --gold-hover: #b5952f !important;
+      
+      --burgundy: #800020 !important;       
+      --burgundy-light: #9e0028 !important;
+      
+      --silver: #A0A0A0 !important;         
+      --text-main: #ffffff !important;      
+      --text-muted: #888888 !important;     
+      
+      --border-dark: #2a2a2a !important;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      
+      --transition-fast: 0.2s ease;
+      --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: 'Cairo', sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Glass Header */
+    .site-header {
+      background: rgba(10, 10, 10, 0.8) !important;
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border-dark) !important;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 12px 0;
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+    .logo { font-size: 1.8rem; font-weight: 800; color: var(--text-main) !important; text-decoration: none; }
+    .logo span { color: var(--gold-primary); }
+    .header-actions { display: flex; gap: 20px; }
+    .icon-btn { background: none; border: none; color: var(--text-main) !important; font-size: 1.4rem; position: relative; cursor: pointer; text-decoration: none; transition: var(--transition-fast); }
+    .icon-btn:hover { color: var(--gold-primary) !important; }
+    .cart-badge-premium { position: absolute; top: -6px; right: -8px; background: var(--burgundy); color: #fff; font-size: 0.7rem; font-weight: 800; min-width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-base); }
+
+    /* =========================================
+       2. OFFERS HERO SECTION
+    ========================================= */
+    .offers-hero {
+      position: relative;
+      padding: 60px 20px;
+      text-align: center;
+      background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-base) 100%);
+      border-bottom: 1px solid var(--border-dark);
+      overflow: hidden;
+    }
+    
+    /* Decorative Glow Effects */
+    .offers-hero::before {
+      content: '';
+      position: absolute;
+      top: -50px; left: 50%;
+      transform: translateX(-50%);
+      width: 400px; height: 150px;
+      background: var(--burgundy);
+      filter: blur(100px);
+      opacity: 0.2;
+      pointer-events: none;
+    }
+    .offers-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -50px; left: 50%;
+      transform: translateX(-50%);
+      width: 300px; height: 100px;
+      background: var(--gold-primary);
+      filter: blur(80px);
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    .offers-hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      color: var(--text-main);
+      margin: 0 0 10px;
+      position: relative;
+      z-index: 1;
+      letter-spacing: -1px;
+    }
+    .offers-hero h1 span { color: var(--gold-primary); }
+    .offers-hero p {
+      font-size: 1.1rem;
+      color: var(--silver);
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* =========================================
+       3. OFFERS TOOLBAR & FILTERS
+    ========================================= */
+    .offers-toolbar-container {
+      position: sticky;
+      top: 65px; /* أسفل الهيدر */
+      background: rgba(10,10,10,0.9);
+      backdrop-filter: blur(10px);
+      z-index: 990;
+      border-bottom: 1px solid var(--border-dark);
+      padding: 15px 0;
+      margin-bottom: 30px;
+    }
+    .offers-toolbar {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .toolbar-results { color: var(--silver); font-weight: 600; font-size: 0.95rem; }
+    
+    .toolbar-actions { display: flex; gap: 10px; }
+    
+    .btn-filter, .btn-sort {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-dark);
+      color: var(--text-main);
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition-fast);
+    }
+    .btn-filter:hover, .btn-sort:hover { border-color: var(--gold-primary); }
+    
+    /* Search in Toolbar (Desktop) */
+    .toolbar-search {
+      position: relative;
+      flex: 1;
+      max-width: 400px;
+    }
+    .toolbar-search input {
+      width: 100%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-dark);
+      color: var(--text-main);
+      padding: 10px 40px 10px 15px;
+      border-radius: var(--radius-sm);
+      font-family: 'Cairo', sans-serif;
+      transition: var(--transition-fast);
+    }
+    .toolbar-search input:focus { outline: none; border-color: var(--gold-primary); }
+    .toolbar-search i { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--silver); }
+
+    @media (max-width: 768px) {
+      .toolbar-search { display: none; } /* يمكن وضع زر بحث صغير يفتح المودال */
+      .offers-toolbar { flex-wrap: wrap; }
+      .toolbar-actions { flex: 1; display: flex; justify-content: space-between; }
+      .btn-filter, .btn-sort { flex: 1; justify-content: center; }
+    }
+
+    /* =========================================
+       4. PREMIUM OFFER CARDS (Grid System)
+    ========================================= */
+    .offers-main-container { max-width: 1400px; margin: 0 auto 80px; padding: 0 20px; }
+
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Mobile First: 2 Columns */
+      gap: 15px;
+    }
+    @media (min-width: 768px) { .offers-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+    @media (min-width: 1024px) { .offers-grid { grid-template-columns: repeat(4, 1fr); gap: 25px; } }
+
+    .offer-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: var(--transition-smooth);
+      perspective: 1000px;
+    }
+    @media (min-width: 1024px) {
+      .offer-card:hover { border-color: rgba(212, 175, 55, 0.4); box-shadow: 0 15px 30px rgba(0,0,0,0.5); z-index: 2; }
+    }
+
+    /* Card Image & 3D Interaction */
+    .offer-image-wrapper {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: var(--bg-elevated);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out;
+    }
+    .offer-image-wrapper img {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      filter: drop-shadow(0 15px 20px rgba(0,0,0,0.4));
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .offer-card:hover .offer-image-wrapper img { transform: scale(1.08); }
+
+    /* Badges & Overlays */
+    .offer-badges-top {
+      position: absolute;
+      top: 10px; right: 10px; left: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      z-index: 5;
+    }
+    
+    .discount-badge {
+      background: var(--burgundy);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 10px rgba(128, 0, 32, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.2;
+    }
+    .discount-badge small { font-size: 0.65rem; font-weight: 600; opacity: 0.9; }
+
+    .wishlist-btn {
+      background: rgba(10,10,10,0.5);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.1);
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--silver);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .wishlist-btn:hover, .wishlist-btn.active { color: var(--burgundy); background: #fff; }
+
+    /* Card Content */
+    .offer-content { padding: 15px; flex: 1; display: flex; flex-direction: column; }
+    
+    .offer-title { font-size: 1rem; font-weight: 700; color: var(--text-main); margin: 0 0 10px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    @media (max-width: 768px) { .offer-title { font-size: 0.9rem; } }
+
+    /* Price Presentation */
+    .offer-price-block { margin-top: auto; display: flex; flex-direction: column; gap: 2px; margin-bottom: 15px; }
+    .price-old { font-size: 0.85rem; color: var(--silver); text-decoration: line-through; }
+    .price-current { font-size: 1.3rem; font-weight: 800; color: var(--gold-primary); line-height: 1; }
+    
+    .savings-text { font-size: 0.75rem; color: #10B981; font-weight: 600; } /* أخضر للتوفير المادي */
+
+    /* Card Actions */
+    .offer-actions { display: flex; gap: 8px; }
+    .btn-add-offer {
+      flex: 1;
+      background: var(--gold-primary);
+      color: var(--bg-base);
+      border: none;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      transition: var(--transition-fast);
+    }
+    .btn-add-offer:hover { background: var(--gold-hover); }
+    
+    .btn-view-offer {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-dark);
+      color: var(--text-main);
+      width: 42px;
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition-fast);
+    }
+    .btn-view-offer:hover { border-color: var(--silver); }
+
+    /* =========================================
+       5. BURGUNDY TOAST NOTIFICATION
+    ========================================= */
+    .toast-container { position: fixed; bottom: 20px; left: 20px; z-index: 10001; display: flex; flex-direction: column; gap: 10px; }
+    .toast-premium { background: var(--burgundy); color: #fff; border-radius: var(--radius-md); padding: 12px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 15px; min-width: 280px; transform: translateY(100px); opacity: 0; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); border: 1px solid rgba(255,255,255,0.1); }
+    .toast-premium.show { transform: translateY(0); opacity: 1; }
+    .toast-img { width: 45px; height: 45px; background: #fff; border-radius: var(--radius-sm); padding: 3px; object-fit: contain; }
+    .toast-text h4 { margin: 0; font-size: 0.9rem; font-weight: 700; }
+    .toast-text p { margin: 4px 0 0; font-size: 0.8rem; color: rgba(255,255,255,0.8); }
+
+    /* Empty / Loading States */
+    .empty-state, .loading-state { grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--silver); background: var(--bg-surface); border-radius: var(--radius-lg); border: 1px solid var(--border-dark); }
+    .empty-state i, .loading-state i { font-size: 3rem; color: var(--border-dark); margin-bottom: 15px; }
+
+  </style>
+  <script>
+    (() => {
+      let theme = 'light';
+      try {
+        const savedTheme = localStorage.getItem('bakar-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') theme = savedTheme;
+      } catch {
+        // Keep the light theme if browser storage is unavailable.
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+  <!-- Premium Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">ال بكار<span>.</span></a>
+      <div class="header-actions">
+        <a href="cart.html" class="icon-btn" aria-label="السلة">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge-premium cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section for Offers -->
+  <section class="offers-hero">
+    <h1>صفقات <span>استثنائية</span></h1>
+    <p>أقوى الخصومات على أفضل الأجهزة المنزلية لفترة محدودة. وفر أكثر مع ال بكار.</p>
+  </section>
+
+  <!-- Offers Toolbar -->
+  <div class="offers-toolbar-container">
+    <div class="offers-toolbar">
+      <div class="toolbar-results" id="offersCount">جاري تحميل العروض...</div>
+      
+      <div class="toolbar-search">
+        <input type="text" id="searchInput" placeholder="ابحث داخل العروض...">
+        <i class="fas fa-search"></i>
+      </div>
+
+      <div class="toolbar-actions">
+        <!-- أزرار وهمية للتصميم، يمكنك ربطها بـ Modals لو أحببت مستقبلاً -->
+        <button class="btn-sort" id="sortBtn"><i class="fas fa-sort-amount-down"></i> الترتيب</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Offers Grid -->
+  <section class="offers-main-container">
+    <div class="offers-grid" id="offerProductGrid">
+      
+      <!-- Skeleton Loading State -->
+      <div class="loading-state">
+        <i class="fas fa-circle-notch fa-spin" style="color: var(--gold-primary);"></i>
+        <h3 style="color: var(--text-main); font-weight: 600;">جاري جلب أحدث الصفقات...</h3>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script type="module" src="main.js"></script>
+  <script type="module">
+  import { logClientError } from './client-logger.js';
+  import { apiFetch, getProducts } from './api.js';
+  import { escapeHtml, safeImageUrl } from './html-utils.js';
+    let allOffers = [];
+    let allProducts = [];
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      updateCartBadge();
+      await loadOffersData();
+      setupSearchAndSort();
+    });
+
+    async function loadOffersData() {
+      try {
+        // Load offers first, then only fetch the products those offers reference.
+        const offers = await apiFetch('/offers');
+        allOffers = offers.filter(o => {
+          if (o.is_active === false) return false;
+          // إخفاء العروض المنتهية الصلاحية
+          if (o.end_date) {
+            const endsAt = o.end_date?.toMillis ? o.end_date.toMillis() : Date.parse(o.end_date);
+            if (Number.isFinite(endsAt) && endsAt < Date.now()) return false;
+          }
+          return true;
+        });
+
+        const productIds = [...new Set(allOffers.flatMap(offer =>
+          Array.isArray(offer.product_ids) ? offer.product_ids : offer.product_id ? [offer.product_id] : []
+        ).map(id => String(id)))];
+        try {
+          allProducts = await getProducts(productIds);
+        } catch (error) {
+          logClientError('offers.products.load_failed', error);
+          allProducts = [];
+        }
+
+        renderOffersGrid(allOffers);
+
+      } catch (error) {
+        logClientError('offers.load_failed', error);
+        document.getElementById('offerProductGrid').innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-exclamation-triangle" style="color: var(--burgundy);"></i>
+            <h3 style="color: var(--text-main);">تعذر تحميل العروض</h3>
+            <p>يرجى التحقق من اتصال الإنترنت والمحاولة مرة أخرى.</p>
+          </div>
+        `;
+      }
+    }
+
+    function renderOffersGrid(offersToRender) {
+      const container = document.getElementById('offerProductGrid');
+      const countEl = document.getElementById('offersCount');
+      
+      container.innerHTML = '';
+      
+      if (offersToRender.length === 0) {
+        countEl.textContent = 'لا توجد نتائج';
+        container.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-tags"></i>
+            <h3 style="color: var(--text-main);">لا توجد عروض متاحة حالياً</h3>
+            <p>تابعنا قريباً للحصول على أقوى التخفيضات.</p>
+            <a href="products.html" style="display:inline-block; margin-top:15px; color:var(--gold-primary); text-decoration:none; font-weight:700;">تصفح كل المنتجات <i class="fas fa-arrow-left"></i></a>
+          </div>
+        `;
+        return;
+      }
+
+      countEl.innerHTML = `عرض <strong>${offersToRender.length}</strong> صفقة`;
+
+      offersToRender.forEach(offer => {
+        // ربط العرض بالمنتجات لحساب السعر الأساسي واسم المنتجات إن لزم
+        const productIds = offer.product_ids || (offer.product_id ? [offer.product_id] : []);
+        const includedProducts = allProducts.filter(p => productIds.includes(p.id));
+        
+        const mainImage = safeImageUrl((offer.image_urls && offer.image_urls.length > 0) ? offer.image_urls[0] : (offer.image_url || (includedProducts.length > 0 ? includedProducts[0].image_url : '')));
+        
+        // حساب إجمالي السعر القديم (مجموع أسعار المنتجات الأصلية)
+        const originalTotal = includedProducts.reduce((sum, p) => sum + Number(p.price || 0), 0);
+        const offerPrice = Number(offer.offer_price);
+        
+        let discountBadgeHTML = '';
+        let oldPriceHTML = '';
+        let savingsHTML = '';
+
+        if (originalTotal > offerPrice) {
+          const discountPercentage = Math.round(((originalTotal - offerPrice) / originalTotal) * 100);
+          const savings = originalTotal - offerPrice;
+          
+          discountBadgeHTML = `
+            <div class="discount-badge">
+              <span>${discountPercentage}%-</span>
+              <small>خصم</small>
+            </div>
+          `;
+          oldPriceHTML = `<span class="price-old">${originalTotal.toLocaleString('ar-EG')} ج.م</span>`;
+          savingsHTML = `<span class="savings-text">وفرت ${savings.toLocaleString('ar-EG')} ج.م</span>`;
+        } else {
+          // Fallback if no old price can be calculated
+          discountBadgeHTML = `
+            <div class="discount-badge" style="background: var(--gold-primary); color: var(--bg-base);">
+              <span>🔥</span>
+              <small>عرض خاص</small>
+            </div>
+          `;
+        }
+
+        const card = document.createElement('div');
+        card.className = 'offer-card';
+        card.innerHTML = `
+          <div class="offer-badges-top">
+            ${discountBadgeHTML}
+          </div>
+          
+          <a href="offer.html?id=${encodeURIComponent(offer.id)}" class="offer-image-wrapper">
+            <img src="${escapeHtml(mainImage)}" alt="${escapeHtml(offer.title)}" loading="lazy">
+          </a>
+          
+          <div class="offer-content">
+            <a href="offer.html?id=${encodeURIComponent(offer.id)}" style="text-decoration:none;">
+              <h3 class="offer-title">${escapeHtml(offer.title)}</h3>
+            </a>
+            
+            <div class="offer-price-block">
+              ${oldPriceHTML}
+              <span class="price-current">${offerPrice.toLocaleString('ar-EG')} ج.م</span>
+              ${savingsHTML}
+            </div>
+            
+            <div class="offer-actions">
+              <button class="btn-add-offer">
+                <i class="fas fa-cart-plus"></i> أضف للسلة
+              </button>
+              <a href="offer.html?id=${encodeURIComponent(offer.id)}" class="btn-view-offer" aria-label="التفاصيل">
+                <i class="far fa-eye"></i>
+              </a>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+        card.querySelector('.btn-add-offer')?.addEventListener('click', event => {
+          window.handleAddOfferToCart(offer.id, event.currentTarget);
+        });
+      });
+
+      // تفعيل 3D Tilt حصرياً للشاشات الكبيرة للحفاظ على أداء الموبايل
+      if(window.innerWidth > 1024) {
+        setup3DInteractions(container);
+      }
+    }
+
+    function setup3DInteractions(container) {
+      container.addEventListener('mousemove', (e) => {
+        const card = e.target.closest('.offer-card');
+        if (!card) return;
+        const imgWrapper = card.querySelector('.offer-image-wrapper');
+        if (!imgWrapper) return;
+
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -10; 
+        const rotateY = ((x - centerX) / centerX) * 10;
+        
+        imgWrapper.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      container.addEventListener('mouseout', (e) => {
+        const card = e.target.closest('.offer-card');
+        if (!card) return;
+        const imgWrapper = card.querySelector('.offer-image-wrapper');
+        if (imgWrapper) imgWrapper.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+      });
+    }
+
+    // --- Search & Sort Setup ---
+    function setupSearchAndSort() {
+      const searchInput = document.getElementById('searchInput');
+      let searchTimeout;
+
+      if(searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          clearTimeout(searchTimeout);
+          // Debounce Search for Performance
+          searchTimeout = setTimeout(() => {
+            const term = e.target.value.toLowerCase();
+            const filtered = allOffers.filter(o => o.title.toLowerCase().includes(term));
+            renderOffersGrid(filtered);
+          }, 300);
+        });
+      }
+    }
+
+    // --- Global Functions for Cart & UI ---
+    window.handleAddOfferToCart = function(offerId, btnElement) {
+      try {
+        const offer = allOffers.find(o => String(o.id) === String(offerId));
+        if (!offer) return;
+        if (!Number.isFinite(Number(offer.offer_price)) || Number(offer.offer_price) <= 0) {
+          window.alert('لا يمكن إضافة عرض قبل تحديد سعره.');
+          return;
+        }
+
+        const data = localStorage.getItem('bakar_cart');
+        let cart = data ? JSON.parse(data) : [];
+        const cartItemId = `offer_${offer.id}`;
+        const existingIndex = cart.findIndex(item => String(item.id) === String(cartItemId));
+        
+        const imageUrl = safeImageUrl((offer.image_urls && offer.image_urls.length > 0) ? offer.image_urls[0] : offer.image_url);
+
+        if (existingIndex > -1) {
+          cart[existingIndex].qty = (parseInt(cart[existingIndex].qty) || 1) + 1;
+        } else {
+          cart.push({
+            id: String(cartItemId),
+            name: `عرض: ${offer.title}`,
+            price: parseFloat(offer.offer_price),
+            image: imageUrl,
+            qty: 1
+          });
+        }
+
+        localStorage.setItem('bakar_cart', JSON.stringify(cart));
+        updateCartBadge();
+
+        // Show Burgundy Toast
+        showPremiumToast(imageUrl, offer.title);
+
+        // Button Micro-interaction
+        if (btnElement) {
+          const originalHTML = btnElement.innerHTML;
+          btnElement.innerHTML = '<i class="fas fa-check"></i> تمت الإضافة';
+          btnElement.style.background = 'var(--burgundy)';
+          btnElement.style.color = '#fff';
+          setTimeout(() => { 
+            btnElement.innerHTML = originalHTML; 
+            btnElement.style.background = '';
+            btnElement.style.color = '';
+          }, 2000);
+        }
+
+      } catch (error) {
+        logClientError('offers.cart.add_failed', error);
+      }
+    };
+
+    function updateCartBadge() {
+      try {
+        const data = localStorage.getItem('bakar_cart');
+        const cart = data ? JSON.parse(data) : [];
+        const totalQty = cart.reduce((sum, item) => sum + (parseInt(item.qty) || 1), 0);
+        document.querySelectorAll('.cart-count').forEach(el => {
+          el.textContent = totalQty;
+          el.style.transform = 'scale(1.3)';
+          setTimeout(() => el.style.transform = 'scale(1)', 200);
+        });
+      } catch(e) {}
+    }
+
+    function showPremiumToast(imgSrc, title) {
+      const container = document.getElementById('toastContainer');
+      if(!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'toast-premium';
+      toast.innerHTML = `
+        <img src="${escapeHtml(safeImageUrl(imgSrc))}" class="toast-img" alt="Offer">
+        <div class="toast-text">
+          <h4>تمت إضافة العرض للسلة</h4>
+          <p>${escapeHtml(title)}</p>
+        </div>
+      `;
+      
+      container.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 10);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+
+  </script>
+</body>
+</html>

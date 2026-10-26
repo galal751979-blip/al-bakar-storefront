@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#F7FAF8">
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تواصل معنا وتتبع طلبك | مؤسسة ال بكار</title>
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:site_name" content="مؤسسة ال بكار">
+  <meta property="og:locale" content="ar_EG">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="تواصل معنا وتتبع طلبك | مؤسسة ال بكار">
+  <meta property="og:description" content="تواصل مع خدمة عملاء مؤسسة ال بكار للاستفسار عن الأجهزة والطلبات أو لمتابعة طلبك عبر الهاتف وواتساب.">
+  <meta property="og:image" content="https://al-bakar.web.app/assets/images/refrigerator.jpg">
+  <link rel="canonical" href="https://al-bakar.web.app/contact.html">
+  <meta property="og:url" content="https://al-bakar.web.app/contact.html">
+
+  <meta name="description" content="تواصل مع خدمة عملاء مؤسسة ال بكار للاستفسار عن الأجهزة والطلبات أو لمتابعة طلبك عبر الهاتف وواتساب.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="bottom-nav.css">
+
+  <style>
+    /* =========================================
+       1. PREMIUM DESIGN SYSTEM (Charcoal, Gold, Burgundy, Silver)
+    ========================================= */
+    :root {
+      --bg-base: #0a0a0a !important;        
+      --bg-surface: #141414 !important;    
+      --bg-elevated: #1e1e1e !important;    
+      
+      --gold-primary: #D4AF37 !important;   
+      --gold-hover: #b5952f !important;
+      
+      --burgundy: #800020 !important;       
+      --silver: #A0A0A0 !important;         
+      
+      --text-main: #ffffff !important;      
+      --text-muted: #888888 !important;     
+      
+      --border-dark: #2a2a2a !important;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      
+      --font-main: 'Cairo', sans-serif;
+      --font-heading: 'Tajawal', sans-serif;
+      
+      --transition-fast: 0.2s ease;
+      --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      overflow-x: hidden;
+      margin: 0; padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* =========================================
+       2. GLASSMORHPISM HEADER
+    ========================================= */
+    .site-header {
+      background: rgba(10, 10, 10, 0.8) !important;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+      position: sticky; top: 0; z-index: 1000; padding: 12px 0;
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+    .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--text-main) !important; text-decoration: none; letter-spacing: -0.5px; }
+    .logo span { color: var(--gold-primary); }
+    .header-actions { display: flex; align-items: center; gap: 20px; }
+    .icon-btn { background: none; border: none; color: var(--text-main) !important; font-size: 1.5rem; cursor: pointer; text-decoration: none; position: relative; transition: var(--transition-fast); }
+    .icon-btn:hover { color: var(--gold-primary) !important; transform: translateY(-2px); }
+    .cart-badge-premium { position: absolute; top: -6px; right: -8px; background: var(--burgundy); color: #fff; font-size: 0.7rem; font-weight: 800; min-width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-base); transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .cart-badge-premium.pulse { transform: scale(1.4); }
+
+    /* =========================================
+       3. HERO SECTION (Customer Support Center)
+    ========================================= */
+    .support-hero {
+      position: relative;
+      padding: 80px 20px;
+      text-align: center;
+      background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-base) 100%);
+      border-bottom: 1px solid var(--border-dark);
+      overflow: hidden;
+    }
+    .support-hero::before { content: ''; position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 400px; height: 150px; background: var(--burgundy); filter: blur(100px); opacity: 0.15; pointer-events: none; }
+    .support-hero::after { content: ''; position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); width: 300px; height: 100px; background: var(--gold-primary); filter: blur(80px); opacity: 0.1; pointer-events: none; }
+    
+    .support-hero h1 { font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; color: var(--text-main); margin: 0 0 15px; position: relative; z-index: 1; letter-spacing: -1px; }
+    .support-hero p { font-size: 1.15rem; color: var(--silver); max-width: 600px; margin: 0 auto; position: relative; z-index: 1; line-height: 1.6; }
+
+    /* =========================================
+       4. QUICK CONTACT CHANNELS
+    ========================================= */
+    .contact-channels { max-width: 1200px; margin: -30px auto 50px; padding: 0 20px; position: relative; z-index: 2; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    
+    .channel-card {
+      background: rgba(20,20,20,0.8); backdrop-filter: blur(10px);
+      border: 1px solid var(--border-dark); border-radius: var(--radius-lg);
+      padding: 30px 20px; text-align: center; text-decoration: none;
+      display: flex; flex-direction: column; align-items: center; gap: 15px;
+      transition: var(--transition-smooth); cursor: pointer;
+    }
+    .channel-card:hover { transform: translateY(-5px); border-color: var(--gold-primary); background: var(--bg-surface); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    
+    .channel-icon { width: 60px; height: 60px; border-radius: 50%; background: var(--bg-elevated); color: var(--gold-primary); font-size: 1.5rem; display: flex; align-items: center; justify-content: center; transition: var(--transition-fast); }
+    .channel-card:hover .channel-icon { background: var(--gold-primary); color: var(--bg-base); transform: scale(1.1); }
+    
+    .channel-title { color: var(--text-main); font-weight: 700; font-size: 1.2rem; margin: 0; }
+    .channel-desc { color: var(--silver); font-size: 0.95rem; margin: 0; }
+
+    /* Custom WhatsApp Styling */
+    .whatsapp-card .channel-icon { color: #25D366; }
+    .whatsapp-card:hover .channel-icon { background: #25D366; color: #fff; }
+    .whatsapp-card:hover { border-color: #25D366; }
+
+    /* =========================================
+       5. MAIN LAYOUT (TRACKING + CONTACT FORM)
+    ========================================= */
+    .support-layout {
+      max-width: 1200px; margin: 0 auto 80px; padding: 0 20px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    }
+    @media (max-width: 992px) { .support-layout { grid-template-columns: 1fr; } }
+
+    .support-panel {
+      background: var(--bg-surface); border: 1px solid var(--border-dark);
+      border-radius: var(--radius-xl); padding: 40px; position: relative; overflow: hidden;
+    }
+    .support-panel::before { content: ''; position: absolute; top: 0; right: 0; width: 4px; height: 100%; background: var(--gold-primary); }
+
+    .panel-title { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--text-main); margin: 0 0 10px; display: flex; align-items: center; gap: 10px; }
+    .panel-title i { color: var(--gold-primary); }
+    .panel-desc { color: var(--silver); font-size: 1rem; margin: 0 0 30px; line-height: 1.6; }
+
+    /* =========================================
+       6. ORDER TRACKING UI
+    ========================================= */
+    .tracking-form { display: flex; flex-direction: column; gap: 20px; }
+    .tracking-input-group { position: relative; }
+    .tracking-input-group i { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--silver); }
+    .tracking-input {
+      width: 100%; background: var(--bg-elevated); border: 1px solid var(--border-dark);
+      color: var(--text-main); padding: 16px 45px 16px 15px; border-radius: var(--radius-md);
+      font-family: var(--font-main); font-size: 1.05rem; font-weight: 600; text-transform: uppercase;
+      transition: var(--transition-fast);
+    }
+    .tracking-input:focus { outline: none; border-color: var(--gold-primary); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1); }
+    
+    .btn-track {
+      background: var(--gold-primary); color: var(--bg-base); border: none;
+      padding: 16px; border-radius: var(--radius-md); font-family: var(--font-main);
+      font-size: 1.1rem; font-weight: 800; cursor: pointer; transition: var(--transition-fast);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .btn-track:hover { background: var(--gold-hover); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(212,175,55,0.2); }
+
+    /* Tracking Result & Timeline */
+    .tracking-result { display: none; margin-top: 30px; border-top: 1px solid var(--border-dark); padding-top: 30px; animation: fadeIn 0.4s ease; }
+    .tracking-result.active { display: block; }
+    
+    .order-header-info { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
+    .order-id-badge { background: rgba(212,175,55,0.1); color: var(--gold-primary); padding: 6px 12px; border-radius: 50px; font-weight: 800; font-family: monospace; font-size: 1.1rem; border: 1px solid rgba(212,175,55,0.3); }
+    .order-date { color: var(--silver); font-size: 0.9rem; }
+
+    /* Premium Timeline */
+    .order-timeline { display: flex; flex-direction: column; gap: 0; position: relative; margin-bottom: 30px; }
+    .timeline-item { display: flex; gap: 20px; position: relative; padding-bottom: 30px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    
+    .timeline-line { position: absolute; right: 11px; top: 24px; bottom: 0; width: 2px; background: var(--border-dark); z-index: 1; }
+    .timeline-item:last-child .timeline-line { display: none; }
+    
+    .timeline-icon { width: 24px; height: 24px; border-radius: 50%; background: var(--bg-elevated); border: 2px solid var(--border-dark); display: flex; align-items: center; justify-content: center; position: relative; z-index: 2; transition: var(--transition-smooth); }
+    .timeline-icon i { font-size: 0.6rem; color: transparent; transition: color 0.3s; }
+    
+    .timeline-content { flex: 1; padding-top: 2px; }
+    .timeline-title { color: var(--silver); font-weight: 600; font-size: 1rem; margin: 0 0 4px; transition: color 0.3s; }
+    .timeline-date { color: var(--text-muted); font-size: 0.8rem; margin: 0; }
+
+    /* Timeline States */
+    .timeline-item.completed .timeline-icon { background: var(--gold-primary); border-color: var(--gold-primary); }
+    .timeline-item.completed .timeline-icon i { color: var(--bg-base); }
+    .timeline-item.completed .timeline-line { background: var(--gold-primary); }
+    .timeline-item.completed .timeline-title { color: var(--text-main); }
+    
+    .timeline-item.current .timeline-icon { background: var(--burgundy); border-color: var(--burgundy); box-shadow: 0 0 0 4px rgba(128,0,32,0.2); animation: pulseStatus 2s infinite; }
+    .timeline-item.current .timeline-icon i { color: #fff; }
+    .timeline-item.current .timeline-title { color: var(--text-main); font-weight: 800; }
+    
+    @keyframes pulseStatus { 0% { box-shadow: 0 0 0 0 rgba(128,0,32,0.4); } 70% { box-shadow: 0 0 0 10px rgba(128,0,32,0); } 100% { box-shadow: 0 0 0 0 rgba(128,0,32,0); } }
+
+    /* Order Details Box */
+    .order-details-box { background: var(--bg-elevated); border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--border-dark); }
+    .order-section-title { font-size: 1rem; font-weight: 700; color: var(--silver); margin: 0 0 15px; border-bottom: 1px solid var(--border-dark); padding-bottom: 10px; }
+    
+    .order-products-list { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; }
+    .order-product-item { display: flex; gap: 15px; align-items: center; }
+    .order-product-img { width: 60px; height: 60px; background: var(--bg-surface); border-radius: var(--radius-sm); object-fit: contain; padding: 5px; }
+    .order-product-info { flex: 1; }
+    .order-product-name { color: var(--text-main); font-size: 0.95rem; font-weight: 600; margin: 0 0 4px; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+    .order-product-meta { color: var(--silver); font-size: 0.85rem; display: flex; justify-content: space-between; }
+    
+    .order-delivery-info { display: flex; flex-direction: column; gap: 8px; color: var(--text-main); font-size: 0.9rem; }
+    .order-delivery-info span { color: var(--silver); }
+    
+    .order-total-row { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 15px; border-top: 1px dashed var(--border-dark); font-weight: 800; font-size: 1.2rem; color: var(--gold-primary); }
+
+    .support-cta-box { margin-top: 25px; padding: 20px; background: rgba(128,0,32,0.1); border: 1px solid rgba(128,0,32,0.3); border-radius: var(--radius-md); text-align: center; }
+    .support-cta-box p { color: var(--text-main); font-weight: 600; margin: 0 0 15px; }
+    .btn-whatsapp-support { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 50px; font-weight: 700; transition: transform 0.2s; }
+    .btn-whatsapp-support:hover { transform: translateY(-2px); }
+
+    /* =========================================
+       7. CONTACT FORM UI
+    ========================================= */
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; color: var(--silver); margin-bottom: 8px; font-weight: 600; font-size: 0.95rem; }
+    
+    .form-input, .form-select, .form-textarea {
+      width: 100%; background: var(--bg-elevated); border: 1px solid var(--border-dark);
+      color: var(--text-main); padding: 15px; border-radius: var(--radius-md);
+      font-family: var(--font-main); font-size: 1rem; transition: var(--transition-fast);
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--gold-primary); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1); }
+    .form-select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23A0A0A0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: left 15px top 50%; background-size: 12px auto; padding-left: 40px; }
+    .form-textarea { resize: vertical; min-height: 120px; }
+
+    .btn-submit {
+      width: 100%; background: var(--bg-surface); border: 1px solid var(--silver);
+      color: var(--text-main); padding: 16px; border-radius: var(--radius-md);
+      font-family: var(--font-main); font-size: 1.1rem; font-weight: 700;
+      cursor: pointer; transition: var(--transition-fast);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .btn-submit:hover { background: var(--text-main); color: var(--bg-base); border-color: var(--text-main); }
+
+    /* States */
+    .state-message { display: none; margin-top: 20px; padding: 15px; border-radius: var(--radius-md); text-align: center; font-weight: 600; animation: fadeIn 0.3s ease; }
+    .state-success { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #10B981; }
+    .state-error { background: rgba(128, 0, 32, 0.1); border: 1px solid rgba(128, 0, 32, 0.3); color: #ff4d4d; }
+    
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Skeleton Loading */
+    .skeleton { background: linear-gradient(90deg, var(--bg-elevated) 25%, #2a2a2a 50%, var(--bg-elevated) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: var(--radius-sm); }
+    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+    @media (max-width: 640px) {
+      .support-hero { padding: 58px 16px 48px; }
+      .support-hero h1 { font-size: 2.2rem; line-height: 1.25; }
+      .support-hero p { font-size: 1rem; }
+      .contact-channels { grid-template-columns: 1fr; gap: 12px; margin: -20px auto 36px; padding: 0 16px; }
+      .channel-card { flex-direction: row; justify-content: flex-start; gap: 14px; padding: 18px; text-align: right; border-radius: 12px; }
+      .channel-icon { flex: 0 0 48px; width: 48px; height: 48px; font-size: 1.25rem; }
+      .channel-title { font-size: 1.05rem; }
+      .channel-desc { overflow-wrap: anywhere; font-size: 0.9rem; }
+      .support-layout { gap: 18px; margin: 0 auto 48px; padding: 0 16px; }
+      .support-panel { padding: 22px 18px; border-radius: 12px; }
+      .panel-title { font-size: 1.45rem; }
+      .panel-desc { margin-bottom: 22px; font-size: 0.95rem; }
+      .tracking-input, .form-input, .form-select, .form-textarea { font-size: 16px; }
+      .order-details-box { padding: 15px; }
+      .order-product-item { gap: 10px; align-items: flex-start; }
+      .order-product-meta { flex-direction: column; gap: 4px; }
+    }
+
+  </style>
+  <script>
+    (() => {
+      let theme = 'light';
+      try {
+        const savedTheme = localStorage.getItem('bakar-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') theme = savedTheme;
+      } catch {
+        // Keep the light theme if browser storage is unavailable.
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+  <!-- Premium Glass Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">ال بكار<span>.</span></a>
+      <div class="header-actions">
+        <a href="cart.html" class="icon-btn" aria-label="السلة">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge-premium cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Support Center Hero -->
+  <section class="support-hero">
+    <h1>كيف يمكننا <span>مساعدتك؟</span></h1>
+    <p>تواصل مع فريق الدعم الفني أو تابع حالة طلبك لحظياً بكل سهولة وبأمان تام.</p>
+  </section>
+
+  <!-- Quick Contact Channels -->
+  <div class="contact-channels">
+    <a href="tel:+201022473694" dir="ltr" class="channel-card">
+      <div class="channel-icon"><i class="fas fa-phone-alt"></i></div>
+      <div>
+        <h3 class="channel-title">اتصل بنا هاتفياً</h3>
+        <p class="channel-desc">01022473694</p>
+      </div>
+    </a>
+    
+    <a href="https://wa.me/201022473694" target="_blank" rel="noopener noreferrer" class="channel-card whatsapp-card">
+      <div class="channel-icon"><i class="fab fa-whatsapp"></i></div>
+      <div>
+        <h3 class="channel-title">الدعم عبر واتساب</h3>
+        <p class="channel-desc">رد سريع على استفساراتك</p>
+      </div>
+    </a>
+    
+    <a href="mailto:albakar307@gmail.com" class="channel-card">
+      <div class="channel-icon"><i class="fas fa-envelope"></i></div>
+      <div>
+        <h3 class="channel-title">راسلنا بريدياً</h3>
+        <p class="channel-desc">albakar307@gmail.com</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- Main Support Layout -->
+  <section class="support-layout">
+    
+    <!-- 1. Order Tracking Panel -->
+    <div class="support-panel">
+      <h2 class="panel-title"><i class="fas fa-box-open"></i> تابع طلبك</h2>
+      <p class="panel-desc">أدخل رقم الطلب الخاص بك لمعرفة حالته وموعد التوصيل المتوقع بأمان وسرعة.</p>
+      
+      <form class="tracking-form" id="trackingForm">
+        <div class="tracking-input-group">
+          <i class="fas fa-hashtag"></i>
+          <input type="text" id="orderIdInput" class="tracking-input" placeholder="كود الطلب (مثال: BK-12345678)" required autocomplete="off">
+        </div>
+
+        <button type="submit" class="btn-track" id="trackBtn">
+          <i class="fas fa-search"></i> تتبع الطلب
+        </button>
+      </form>
+
+      <div id="trackingLoading" style="display: none; margin-top: 30px;">
+        <div class="skeleton" style="width: 100%; height: 50px; border-radius: 50px; margin-bottom: 20px;"></div>
+        <div class="skeleton" style="width: 100%; height: 200px; border-radius: 12px;"></div>
+      </div>
+
+      <div id="trackErrorState" class="state-message state-error"></div>
+
+      <div class="tracking-result" id="trackingResult">
+        <!-- Result will be generated here -->
+      </div>
+    </div>
+
+    <!-- 2. Contact Form Panel -->
+    <div class="support-panel">
+      <h2 class="panel-title"><i class="fas fa-paper-plane"></i> أرسل استفسارك</h2>
+      <p class="panel-desc">قم بتعبئة النموذج وسيقوم فريق خدمة العملاء بالتواصل معك في أقرب وقت.</p>
+      
+      <form id="contactForm">
+        <div class="form-group">
+          <label class="form-label">الاسم بالكامل</label>
+          <input type="text" id="contactName" class="form-input" required placeholder="محمد أحمد">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">رقم الهاتف للتواصل</label>
+          <input type="tel" id="contactPhone" class="form-input" required placeholder="010XXXXXXXX">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">نوع الاستفسار</label>
+          <select id="contactType" class="form-select" required>
+            <option value="" disabled selected>اختر نوع الاستفسار...</option>
+            <option value="product">استفسار عن منتج</option>
+            <option value="order">مشكلة في طلب حالي</option>
+            <option value="return">طلب استبدال أو استرجاع</option>
+            <option value="warranty">الضمان والصيانة</option>
+            <option value="delivery">الشحن والتوصيل</option>
+            <option value="complaint">تقديم شكوى</option>
+            <option value="other">استفسار عام</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">تفاصيل الرسالة</label>
+          <textarea id="contactMessage" class="form-textarea" required placeholder="اكتب تفاصيل استفسارك هنا بوضوح لنتمكن من مساعدتك..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitContactBtn">
+          إرسال الرسالة <i class="fas fa-arrow-left"></i>
+        </button>
+
+        <div id="contactSuccessState" class="state-message state-success">
+          <i class="fas fa-check-circle" style="font-size: 1.5rem; margin-bottom: 10px;"></i><br>
+          تم إرسال رسالتك بنجاح. سيقوم فريقنا بالتواصل معك قريباً.
+        </div>
+        <div id="contactErrorState" class="state-message state-error"></div>
+      </form>
+    </div>
+
+  </section>
+
+  <!-- Premium Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; padding: 40px 0;">
+      <div class="footer-col">
+        <h3 style="font-family: var(--font-heading); color: var(--text-main); font-size: 1.5rem; font-weight: 800; margin-bottom: 20px;">ال بكار<span style="color: var(--gold-primary);">.</span></h3>
+        <p style="color: var(--silver); line-height: 1.6;">وجهتك الموثوقة للأجهزة الكهربائية الفاخرة.</p>
+      </div>
+      <div class="footer-col">
+        <h4 style="color: var(--text-main); font-size: 1.1rem; margin-bottom: 15px;">روابط سريعة</h4>
+        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">
+          <li><a href="index.html" style="color: var(--silver); text-decoration: none;">الرئيسية</a></li>
+          <li><a href="products.html" style="color: var(--silver); text-decoration: none;">المنتجات</a></li>
+          <li><a href="policies.html" style="color: var(--silver); text-decoration: none;">السياسات</a></li>
+          <li><a href="contact.html" style="color: var(--silver); text-decoration: none;">خدمة العملاء</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+  
+  <script type="module">
+    import { logClientError } from './client-logger.js';
+    // ---------------------------------------------------------
+    // Order Tracking & Contact Form Logic
+    // ---------------------------------------------------------
+    
+    import { getTrackedOrder } from './api.js';
+    import { safeImageUrl } from './html-utils.js';
+
+    function getContactServiceError(error, fallback) {
+      const message = String(error?.message || '').trim();
+      const code = String(error?.code || '').toLowerCase();
+      if (['functions/internal', 'functions/unavailable', 'functions/deadline-exceeded'].includes(code)
+        || /internal\s*\[\s*0\s*\]|failed to fetch|network error|cors/i.test(message)) {
+        return 'الخدمة غير متاحة مؤقتًا. جرّب مرة أخرى بعد قليل أو تواصل معنا عبر واتساب على 01022473694.';
+      }
+      return message || fallback;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateCartBadge();
+      setupOrderTracking();
+      setupContactForm();
+      checkSavedOrder();
+    });
+
+    // --- Cart Badge Logic ---
+    function updateCartBadge() {
+      try {
+        const data = localStorage.getItem('bakar_cart');
+        const cart = data ? JSON.parse(data) : [];
+        const total = cart.reduce((sum, item) => sum + (parseInt(item.qty) || 1), 0);
+        document.querySelectorAll('.cart-count').forEach(el => { el.textContent = total; });
+      } catch(e){}
+    }
+
+    // --- Order Tracking Logic ---
+    function setupOrderTracking() {
+      const trackingForm = document.getElementById('trackingForm');
+      const trackBtn = document.getElementById('trackBtn');
+      const loadingEl = document.getElementById('trackingLoading');
+      const resultEl = document.getElementById('trackingResult');
+      const errorEl = document.getElementById('trackErrorState');
+
+      trackingForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const orderIdInput = document.getElementById('orderIdInput').value.trim();
+        if (!orderIdInput) return;
+
+        // Reset UI
+        resultEl.classList.remove('active');
+        errorEl.style.display = 'none';
+        trackBtn.style.display = 'none';
+        loadingEl.style.display = 'block';
+
+        try {
+          const realOrderId = orderIdInput.replace(/^#/, '').trim();
+          const order = await getTrackedOrder(realOrderId);
+          renderOrderDetails(order);
+          localStorage.setItem('bakar_last_tracked_order', realOrderId);
+
+        } catch (error) {
+          logClientError('contact.order_tracking.failed', error);
+          showTrackingError(getContactServiceError(error, 'حدث خطأ أثناء الاتصال بالنظام. يرجى المحاولة بعد قليل.'));
+        } finally {
+          loadingEl.style.display = 'none';
+          trackBtn.style.display = 'flex';
+        }
+      });
+    }
+
+    function showTrackingError(msg) {
+      const errorEl = document.getElementById('trackErrorState');
+      errorEl.textContent = msg;
+      errorEl.style.display = 'block';
+    }
+
+    // بناء واجهة نتيجة التتبع
+    function renderOrderDetails(order) {
+      const resultEl = document.getElementById('trackingResult');
+      
+      const statusValue = (order.status || 'pending').toLowerCase();
+      const statusDetails = {
+        new: { label: 'طلب جديد', index: 1 },
+        pending: { label: 'بانتظار المراجعة', index: 1 },
+        reviewing: { label: 'قيد المراجعة', index: 1 },
+        confirmed: { label: 'تم تأكيد الطلب', index: 2 },
+        preparing: { label: 'يتم تحضير الأوردر', index: 3 },
+        ready: { label: 'الأوردر جاهز', index: 3 },
+        delivering: { label: 'في الطريق للعميل', index: 4 },
+        shipped: { label: 'تم الإرسال', index: 4 },
+        delivered: { label: 'تم التسليم', index: 5 },
+        picked_up: { label: 'تم الاستلام من الفرع', index: 5 },
+        completed: { label: 'مكتمل', index: 5 },
+        cancelled: { label: 'تم الإلغاء', index: -1 }
+      };
+      const currentStatus = statusDetails[statusValue] || statusDetails.pending;
+      const currentIndex = currentStatus.index;
+
+      // Formatting Date
+      let orderDate = 'غير محدد';
+      if (order.created_at || order.createdAt) {
+        const tStamp = order.created_at || order.createdAt;
+        const d = tStamp.toDate ? tStamp.toDate() : new Date(tStamp);
+        orderDate = new Intl.DateTimeFormat('ar-EG', { dateStyle: 'long', timeStyle: 'short' }).format(d);
+      }
+
+      // بناء الـ Timeline
+      let timelineHtml = '';
+      if (currentIndex === -1) {
+        timelineHtml = `
+          <div class="order-timeline">
+            <div class="timeline-item current" style="--burgundy: #ff4d4d;">
+              <div class="timeline-icon"><i class="fas fa-times"></i></div>
+              <div class="timeline-content">
+                <h4 class="timeline-title" style="color: #ff4d4d;">${currentStatus.label}</h4>
+                <p class="timeline-date">تم إلغاء هذا الطلب.</p>
+              </div>
+            </div>
+          </div>
+        `;
+      } else {
+        const stepsData = [
+            { label: 'طلب جديد', icon: 'fa-clock', index: 1 },
+            { label: 'تم تأكيد الطلب', icon: 'fa-check', index: 2 },
+            { label: 'يتم تحضير الأوردر', icon: 'fa-box-open', index: 3 },
+            { label: 'في الطريق للعميل', icon: 'fa-truck-fast', index: 4 },
+            { label: 'تم التسليم', icon: 'fa-check-circle', index: 5 }
+        ];
+        
+        let timelineItems = '';
+        
+        stepsData.forEach((stepInfo) => {
+          let stateClass = '';
+          let iconHtml = `<i class="fas ${stepInfo.icon}"></i>`;
+          
+          if (stepInfo.index < currentIndex) {
+            stateClass = 'completed'; 
+            iconHtml = '<i class="fas fa-check"></i>';
+          } else if (stepInfo.index === currentIndex) {
+            stateClass = 'current'; 
+            stepInfo.label = currentStatus.label;
+          }
+
+          timelineItems += `
+            <div class="timeline-item ${stateClass}">
+              <div class="timeline-line"></div>
+              <div class="timeline-icon">${iconHtml}</div>
+              <div class="timeline-content">
+                <h4 class="timeline-title">${stepInfo.label}</h4>
+              </div>
+            </div>
+          `;
+        });
+        
+        timelineHtml = `<div class="order-timeline">${timelineItems}</div>`;
+      }
+
+      const statusHistory = Array.isArray(order.statusHistory) ? order.statusHistory : [];
+      if (statusHistory.length) {
+        const historyRows = statusHistory.map(entry => {
+          const label = statusDetails[entry.status]?.label || 'تحديث حالة الطلب';
+          const date = entry.changedAt ? new Date(entry.changedAt) : null;
+          const dateText = date && Number.isFinite(date.getTime())
+            ? new Intl.DateTimeFormat('ar-EG', { dateStyle: 'medium', timeStyle: 'short' }).format(date)
+            : '';
+          return `<div class="timeline-content"><h4 class="timeline-title">${escapeHtml(label)}</h4><p class="timeline-date">${escapeHtml(dateText)}</p></div>`;
+        }).join('');
+        timelineHtml += `<div class="order-details-box"><h4 class="order-section-title">تحديثات حالة الطلب</h4>${historyRows}</div>`;
+      }
+
+      // بناء قائمة المنتجات
+      let productsHtml = '';
+      const items = order.items || order.products || [];
+      
+      if (items.length > 0) {
+        const itemsList = items.map(item => {
+          const imageUrl = safeImageUrl(item.image || item.image_url || item.imageUrl || item.image_urls?.[0]);
+          return `
+          <div class="order-product-item">
+            <img src="${escapeHtml(imageUrl)}" class="order-product-img" alt="${escapeHtml(item.name || 'صورة المنتج')}">
+            <div class="order-product-info">
+              <h5 class="order-product-name">${escapeHtml(item.name || 'منتج')}</h5>
+              <div class="order-product-meta">
+                <span>الكمية: ${Number(item.quantity || item.qty || 1)}</span>
+                <strong style="color: var(--text-main);">${Number(item.price || 0).toLocaleString('ar-EG')} ج.م</strong>
+              </div>
+            </div>
+          </div>
+        `;
+        }).join('');
+        
+        productsHtml = `
+          <div class="order-details-box" style="margin-bottom: 20px;">
+            <h4 class="order-section-title"><i class="fas fa-shopping-bag"></i> محتويات الطلب</h4>
+            <div class="order-products-list">${itemsList}</div>
+            <div class="order-total-row">
+              <span>الإجمالي:</span>
+              <span>${Number(order.total_price || order.total || 0).toLocaleString('ar-EG')} ج.م</span>
+            </div>
+          </div>
+        `;
+      }
+
+      // بناء معلومات التوصيل
+      const whatsappMsg = encodeURIComponent(`مرحباً، أحتاج مساعدة بخصوص الطلب رقم #${order.orderCode || order.id}`);
+      const supportHtml = `
+        <div class="support-cta-box">
+          <p>تحتاج مساعدة بشأن هذا الطلب؟</p>
+          <a href="https://wa.me/201022473694?text=${whatsappMsg}" target="_blank" class="btn-whatsapp-support">
+            <i class="fab fa-whatsapp" style="font-size:1.2rem;"></i> تواصل مع الدعم
+          </a>
+        </div>
+      `;
+
+      resultEl.innerHTML = `
+        <div class="order-header-info">
+          <div class="order-id-badge">#${escapeHtml(order.orderCode || order.order_id || order.id)}</div>
+          <div class="order-date">${orderDate}</div>
+        </div>
+        ${timelineHtml}
+        ${productsHtml}
+        ${supportHtml}
+      `;
+      resultEl.querySelectorAll('.order-product-img').forEach(image => {
+        image.addEventListener('error', () => {
+          image.src = 'assets/images/placeholder.svg';
+        }, { once: true });
+      });
+      
+      resultEl.classList.add('active');
+      resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function checkSavedOrder() {
+      // كود الطلب القادم من صفحة إتمام الطلب (contact.html?track=ID) له الأولوية
+      const trackParam = new URLSearchParams(window.location.search).get('track');
+      const savedId = trackParam || localStorage.getItem('bakar_last_tracked_order');
+      if (savedId) {
+        document.getElementById('orderIdInput').value = savedId.replace(/^#/, '').trim();
+      }
+      localStorage.removeItem('bakar_last_tracked_phone');
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, character => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      })[character]);
+    }
+
+    // --- Contact Form Logic ---
+    function setupContactForm() {
+      const form = document.getElementById('contactForm');
+      const submitBtn = document.getElementById('submitContactBtn');
+      const successEl = document.getElementById('contactSuccessState');
+      
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('contactName').value;
+        const type = document.getElementById('contactType').options[document.getElementById('contactType').selectedIndex].text;
+        const msg = document.getElementById('contactMessage').value;
+        
+        const originalBtnHtml = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+          const whatsappText = encodeURIComponent(`مرحباً مؤسسة ال بكار،\nالاسم: ${name}\nنوع الاستفسار: ${type}\nالرسالة:\n${msg}`);
+          window.open(`https://wa.me/201022473694?text=${whatsappText}`, '_blank');
+          
+          submitBtn.innerHTML = originalBtnHtml;
+          submitBtn.disabled = false;
+          form.reset();
+          successEl.style.display = 'block';
+          
+          setTimeout(() => { successEl.style.display = 'none'; }, 5000);
+        }, 800);
+      });
+    }
+
+  </script>
+</body>
+</html>

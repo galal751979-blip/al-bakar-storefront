@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    if (window.location.pathname === '/') {
+      const productsLandingPage = new URL('products.html', window.location.href);
+      productsLandingPage.search = window.location.search;
+      productsLandingPage.hash = window.location.hash;
+      window.location.replace(productsLandingPage.href);
+    }
+  </script>
+  <meta name="theme-color" content="#F7FAF8">
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مؤسسة ال بكار | أجهزة منزلية وكهربائية في مصر</title>
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:site_name" content="مؤسسة ال بكار">
+  <meta property="og:locale" content="ar_EG">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="مؤسسة ال بكار | أجهزة منزلية وكهربائية في مصر">
+  <meta property="og:description" content="مؤسسة ال بكار للأجهزة المنزلية في مصر. اكتشف الأجهزة الكهربائية والمنزلية والعروض، واستمتع بالشراء أونلاين وخدمة العملاء عبر واتساب.">
+  <meta property="og:image" content="https://al-bakar.web.app/assets/images/refrigerator.jpg">
+  <link rel="canonical" href="https://al-bakar.web.app/">
+  <meta property="og:url" content="https://al-bakar.web.app/">
+
+  <meta name="description" content="مؤسسة ال بكار للأجهزة المنزلية في مصر. اكتشف الأجهزة الكهربائية والمنزلية والعروض، واستمتع بالشراء أونلاين وخدمة العملاء عبر واتساب.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="products.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="bottom-nav.css">
+
+  <style>
+    /* =========================================
+       1. LUXURY DESIGN SYSTEM
+    ========================================= */
+    :root {
+      --bg-base: #0a0a0a !important;        
+      --bg-surface: #141414 !important;    
+      --bg-elevated: #1e1e1e !important;    
+      
+      --gold-primary: #D4AF37 !important;   
+      --gold-hover: #b5952f !important;
+      
+      --burgundy: #800020 !important;       
+      --silver: #A0A0A0 !important;         
+      
+      --text-main: #ffffff !important;      
+      --text-muted: #888888 !important;     
+      
+      --border-dark: #2a2a2a !important;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      
+      --font-main: 'Cairo', sans-serif;
+      --font-heading: 'Tajawal', sans-serif;
+      
+      --transition-fast: 0.2s ease;
+      --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      overflow-x: hidden;
+      margin: 0; padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* =========================================
+       2. GLASSMORHPISM HEADER
+    ========================================= */
+    .site-header {
+      background: rgba(10, 10, 10, 0.8) !important;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+      position: fixed; top: 0; left: 0; width: 100%;
+      z-index: 1000; padding: 15px 0;
+      transition: padding var(--transition-fast), background var(--transition-fast);
+    }
+    .site-header.scrolled { padding: 10px 0; background: rgba(5, 5, 5, 0.95) !important; }
+    
+    .header-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+    .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--text-main) !important; text-decoration: none; letter-spacing: -0.5px; }
+    .logo span { color: var(--gold-primary); }
+    
+    .main-nav ul { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
+    .main-nav a { color: var(--text-main); text-decoration: none; font-weight: 600; font-size: 1.05rem; transition: var(--transition-fast); position: relative; }
+    .main-nav a:hover, .main-nav a.active { color: var(--gold-primary); }
+    .main-nav a::after { content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--gold-primary); transition: width var(--transition-fast); }
+    .main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
+
+    .header-actions { display: flex; align-items: center; gap: 20px; }
+    .icon-btn { background: none; border: none; color: var(--text-main) !important; font-size: 1.5rem; cursor: pointer; text-decoration: none; position: relative; transition: var(--transition-fast); }
+    .icon-btn:hover { color: var(--gold-primary) !important; transform: translateY(-2px); }
+    
+    .cart-badge-premium {
+      position: absolute; top: -6px; right: -8px;
+      background: var(--burgundy); color: #fff;
+      font-size: 0.7rem; font-weight: 800; min-width: 18px; height: 18px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      border: 2px solid var(--bg-base); transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .cart-badge-premium.pulse { transform: scale(1.4); }
+
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .menu-toggle span { display: block; width: 25px; height: 2px; background: var(--text-main); transition: var(--transition-fast); }
+
+    @media (max-width: 992px) {
+      .main-nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-surface); padding: 20px; border-bottom: 1px solid var(--border-dark); }
+      .main-nav.active { display: block; }
+      .main-nav ul { flex-direction: column; gap: 15px; }
+      .menu-toggle { display: flex; }
+    }
+
+    /* =========================================
+       3. CINEMATIC MV1 HERO SECTION
+    ========================================= */
+    .hero-cinematic {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background-color: var(--bg-base);
+      margin-top: -80px; 
+    }
+
+    .hero-video-wrapper {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
+    }
+    
+    .hero-video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: contrast(1.1) brightness(0.9);
+    }
+
+    .hero-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;
+      background: 
+        linear-gradient(180deg, rgba(10,10,10,0.8) 0%, rgba(10,10,10,0.2) 40%, rgba(10,10,10,0.9) 100%),
+        radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.6) 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative; z-index: 3;
+      text-align: center; padding: 0 20px;
+      max-width: 900px; margin-top: 60px; 
+    }
+    
+    .hero-subtitle {
+      display: inline-block; font-size: 1rem; font-weight: 700; color: var(--gold-primary);
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px;
+      opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease forwards 0.3s;
+    }
+    
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw + 1rem, 5rem);
+      font-weight: 800; color: #ffffff;
+      line-height: 1.1; margin: 0 0 20px;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      opacity: 0; transform: translateY(30px); animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.5s;
+    }
+    
+    .hero-desc {
+      font-size: clamp(1.1rem, 2vw, 1.4rem); color: #e2e8f0; line-height: 1.6;
+      max-width: 600px; margin: 0 auto 40px;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+      opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease forwards 0.7s;
+    }
+
+    .hero-actions {
+      display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+      opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s ease forwards 0.9s;
+    }
+
+    .video-controls-overlay {
+      position: absolute; bottom: 30px; right: 30px; z-index: 4;
+      display: flex; gap: 15px;
+    }
+    .v-ctrl-btn {
+      background: rgba(10,10,10,0.5); backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.1); color: var(--text-main);
+      width: 45px; height: 45px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      font-size: 1.1rem; transition: var(--transition-fast);
+    }
+    .v-ctrl-btn:hover { background: var(--gold-primary); color: var(--bg-base); border-color: var(--gold-primary); transform: scale(1.1); }
+
+    .scroll-indicator {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 3;
+      display: flex; flex-direction: column; align-items: center; gap: 10px; color: var(--silver);
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      opacity: 0; animation: fadeIn 1s ease forwards 1.2s;
+    }
+    .mouse { width: 24px; height: 36px; border: 2px solid var(--silver); border-radius: 12px; position: relative; }
+    .wheel { width: 4px; height: 8px; background: var(--gold-primary); border-radius: 2px; position: absolute; top: 6px; left: 50%; transform: translateX(-50%); animation: scrollMouse 1.5s infinite; }
+
+    @keyframes scrollMouse { 0% { top: 6px; opacity: 1; } 100% { top: 18px; opacity: 0; } }
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    @media (max-width: 768px) {
+      .hero-cinematic { height: 90vh; }
+      .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
+      .hero-actions { flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; gap: 15px; }
+      .video-controls-overlay { bottom: 20px; right: 20px; }
+      .v-ctrl-btn { width: 38px; height: 38px; font-size: 1rem; }
+      .scroll-indicator { bottom: 20px; }
+    }
+
+    /* =========================================
+       4. GLOBAL BUTTONS
+    ========================================= */
+    .btn-premium {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 16px 36px; border-radius: 50px; font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800;
+      cursor: pointer; text-decoration: none; border: none; transition: var(--transition-smooth);
+    }
+    .btn-gold {
+      background: var(--gold-primary); color: var(--bg-base);
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.25);
+    }
+    .btn-gold:hover { background: var(--gold-hover); transform: translateY(-3px); box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4); }
+    .btn-outline {
+      background: rgba(10,10,10,0.4); backdrop-filter: blur(5px);
+      border: 1px solid var(--silver); color: var(--text-main);
+    }
+    .btn-outline:hover { background: var(--text-main); color: var(--bg-base); border-color: var(--text-main); transform: translateY(-3px); }
+
+    /* =========================================
+       5. ABOUT US SECTION (NEW LUXURY LAYOUT)
+    ========================================= */
+    .section-padding { padding: 80px 0; }
+    .section-header { text-align: center; margin-bottom: 50px; }
+    .section-subtitle { display: block; color: var(--gold-primary); font-weight: 700; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+    .section-title { font-family: var(--font-heading); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 800; color: var(--text-main); margin: 0; }
+
+    .about-luxury-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 50px;
+      align-items: center;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-xl);
+      padding: 50px;
+    }
+    
+    .about-text-content p {
+      color: var(--silver);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .about-message { margin-bottom: 24px; }
+    .about-message summary {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 14px 16px; border: 1px solid var(--border-dark); border-radius: var(--radius-md);
+      color: var(--gold-primary); font-weight: 700; cursor: pointer; list-style: none;
+    }
+    .about-message summary:focus-visible { outline: 2px solid var(--gold-primary); outline-offset: 3px; }
+    .about-message summary::-webkit-details-marker { display: none; }
+    .about-message summary::after { content: '+'; color: var(--text-main); font-size: 1.4rem; line-height: 1; }
+    .about-message[open] summary::after { content: '\2212'; }
+    .about-message-content { padding: 18px 4px 0; }
+
+    .about-stats {
+      display: flex;
+      gap: 30px;
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border-dark);
+    }
+    
+    .stat-item h3 {
+      color: var(--gold-primary);
+      font-size: 2.5rem;
+      font-family: var(--font-heading);
+      margin: 0 0 5px 0;
+      line-height: 1;
+    }
+    
+    .stat-item span {
+      color: var(--silver);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .about-image-wrapper {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    
+    .about-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .about-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 30px;
+      text-align: center;
+    }
+
+    @media (max-width: 992px) {
+      .about-luxury-grid { grid-template-columns: 1fr; padding: 30px; gap: 30px; }
+      .about-image-wrapper { aspect-ratio: 16/9; }
+      .about-stats { flex-wrap: wrap; }
+    }
+
+    /* =========================================
+       6. PREMIUM PRODUCT GRID & CARDS
+    ========================================= */
+    .premium-product-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px;
+    }
+    @media (max-width: 1200px) { .premium-product-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 900px) { .premium-product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } }
+    @media (max-width: 480px) { .premium-product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+
+    .premium-card {
+      background: var(--bg-surface); border-radius: var(--radius-lg); border: 1px solid var(--border-dark);
+      padding: 15px; display: flex; flex-direction: column; position: relative; transition: var(--transition-smooth);
+      perspective: 1000px;
+    }
+    @media (min-width: 1024px) {
+      .premium-card:hover { border-color: rgba(212, 175, 55, 0.4); box-shadow: 0 15px 30px rgba(0,0,0,0.5); transform: translateY(-5px); z-index: 2; }
+    }
+
+    .card-img-wrap {
+      width: 100%; aspect-ratio: 1/1; background: var(--bg-elevated); border-radius: var(--radius-md);
+      margin-bottom: 15px; display: flex; align-items: center; justify-content: center; position: relative;
+      transform-style: preserve-3d; transition: transform 0.2s ease-out; overflow: hidden;
+    }
+    .card-img-wrap img { width: 85%; height: 85%; object-fit: contain; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3)); transition: transform 0.5s ease; }
+    .premium-card:hover .card-img-wrap img { transform: scale(1.08); }
+
+    .card-badges { position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 5px; z-index: 2; }
+    .badge-discount { background: var(--burgundy); color: #fff; font-size: 0.7rem; font-weight: 800; padding: 4px 8px; border-radius: 4px; }
+    .badge-new { background: var(--gold-primary); color: var(--bg-base); font-size: 0.7rem; font-weight: 800; padding: 4px 8px; border-radius: 4px; }
+
+    .card-content { flex: 1; display: flex; flex-direction: column; }
+    .card-brand { color: var(--silver); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; font-weight: 600; }
+    .card-title { font-size: 1rem; font-weight: 700; color: var(--text-main); margin: 0 0 10px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-decoration: none; transition: color var(--transition-fast); }
+    .card-title:hover { color: var(--gold-primary); }
+    @media (max-width: 768px) { .card-title { font-size: 0.9rem; } }
+
+    .card-price-row { margin-top: auto; display: flex; align-items: flex-end; justify-content: space-between; }
+    .price-col { display: flex; flex-direction: column; gap: 2px; }
+    .price-old { font-size: 0.8rem; color: var(--text-muted); text-decoration: line-through; }
+    .price-current { font-size: 1.25rem; font-weight: 800; color: var(--gold-primary); line-height: 1; }
+
+    .btn-add-cart {
+      width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--bg-elevated);
+      border: 1px solid var(--border-dark); color: var(--text-main);
+      display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition-fast);
+    }
+    .btn-add-cart:hover, .btn-add-cart:active { background: var(--burgundy); border-color: var(--burgundy); color: #fff; transform: scale(1.05); }
+    .btn-add-cart i { pointer-events: none; }
+
+    /* =========================================
+       7. BURGUNDY TOAST NOTIFICATION
+    ========================================= */
+    .toast-container { position: fixed; bottom: 20px; left: 20px; z-index: 10001; display: flex; flex-direction: column; gap: 10px; }
+    .toast-premium {
+      background: var(--burgundy); color: #fff; border-radius: var(--radius-md); padding: 12px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 15px;
+      min-width: 300px; transform: translateY(100px); opacity: 0;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .toast-premium.show { transform: translateY(0); opacity: 1; }
+    .toast-img { width: 45px; height: 45px; background: #fff; border-radius: var(--radius-sm); padding: 3px; object-fit: contain; }
+    .toast-text { flex: 1; }
+    .toast-text h4 { margin: 0 0 3px; font-size: 0.9rem; font-weight: 700; display: flex; align-items: center; gap: 5px; }
+    .toast-text p { margin: 0; font-size: 0.8rem; color: rgba(255,255,255,0.8); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
+    .toast-action { color: var(--gold-primary); font-size: 0.85rem; font-weight: 700; text-decoration: none; padding-right: 10px; border-right: 1px solid rgba(255,255,255,0.2); }
+
+    /* =========================================
+       8. TRUST & FEATURES SECTION
+    ========================================= */
+    .trust-section { background: var(--bg-surface); border-top: 1px solid var(--border-dark); border-bottom: 1px solid var(--border-dark); }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+    .feature-item { text-align: center; padding: 20px; }
+    .feature-icon { width: 70px; height: 70px; border-radius: 50%; background: rgba(212,175,55,0.1); color: var(--gold-primary); font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; transition: transform 0.3s ease; }
+    .feature-item:hover .feature-icon { transform: translateY(-10px); background: var(--gold-primary); color: var(--bg-base); }
+    .feature-title { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin: 0 0 10px; }
+    .feature-desc { color: var(--silver); font-size: 0.95rem; margin: 0; line-height: 1.5; }
+
+    /* =========================================
+       9. LOADING SKELETON
+    ========================================= */
+    .skeleton { background: linear-gradient(90deg, var(--bg-elevated) 25%, #2a2a2a 50%, var(--bg-elevated) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: var(--radius-sm); }
+    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+    /* Reveal Animations */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    
+    /* Maktab Khadamati Footer Badge */
+    .developer-badge {
+      background: #000; padding: 20px; text-align: center;
+      border-top: 1px solid var(--border-dark); display: flex;
+      flex-direction: column; align-items: center; gap: 12px;
+    }
+    .developer-text { color: var(--silver); font-size: 0.95rem; font-weight: 700; margin: 0; }
+    .developer-text span { display: inline-block; margin-right: 4px; padding: 3px 10px; border: 1px solid rgba(212,175,55,0.45); border-radius: 6px; background: rgba(212,175,55,0.1); color: var(--gold-primary); }
+    .developer-whatsapp {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      min-height: 42px; padding: 8px 16px; border: 1px solid rgba(37,211,102,0.4);
+      border-radius: 8px; background: rgba(37,211,102,0.08); color: #25D366;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: var(--transition-fast);
+    }
+    .developer-whatsapp:hover { background: rgba(37,211,102,0.16); border-color: #25D366; }
+
+    @media (max-width: 600px) {
+      .section-padding { padding: 56px 0; }
+      .about-luxury-grid { padding: 22px 18px; gap: 24px; }
+      .about-text-content p { font-size: 1rem; }
+      .about-stats { gap: 18px; }
+      .stat-item { flex: 1 1 120px; }
+      .stat-item h3 { font-size: 2rem; }
+      .developer-badge { padding: 20px 16px; }
+    }
+
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "@id": "https://al-bakar.web.app/#store",
+    "name": "مؤسسة ال بكار",
+    "url": "https://al-bakar.web.app/",
+    "description": "متجر مؤسسة ال بكار للأجهزة المنزلية والكهربائية في مصر.",
+    "telephone": "+201022473694",
+    "image": "https://al-bakar.web.app/assets/images/refrigerator.jpg",
+    "logo": "https://al-bakar.web.app/app-icon.svg",
+    "areaServed": {"@type": "Country", "name": "مصر"},
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+201022473694",
+      "contactType": "خدمة العملاء",
+      "availableLanguage": "Arabic"
+    }
+  }
+  </script>
+  <script>
+    (() => {
+      let theme = 'light';
+      try {
+        const savedTheme = localStorage.getItem('bakar-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') theme = savedTheme;
+      } catch {
+        // Keep the light theme if browser storage is unavailable.
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+  <!-- Premium Header -->
+  <header class="site-header" id="mainHeader">
+    <div class="header-inner">
+      <a href="index.html" class="logo">ال بكار<span>.</span></a>
+      
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html" class="active">الرئيسية</a></li>
+          <li><a href="products.html">المنتجات</a></li>
+          <li><a href="offers.html">عروض ال بكار</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="cart.html" class="icon-btn" id="cartBtn" aria-label="السلة">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge-premium cart-count" id="cartCount">0</span>
+        </a>
+        
+        <button class="menu-toggle" id="mobileMenuBtn" aria-label="القائمة">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cinematic MV1 Hero Section -->
+  <section class="hero-cinematic">
+    <div class="hero-video-wrapper">
+      <video class="hero-video" id="heroVideo" autoplay loop playsinline>
+        <source src="MV1.mp4" type="video/mp4">
+      </video>
+    </div>
+    
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+      <span class="hero-subtitle">الفخامة تلتقي بالتكنولوجيا</span>
+      <h1 class="hero-title">ارتقِ بمنزلك مع أحدث<br>الأجهزة المنزلية</h1>
+      <p class="hero-desc">اكتشف التشكيلة الحصرية من الماركات العالمية. تصميمات عصرية، أداء استثنائي، وضمان حقيقي يمنحك راحة البال من مؤسسة ال بكار.</p>
+      
+      <div class="hero-actions">
+        <a href="products.html" class="btn-premium btn-gold">
+          تسوق التشكيلة <i class="fas fa-arrow-left" style="font-size: 0.9em; margin-right: 5px;"></i>
+        </a>
+        <a href="offers.html" class="btn-premium btn-outline">
+          اكتشف العروض <i class="fas fa-tag" style="font-size: 0.9em; margin-right: 5px;"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Custom Video Controls -->
+    <div class="video-controls-overlay">
+      <button class="v-ctrl-btn" id="muteToggleBtn" aria-label="كتم الصوت">
+        <i class="fas fa-volume-up"></i>
+      </button>
+      <button class="v-ctrl-btn" id="playToggleBtn" aria-label="إيقاف الفيديو">
+        <i class="fas fa-pause"></i>
+      </button>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="mouse"><div class="wheel"></div></div>
+      اكتشف المزيد
+    </div>
+  </section>
+
+  <!-- About Us Section (New Luxury Layout replacing Categories) -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="about-luxury-grid reveal">
+        
+        <!-- Text Content -->
+        <div class="about-text-content">
+          <span class="section-subtitle">إرث من الفخامة</span>
+          <h2 class="section-title" style="margin-bottom: 20px; font-size: clamp(1.8rem, 3vw, 2.5rem);">مؤسسة ال بكار.. حيث تبدأ الرفاهية المنزلية</h2>
+          
+          <details class="about-message">
+            <summary>اقرأ رسالتنا عن مؤسسة ال بكار</summary>
+            <div class="about-message-content">
+              <p>
+                تأسست مؤسسة ال بكار لتكون النواة الأولى للرفاهية المنزلية في مصر والشرق الأوسط. نحن لسنا مجرد معرض للأجهزة الكهربائية، بل نحن قصر يضم بين جدرانه أحدث ما توصلت إليه التكنولوجيا العالمية وأرقى التصميمات التي تليق بقصوركم.
+              </p>
+              <p>
+                على مدار عقود من الخبرة والريادة، حطمنا جميع الأرقام القياسية في إرضاء عملائنا، حيث نقدم ضمانات ماسية تتجاوز المألوف، وخدمة عملاء تعمل على مدار الساعة كخدم شخصيين لتلبية رغباتكم. لقد تم اختيار كل قطعة في معرضنا بعناية فائقة من أكبر العلامات التجارية في العالم، لنضمن لكم تجربة استخدام تتجاوز الخيال.
+              </p>
+              <p>
+                إن اختياركم لـ "ال بكار" هو استثمار في أسلوب حياة لا يعرف سوى القمة، حيث تلتقي العراقة مع التطور المستقبلي لنصنع معاً مفهوماً جديداً لمعنى البيت الحديث.
+              </p>
+            </div>
+          </details>
+
+          <!-- Fake Stats -->
+          <div class="about-stats">
+            <div class="stat-item">
+              <h3>+25</h3>
+              <span>عاماً من الريادة</span>
+            </div>
+            <div class="stat-item">
+              <h3>100%</h3>
+              <span>جودة أصلية مضمونة</span>
+            </div>
+            <div class="stat-item">
+              <h3>+50k</h3>
+              <span>عميل ينتمي لعائلتنا</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Content -->
+        <div class="about-image-wrapper">
+          <!-- صورة فخمة لمعرض/أجهزة (صورة مؤقتة من Unsplash) -->
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000" alt="معرض ال بكار الفاخر" loading="lazy">
+          <div class="about-image-overlay">
+            <i class="fas fa-crown" style="font-size: 3rem; color: var(--gold-primary); margin-bottom: 15px;"></i>
+            <h3 style="color: #fff; font-family: var(--font-heading); margin: 0; font-size: 1.5rem;">الاسم الأول في عالم الأجهزة الفاخرة</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products Section -->
+  <section class="section-padding" style="background: var(--bg-surface);">
+    <div class="container">
+      <div class="section-header reveal" style="display: flex; justify-content: space-between; align-items: flex-end; text-align: right;">
+        <div>
+          <span class="section-subtitle">الأكثر مبيعاً</span>
+          <h2 class="section-title">تشكيلة مختارة لك</h2>
+        </div>
+        <a href="products.html" class="btn-premium btn-outline" style="padding: 10px 24px; font-size: 1rem;">
+          عرض الكل <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+        </a>
+      </div>
+      
+      <div class="premium-product-grid reveal" id="featuredProductGrid">
+        <!-- Skeleton Loaders initial state -->
+        <div class="premium-card">
+          <div class="card-img-wrap skeleton" style="border-radius: 12px; background: #1e1e1e;"></div>
+          <div class="card-content">
+            <div class="skeleton" style="width: 40%; height: 12px; margin-bottom: 10px;"></div>
+            <div class="skeleton" style="width: 80%; height: 16px; margin-bottom: 8px;"></div>
+            <div class="skeleton" style="width: 60%; height: 16px; margin-bottom: auto;"></div>
+            <div class="card-price-row" style="margin-top: 20px;">
+              <div class="skeleton" style="width: 50%; height: 24px;"></div>
+              <div class="skeleton" style="width: 40px; height: 40px; border-radius: 8px;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="premium-card">
+          <div class="card-img-wrap skeleton" style="border-radius: 12px; background: #1e1e1e;"></div>
+          <div class="card-content">
+            <div class="skeleton" style="width: 40%; height: 12px; margin-bottom: 10px;"></div>
+            <div class="skeleton" style="width: 80%; height: 16px; margin-bottom: 8px;"></div>
+            <div class="skeleton" style="width: 60%; height: 16px; margin-bottom: auto;"></div>
+            <div class="card-price-row" style="margin-top: 20px;">
+              <div class="skeleton" style="width: 50%; height: 24px;"></div>
+              <div class="skeleton" style="width: 40px; height: 40px; border-radius: 8px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Offers Teaser -->
+  <section class="section-padding">
+    <div class="container">
+      <div style="background: linear-gradient(135deg, var(--bg-surface) 0%, #1a1a1a 100%); border: 1px solid var(--border-dark); border-radius: var(--radius-xl); padding: 50px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 30px; position: relative; overflow: hidden;" class="reveal home-offers-teaser">
+        <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: var(--burgundy); filter: blur(80px); opacity: 0.3;"></div>
+        
+        <div style="max-width: 600px; position: relative; z-index: 2;">
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: var(--burgundy); color: #fff; padding: 6px 12px; border-radius: 50px; font-weight: 700; font-size: 0.9rem; margin-bottom: 20px;">
+            <i class="fas fa-fire"></i> عروض حصرية لفترة محدودة
+          </div>
+          <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin: 0 0 15px;">جهز بيتك بالكامل ووفر حتى <span style="color: var(--gold-primary);">30%</span></h2>
+          <p style="color: var(--silver); font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6;">استفد من باقات الأجهزة المتكاملة بأسعار لا تقبل المنافسة مع التوصيل والتركيب المجاني.</p>
+          <a href="offers.html" class="btn-premium btn-gold">
+            تصفح باقات العروض <i class="fas fa-tags" style="margin-right: 8px;"></i>
+          </a>
+        </div>
+        <div style="flex: 1; min-width: 300px; position: relative; z-index: 2; text-align: center;">
+            <i class="fas fa-gift" style="font-size: 10rem; color: rgba(212, 175, 55, 0.1); filter: drop-shadow(0 0 30px rgba(212,175,55,0.2));"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust & Features -->
+  <section class="trust-section section-padding">
+    <div class="container">
+      <div class="features-grid reveal">
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
+          <h3 class="feature-title">شحن سريع وآمن</h3>
+          <p class="feature-desc">التوصيل للقاهرة والجيزة فقط، وتظهر الرسوم قبل تأكيد الطلب.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+          <h3 class="feature-title">ضمان حسب المنتج</h3>
+          <p class="feature-desc">مدة وجهة الضمان موضحتان في شهادة المنتج عند توفرها.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-headset"></i></div>
+          <h3 class="feature-title">دعم فني متميز</h3>
+          <p class="feature-desc">خدمة عملاء جاهزة للرد على استفساراتكم ومساعدتكم في الاختيار.</p>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-credit-card"></i></div>
+          <h3 class="feature-title">طرق دفع متعددة</h3>
+          <p class="feature-desc">خيارات دفع مرنة وآمنة تناسب الجميع بما فيها الدفع عند الاستلام.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; padding: 60px 0;">
+      <div class="footer-col">
+        <h3 style="font-family: var(--font-heading); color: var(--text-main); font-size: 1.8rem; font-weight: 800; margin-bottom: 20px;">ال بكار<span style="color: var(--gold-primary);">.</span></h3>
+        <p style="color: var(--silver); line-height: 1.6; margin-bottom: 20px;">الوجهة الأولى والأكثر موثوقية للأجهزة الكهربائية المنزلية الفاخرة. نلتزم بتقديم الجودة والقيمة لعملائنا.</p>
+      </div>
+      
+      <div class="footer-col">
+        <h4 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 20px;">روابط سريعة</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+          <li><a href="index.html" style="color: var(--silver); text-decoration: none; transition: var(--transition-fast);">الرئيسية</a></li>
+          <li><a href="products.html" style="color: var(--silver); text-decoration: none; transition: var(--transition-fast);">تسوق المنتجات</a></li>
+          <li><a href="offers.html" style="color: var(--silver); text-decoration: none; transition: var(--transition-fast);">العروض والباقات</a></li>
+          <li><a href="contact.html" style="color: var(--silver); text-decoration: none; transition: var(--transition-fast);">اتصل بنا</a></li>
+          <li><a href="policies.html" style="color: var(--silver); text-decoration: none; transition: var(--transition-fast);">سياسات الشحن والاستبدال والخصوصية</a></li>
+          <li><a href="wishlist.html" style="color: var(--silver); text-decoration: none; transition: var(--transition-fast);">المفضلة</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h4 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 20px;">تواصل معنا</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px;">
+          <li style="display: flex; gap: 10px; color: var(--silver);"><i class="fas fa-phone" style="color: var(--gold-primary); margin-top: 4px;"></i> <a href="tel:+201022473694" dir="ltr" style="color: inherit; text-decoration: none;">01022473694</a></li>
+          <li style="display: flex; gap: 10px; color: var(--silver);"><i class="fab fa-whatsapp" style="color: var(--gold-primary); margin-top: 4px;"></i> <a href="https://wa.me/201022473694" dir="ltr" style="color: inherit; text-decoration: none;">01022473694</a></li>
+          <li style="display: flex; gap: 10px; color: var(--silver);"><i class="fas fa-envelope" style="color: var(--gold-primary); margin-top: 4px;"></i> info@bakar-store.com</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- حقوق التطوير: مكتب خدماتي -->
+    <div class="developer-badge">
+      <p class="developer-text">تصميم وتطوير <span>مكتب خدماتي</span></p>
+      <a href="https://wa.me/201037497409" target="_blank" rel="noopener noreferrer" class="developer-whatsapp" aria-label="تواصل مع مكتب خدماتي عبر واتساب">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i> للتواصل عبر واتساب: <bdi>01037497409</bdi>
+      </a>
+    </div>
+    
+    <div class="footer-bottom" style="background: #050505; padding: 20px 0; text-align: center;">
+      <p style="color: var(--text-muted); margin: 0; font-size: 0.9rem;">© 2026 مؤسسة ال بكار للأجهزة المنزلية - جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { logClientError } from './client-logger.js';
+    import { getProductsPage } from './api.js';
+    import { escapeHtml, safeImageUrl } from './html-utils.js';
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setupHeaderScroll();
+      setupMobileMenu();
+      setupVideoControls();
+      setupScrollReveal();
+      updateCartBadge();
+      loadFeaturedProducts();
+    });
+
+    function setupHeaderScroll() {
+      const header = document.getElementById('mainHeader');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }, { passive: true });
+    }
+
+    function setupMobileMenu() {
+      const btn = document.getElementById('mobileMenuBtn');
+      const nav = document.getElementById('mainNav');
+      if(btn && nav) {
+        btn.addEventListener('click', () => {
+          nav.classList.toggle('active');
+          const spans = btn.querySelectorAll('span');
+          if(nav.classList.contains('active')) {
+            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+          } else {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          }
+        });
+      }
+    }
+
+    function setupVideoControls() {
+      const video = document.getElementById('heroVideo');
+      const muteBtn = document.getElementById('muteToggleBtn');
+      const playBtn = document.getElementById('playToggleBtn');
+      
+      if(!video) return;
+
+      // Intersection Observer للتحكم الذكي بالفيديو عند السكرول
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) {
+            // الفيديو يظهر على الشاشة: شغله وحاول تفعل الصوت
+            video.play().then(() => {
+              video.muted = false; // تشغيل الصوت
+              if(muteBtn) muteBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+            }).catch(e => {
+              // لو المتصفح منع تشغيل الصوت أوتوماتيك كحماية، هنشغله صامت لحد ما العميل يدوس
+              video.muted = true;
+              video.play();
+              if(muteBtn) muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            });
+            if(playBtn) playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+          } else {
+            // العميل نزل سكرول والفيديو اختفى: وقف الفيديو واكتم الصوت تماماً
+            video.pause();
+            video.muted = true;
+            if(playBtn) playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            if(muteBtn) muteBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+          }
+        });
+      }, { threshold: 0.3 }); // يشتغل/يقف لما يظهر 30% من الفيديو
+
+      const heroSection = document.querySelector('.hero-cinematic');
+      if(heroSection) videoObserver.observe(heroSection);
+
+      // أزرار التحكم اليدوية
+      if(muteBtn) {
+        muteBtn.addEventListener('click', () => {
+          video.muted = !video.muted;
+          muteBtn.innerHTML = video.muted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+          if(!video.muted) muteBtn.style.color = 'var(--gold-primary)';
+          else muteBtn.style.color = '';
+        });
+      }
+
+      if(playBtn) {
+        playBtn.addEventListener('click', () => {
+          if(video.paused) {
+            video.play();
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+          } else {
+            video.pause();
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+          }
+        });
+      }
+    }
+
+    function setupScrollReveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    // 2. تحميل المنتجات المميزة
+    async function loadFeaturedProducts() {
+      const container = document.getElementById('featuredProductGrid');
+      if(!container) return;
+
+      try {
+        const pageResult = await getProductsPage();
+        let products = (Array.isArray(pageResult?.products) ? pageResult.products : [])
+          .filter(p => p.is_active !== false && p.isActive !== false);
+
+        // نعرض المميزة أولًا (اللي معلوم عليها ✔ من لوحة الإدارة)
+        // ولو مفيش أي منتج معلوم كمميز نرجع لآخر 8 منتجات مضافين
+        const featured = products.filter(p => p.is_featured === true);
+        if (featured.length > 0) products = featured;
+
+        products = products.sort((a, b) => {
+           const tA = Date.parse(a.created_at || a.createdAt || 0) || (a.created_at?._seconds || 0) * 1000;
+           const tB = Date.parse(b.created_at || b.createdAt || 0) || (b.created_at?._seconds || 0) * 1000;
+           return tB - tA;
+        }).slice(0, 8);
+        
+        container.innerHTML = ''; 
+        
+        if(products.length === 0) {
+          container.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:var(--silver);">لا توجد منتجات مميزة حالياً.</p>';
+          return;
+        }
+
+        products.forEach((p, index) => {
+          const delay = (index % 4) * 0.1;
+          container.appendChild(buildPremiumProductCard(p, delay));
+        });
+
+        if(window.innerWidth > 1024) setup3DHover(container);
+
+      } catch (error) {
+        logClientError('home.featured_products.load_failed', error);
+        container.innerHTML = '<p style="grid-column:1/-1; text-align:center; color:var(--burgundy);">حدث خطأ أثناء تحميل المنتجات.</p>';
+      }
+    }
+
+    function buildPremiumProductCard(product, delayMs) {
+      const card = document.createElement('div');
+      card.className = 'premium-card reveal';
+      card.style.transitionDelay = `${delayMs}s`;
+      
+      const imgUrl = safeImageUrl((product.image_urls && product.image_urls.length > 0) ? product.image_urls[0] : product.image_url);
+      const hasValidPrice = Number.isFinite(Number(product.price)) && Number(product.price) > 0;
+      
+      let badgeHtml = '';
+      if (product.old_price && product.old_price > product.price) {
+        const discount = Math.round(((product.old_price - product.price) / product.old_price) * 100);
+        badgeHtml = `<div class="badge-discount">-${discount}%</div>`;
+      } else if (product.is_new) {
+        badgeHtml = `<div class="badge-new">جديد</div>`;
+      }
+
+      const oldPriceHtml = (product.old_price && product.old_price > product.price) 
+        ? `<span class="price-old">${Number(product.old_price).toLocaleString('ar-EG')} ج.م</span>` : '';
+
+      const safeName = escapeHtml(product.name || '');
+      const safeBrand = escapeHtml(product.brand || 'ال بكار');
+      const safeImage = escapeHtml(imgUrl);
+
+      card.innerHTML = `
+        <div class="card-badges">${badgeHtml}</div>
+        
+        <a href="product.html?id=${encodeURIComponent(product.id)}" class="card-img-wrap">
+          <img src="${safeImage}" alt="${safeName}" loading="lazy">
+        </a>
+        
+        <div class="card-content">
+          <div class="card-brand">${safeBrand}</div>
+          <a href="product.html?id=${encodeURIComponent(product.id)}" class="card-title">${safeName}</a>
+          
+          <div class="card-price-row">
+            <div class="price-col">
+              ${oldPriceHtml}
+              <span class="price-current">${Number(product.price).toLocaleString('ar-EG')} ج.م</span>
+            </div>
+            
+            <button class="btn-add-cart" aria-label="أضف للسلة" ${hasValidPrice ? '' : 'disabled title="السعر غير متاح"'}>
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      `;
+
+      const addButton = card.querySelector('.btn-add-cart');
+      addButton?.addEventListener('click', () => {
+        window.addToCartPremium(product.id, imgUrl, String(product.name || ''), Number(product.price), addButton);
+      });
+
+      setTimeout(() => card.classList.add('active'), 100);
+      return card;
+    }
+
+    function setup3DHover(container) {
+      container.addEventListener('mousemove', (e) => {
+        const card = e.target.closest('.premium-card');
+        if (!card) return;
+        const imgWrap = card.querySelector('.card-img-wrap');
+        if (!imgWrap) return;
+
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+        const cx = rect.width / 2; const cy = rect.height / 2;
+        const rotateX = ((y - cy) / cy) * -10; 
+        const rotateY = ((x - cx) / cx) * 10;
+        
+        imgWrap.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      container.addEventListener('mouseout', (e) => {
+        const card = e.target.closest('.premium-card');
+        if (!card) return;
+        const imgWrap = card.querySelector('.card-img-wrap');
+        if (imgWrap) imgWrap.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+      });
+    }
+
+    window.addToCartPremium = function(id, img, name, price, btnEl) {
+      try {
+        if (!Number.isFinite(Number(price)) || Number(price) <= 0) {
+          window.alert('لا يمكن إضافة منتج قبل تحديد سعره.');
+          return;
+        }
+        const data = localStorage.getItem('bakar_cart');
+        let cart = data ? JSON.parse(data) : [];
+        const index = cart.findIndex(item => String(item.id) === String(id));
+        
+        if (index > -1) {
+          cart[index].qty = (parseInt(cart[index].qty) || 1) + 1;
+        } else {
+          cart.push({ id: String(id), name: String(name), price: parseFloat(price), image: img, qty: 1 });
+        }
+        
+        localStorage.setItem('bakar_cart', JSON.stringify(cart));
+        updateCartBadge(true);
+        showPremiumToast(img, name);
+        
+        if(btnEl) {
+          const icon = btnEl.querySelector('i');
+          if(icon) {
+            icon.className = 'fas fa-check';
+            btnEl.style.background = 'var(--burgundy)';
+            btnEl.style.color = '#fff';
+            btnEl.style.borderColor = 'var(--burgundy)';
+            setTimeout(() => {
+              icon.className = 'fas fa-plus';
+              btnEl.style.background = '';
+              btnEl.style.color = '';
+              btnEl.style.borderColor = '';
+            }, 2000);
+          }
+        }
+      } catch (e) {
+        logClientError('home.cart.read_failed', e);
+      }
+    };
+
+    function updateCartBadge(animate = false) {
+      try {
+        const data = localStorage.getItem('bakar_cart');
+        const cart = data ? JSON.parse(data) : [];
+        const total = cart.reduce((sum, item) => sum + (parseInt(item.qty) || 1), 0);
+        
+        document.querySelectorAll('.cart-count').forEach(el => {
+          el.textContent = total;
+          if(animate && total > 0) {
+            el.classList.add('pulse');
+            setTimeout(() => el.classList.remove('pulse'), 300);
+          }
+        });
+      } catch(e){}
+    }
+
+    function showPremiumToast(imgSrc, title) {
+      const container = document.getElementById('toastContainer');
+      if(!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'toast-premium';
+      toast.innerHTML = `
+        <img src="${escapeHtml(safeImageUrl(imgSrc))}" class="toast-img" alt="Product">
+        <div class="toast-text">
+          <h4><i class="fas fa-check-circle" style="color: #10B981;"></i> تمت الإضافة</h4>
+          <p>${escapeHtml(title)}</p>
+        </div>
+        <a href="cart.html" class="toast-action">عرض السلة</a>
+      `;
+      
+      container.appendChild(toast);
+      
+      requestAnimationFrame(() => {
+        setTimeout(() => toast.classList.add('show'), 10);
+      });
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+      }, 4000);
+    }
+  </script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

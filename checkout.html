@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#F7FAF8">
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إتمام الطلب | مؤسسة ال بكار</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta property="og:site_name" content="مؤسسة ال بكار">
+  <meta property="og:locale" content="ar_EG">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="إتمام الطلب | مؤسسة ال بكار">
+  <meta property="og:description" content="أدخل بيانات التوصيل والدفع لإتمام طلبك من مؤسسة ال بكار للأجهزة المنزلية.">
+  <meta property="og:image" content="https://al-bakar.web.app/assets/images/refrigerator.jpg">
+
+  <meta name="description" content="أدخل بيانات التوصيل والدفع لإتمام طلبك من مؤسسة ال بكار للأجهزة المنزلية.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="bottom-nav.css">
+
+  <style>
+    /* =========================================
+       1. PREMIUM DESIGN SYSTEM (Charcoal, Gold, Burgundy, Silver)
+    ========================================= */
+    :root {
+      --bg-base: #0a0a0a !important;        
+      --bg-surface: #141414 !important;     
+      --bg-elevated: #1e1e1e !important;    
+      
+      --gold-primary: #D4AF37 !important;   
+      --gold-hover: #b5952f !important;
+      
+      --burgundy: #800020 !important;       
+      --silver: #A0A0A0 !important;         
+      
+      --text-main: #ffffff !important;      
+      --text-muted: #888888 !important;     
+      
+      --border-dark: #2a2a2a !important;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      
+      --font-main: 'Cairo', sans-serif;
+      --font-heading: 'Tajawal', sans-serif;
+      
+      --transition-fast: 0.2s ease;
+      --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      overflow-x: hidden;
+      margin: 0; padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* =========================================
+       2. GLASSMORHPISM HEADER (Compact for Checkout)
+    ========================================= */
+    .site-header {
+      background: rgba(10, 10, 10, 0.95) !important;
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+      position: sticky; top: 0; z-index: 1000; padding: 15px 0;
+    }
+    .header-inner { display: flex; justify-content: center; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 20px; position: relative; }
+    .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--text-main) !important; text-decoration: none; letter-spacing: -0.5px; }
+    .logo span { color: var(--gold-primary); }
+    
+    .header-secure-badge { position: absolute; right: 20px; display: flex; align-items: center; gap: 8px; color: var(--silver); font-size: 0.9rem; font-weight: 600; }
+    .header-secure-badge i { color: #10B981; }
+
+    @media (max-width: 768px) {
+      .header-secure-badge { display: none; }
+    }
+
+    /* =========================================
+       3. PROGRESS INDICATOR
+    ========================================= */
+    .checkout-progress { max-width: 800px; margin: 30px auto; padding: 0 20px; }
+    .stepper { display: flex; justify-content: space-between; align-items: center; position: relative; }
+    .stepper::before { content: ''; position: absolute; top: 15px; left: 10%; right: 10%; height: 2px; background: var(--border-dark); z-index: 1; }
+    
+    .step { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--silver); }
+    .step-circle { width: 32px; height: 32px; border-radius: 50%; background: var(--bg-surface); border: 2px solid var(--border-dark); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; transition: var(--transition-fast); }
+    .step-label { font-size: 0.85rem; font-weight: 600; }
+    
+    .step.active { color: var(--gold-primary); }
+    .step.active .step-circle { border-color: var(--gold-primary); background: rgba(212, 175, 55, 0.1); color: var(--gold-primary); box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1); }
+    .step.completed { color: var(--text-main); }
+    .step.completed .step-circle { background: var(--gold-primary); border-color: var(--gold-primary); color: var(--bg-base); }
+
+    /* =========================================
+       4. CHECKOUT LAYOUT
+    ========================================= */
+    .checkout-page { padding: 20px 0 80px; }
+    .checkout-layout { display: grid; grid-template-columns: 1fr 400px; gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 20px; align-items: start; }
+    
+    @media (max-width: 992px) {
+      .checkout-layout { grid-template-columns: 1fr; display: flex; flex-direction: column-reverse; gap: 30px; }
+    }
+
+    .checkout-panel { background: var(--bg-surface); border: 1px solid var(--border-dark); border-radius: var(--radius-xl); padding: 35px; position: relative; overflow: hidden; animation: fadeInUp 0.5s ease; }
+    .checkout-panel::before { content: ''; position: absolute; top: 0; right: 0; width: 4px; height: 100%; background: var(--gold-primary); }
+    
+    .panel-title { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin: 0 0 25px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border-dark); padding-bottom: 15px; }
+    .panel-title i { color: var(--gold-primary); }
+
+    @media (max-width: 768px) {
+      .checkout-panel { padding: 25px; border-radius: var(--radius-lg); }
+    }
+
+    /* =========================================
+       5. PREMIUM FORMS (Floating Labels & Validation)
+    ========================================= */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; gap: 0; } }
+
+    .form-group { position: relative; margin-bottom: 25px; }
+    
+    .form-input, .form-select, .form-textarea {
+      width: 100%; background: var(--bg-elevated); border: 1px solid var(--border-dark);
+      color: var(--text-main); padding: 16px 16px 8px; border-radius: var(--radius-md);
+      font-family: var(--font-main); font-size: 1rem; transition: var(--transition-fast);
+      box-sizing: border-box;
+    }
+    .form-select { appearance: none; padding-top: 16px; background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23A0A0A0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"); background-repeat: no-repeat; background-position: left 15px top 50%; background-size: 12px auto; }
+    .form-textarea { resize: vertical; min-height: 100px; padding-top: 25px; }
+
+    .form-label {
+      position: absolute; top: 18px; right: 16px; color: var(--silver);
+      font-size: 0.95rem; font-weight: 500; pointer-events: none;
+      transition: var(--transition-fast); transform-origin: right top;
+    }
+
+    /* Floating Logic */
+    .form-input:focus + .form-label, .form-input:not(:placeholder-shown) + .form-label,
+    .form-select:focus + .form-label, .form-select:valid + .form-label,
+    .form-textarea:focus + .form-label, .form-textarea:not(:placeholder-shown) + .form-label {
+      transform: translateY(-10px) scale(0.85); color: var(--gold-primary);
+    }
+    
+    .form-input::placeholder, .form-textarea::placeholder { color: transparent; }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--gold-primary); background: var(--bg-surface); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1); }
+    
+    /* Validation States */
+    .form-group.has-error .form-input, .form-group.has-error .form-select { border-color: var(--burgundy); }
+    .form-group.has-error .form-label { color: var(--burgundy); }
+    .error-msg { display: none; color: #ff4d4d; font-size: 0.85rem; font-weight: 600; margin-top: 5px; position: absolute; bottom: -20px; right: 5px; }
+    .form-group.has-error .error-msg { display: block; animation: fadeIn 0.3s ease; }
+
+    /* =========================================
+       6. PAYMENT & DELIVERY OPTIONS (Selectable Cards)
+    ========================================= */
+    .options-group { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
+    
+    .option-card {
+      position: relative; border: 1px solid var(--border-dark); border-radius: var(--radius-md);
+      padding: 20px; cursor: pointer; transition: var(--transition-fast);
+      display: flex; align-items: flex-start; gap: 15px; background: var(--bg-elevated);
+    }
+    .option-card:hover { border-color: var(--silver); background: var(--bg-surface); }
+    
+    .option-input { position: absolute; opacity: 0; }
+    
+    .option-custom-radio { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--silver); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: var(--transition-fast); margin-top: 2px; }
+    .option-custom-radio::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--gold-primary); opacity: 0; transform: scale(0); transition: var(--transition-fast); }
+    
+    .option-content { flex: 1; }
+    .option-title { display: flex; align-items: center; gap: 10px; color: var(--text-main); font-weight: 700; font-size: 1.05rem; margin: 0 0 5px; }
+    .option-title i { color: var(--gold-primary); font-size: 1.2rem; }
+    .option-desc { color: var(--silver); font-size: 0.9rem; margin: 0; line-height: 1.4; }
+
+    /* Selected State */
+    .option-input:checked + .option-custom-radio { border-color: var(--gold-primary); }
+    .option-input:checked + .option-custom-radio::after { opacity: 1; transform: scale(1); }
+    .option-input:checked ~ .option-content .option-title { color: var(--gold-primary); }
+    .option-card:has(.option-input:checked) { border-color: var(--gold-primary); background: rgba(212, 175, 55, 0.05); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1); }
+
+    /* Wallet Specifics */
+
+    .location-control { display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px; }
+    .btn-location { background: rgba(212, 175, 55, 0.1); color: var(--gold-primary); border: 1px dashed var(--gold-primary); padding: 12px; border-radius: var(--radius-md); font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: var(--transition-fast); font-family: var(--font-main); }
+    .btn-location:hover { background: var(--gold-primary); color: var(--bg-base); }
+    .location-result { font-size: 0.85rem; color: #10B981; font-weight: 600; display: none; text-align: left; direction: ltr; }
+
+    /* =========================================
+       7. ORDER SUMMARY (Sticky Sidebar)
+    ========================================= */
+    .checkout-summary-panel { position: sticky; top: 100px; background: var(--bg-surface); border: 1px solid var(--border-dark); border-radius: var(--radius-xl); padding: 30px; animation: fadeInUp 0.6s ease; display: flex; flex-direction: column; max-height: calc(100vh - 120px); }
+    
+    .summary-items-container { flex: 1; overflow-y: auto; padding-right: 5px; margin-bottom: 20px; border-bottom: 1px solid var(--border-dark); padding-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--border-dark) transparent; }
+    .summary-items-container::-webkit-scrollbar { width: 4px; }
+    .summary-items-container::-webkit-scrollbar-thumb { background: var(--border-dark); border-radius: 4px; }
+
+    .summary-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: center; }
+    .summary-item:last-child { margin-bottom: 0; }
+    
+    .summary-img-wrap { width: 70px; height: 70px; background: var(--bg-elevated); border-radius: var(--radius-sm); border: 1px solid var(--border-dark); display: flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0; }
+    .summary-img-wrap img { width: 80%; height: 80%; object-fit: contain; }
+    .summary-qty-badge { position: absolute; top: -8px; right: -8px; background: var(--border-dark); color: var(--silver); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; border: 2px solid var(--bg-surface); }
+    
+    .summary-item-info { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+    .summary-item-name { color: var(--text-main); font-weight: 600; font-size: 0.95rem; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.3; }
+    .summary-item-price { color: var(--gold-primary); font-weight: 800; font-size: 1.05rem; }
+
+    /* Pricing Breakdown */
+    .pricing-breakdown { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
+    .pricing-row { display: flex; justify-content: space-between; align-items: center; color: var(--silver); font-size: 1rem; font-weight: 500; }
+    .pricing-row.discount { color: #10B981; }
+    .pricing-row.total { border-top: 1px dashed var(--border-dark); padding-top: 15px; margin-top: 5px; color: var(--text-main); font-size: 1.4rem; font-weight: 800; }
+    .pricing-row.total .val { color: var(--gold-primary); }
+
+    .btn-confirm-order { width: 100%; background: linear-gradient(135deg, var(--gold-primary) 0%, #b5952f 100%); color: var(--bg-base); border: none; padding: 18px; border-radius: var(--radius-md); font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; cursor: pointer; transition: var(--transition-fast); display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2); }
+    .btn-confirm-order:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4); }
+    .btn-confirm-order:disabled { opacity: 0.7; cursor: not-allowed; transform: none; box-shadow: none; }
+    .checkout-submit-actions { margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--border-dark); }
+
+    .secure-checkout-msg { text-align: center; color: var(--silver); font-size: 0.85rem; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .secure-checkout-msg i { color: var(--gold-primary); }
+
+    /* Mobile Order Summary Toggle */
+    .mobile-summary-toggle { display: none; width: 100%; background: var(--bg-elevated); border: 1px solid var(--border-dark); color: var(--text-main); padding: 15px 20px; border-radius: var(--radius-md); font-family: var(--font-main); font-size: 1.1rem; font-weight: 700; align-items: center; justify-content: space-between; cursor: pointer; margin-bottom: 20px; }
+    .mobile-summary-toggle i { transition: transform 0.3s ease; color: var(--gold-primary); }
+    .mobile-summary-toggle.expanded i { transform: rotate(180deg); }
+    
+    @media (max-width: 992px) {
+      .checkout-summary-panel { position: static; max-height: none; display: none; padding: 25px; border-radius: var(--radius-lg); }
+      .checkout-summary-panel.expanded { display: flex; animation: slideDown 0.3s ease; }
+      .mobile-summary-toggle { display: flex; }
+      .summary-items-container { max-height: 40vh; }
+    }
+
+    /* =========================================
+       8. SUCCESS SCREEN & EMPTY CART
+    ========================================= */
+    .checkout-success-screen, .empty-cart-screen { display: none; text-align: center; max-width: 600px; margin: 60px auto; padding: 50px 20px; background: var(--bg-surface); border: 1px solid var(--border-dark); border-radius: var(--radius-xl); animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    
+    .success-icon-wrap { width: 100px; height: 100px; border-radius: 50%; background: rgba(16, 185, 129, 0.1); border: 2px solid #10B981; color: #10B981; font-size: 3rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; animation: pulseSuccess 2s infinite; }
+    .empty-icon-wrap { width: 100px; height: 100px; border-radius: 50%; background: rgba(212, 175, 55, 0.1); border: 2px solid var(--gold-primary); color: var(--gold-primary); font-size: 3rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; }
+    
+    .success-title, .empty-title { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--text-main); margin: 0 0 15px; }
+    .success-desc, .empty-desc { color: var(--silver); font-size: 1.1rem; line-height: 1.6; margin: 0 0 30px; }
+    
+    .order-number-display { background: var(--bg-elevated); padding: 20px; border-radius: var(--radius-md); border: 1px dashed var(--gold-primary); margin-bottom: 30px; }
+    .order-number-display span { display: block; color: var(--silver); font-size: 0.9rem; margin-bottom: 5px; }
+    .order-number-display strong { display: block; color: var(--gold-primary); font-size: 2rem; font-family: monospace; letter-spacing: 2px; }
+
+    .success-actions { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+    .btn-success-action { flex: 1; min-width: 200px; padding: 16px 24px; border-radius: 50px; font-weight: 700; font-size: 1.1rem; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; transition: var(--transition-fast); }
+    .btn-track-order { background: var(--gold-primary); color: var(--bg-base); border: none; }
+    .btn-track-order:hover { background: var(--gold-hover); transform: translateY(-2px); }
+    .btn-back-home { background: transparent; border: 1px solid var(--silver); color: var(--text-main); }
+    .btn-back-home:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
+
+    /* Animations */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes pulseSuccess { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+
+    /* Form General Error Alert */
+    .form-alert { display: none; background: rgba(128, 0, 32, 0.1); border: 1px solid rgba(128, 0, 32, 0.4); color: #ff4d4d; padding: 15px; border-radius: var(--radius-md); font-weight: 600; text-align: center; margin-bottom: 25px; animation: fadeIn 0.3s ease; }
+    .form-alert i { margin-left: 8px; }
+
+  </style>
+  <script>
+    (() => {
+      let theme = 'light';
+      try {
+        const savedTheme = localStorage.getItem('bakar-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') theme = savedTheme;
+      } catch {
+        // Keep the light theme if browser storage is unavailable.
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+  <!-- Premium Compact Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">ال بكار<span>.</span></a>
+      <div class="header-secure-badge">
+        <i class="fas fa-lock"></i> إتمام الدفع بأمان
+      </div>
+    </div>
+  </header>
+
+  <!-- Progress Indicator -->
+  <div class="checkout-progress" id="checkoutProgress">
+    <div class="stepper">
+      <div class="step active" id="step1">
+        <div class="step-circle"><i class="fas fa-user"></i></div>
+        <span class="step-label">البيانات</span>
+      </div>
+      <div class="step" id="step2">
+        <div class="step-circle"><i class="fas fa-truck"></i></div>
+        <span class="step-label">التوصيل</span>
+      </div>
+      <div class="step" id="step3">
+        <div class="step-circle"><i class="fas fa-wallet"></i></div>
+        <span class="step-label">الدفع</span>
+      </div>
+      <div class="step" id="step4">
+        <div class="step-circle"><i class="fas fa-check"></i></div>
+        <span class="step-label">تأكيد</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Checkout Container -->
+  <section class="checkout-page" id="checkoutMainSection">
+    
+    <!-- Mobile Summary Toggle -->
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+      <button class="mobile-summary-toggle" id="mobileSummaryToggle">
+        <span><i class="fas fa-shopping-cart" style="margin-left: 8px;"></i> إظهار ملخص الطلب</span>
+        <strong id="mobileToggleTotal" style="color: var(--gold-primary);">0 ج.م</strong>
+        <i class="fas fa-chevron-down" style="margin-right: auto; color: var(--silver);"></i>
+      </button>
+    </div>
+
+    <div class="checkout-layout">
+      
+      <!-- Right Side: Forms (Customer, Delivery, Payment) -->
+      <div class="checkout-panel">
+        
+        <div id="checkoutFormAlert" class="form-alert">
+          <i class="fas fa-exclamation-circle"></i> <span id="checkoutAlertMsg">يرجى التأكد من ملء جميع الحقول المطلوبة بشكل صحيح.</span>
+        </div>
+
+        <form id="premiumCheckoutForm" novalidate>
+          
+          <!-- 1. Customer Information -->
+          <h2 class="panel-title"><i class="fas fa-address-card"></i> بيانات العميل</h2>
+          
+          <div class="form-group">
+            <input type="text" id="customerName" class="form-input" required placeholder=" " autocomplete="name">
+            <label for="customerName" class="form-label">الاسم الثلاثي بالكامل *</label>
+            <span class="error-msg">الاسم مطلوب (أكثر من 3 أحرف).</span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <input type="tel" id="customerPhone" class="form-input" required placeholder=" " autocomplete="tel" inputmode="numeric">
+              <label for="customerPhone" class="form-label">رقم الهاتف الأساسي *</label>
+              <span class="error-msg">أدخل رقم هاتف مصري صحيح (11 رقم).</span>
+            </div>
+            
+            <div class="form-group">
+              <input type="tel" id="alternatePhone" class="form-input" placeholder=" " autocomplete="tel-national" inputmode="numeric">
+              <label for="alternatePhone" class="form-label">رقم بديل (اختياري)</label>
+              <span class="error-msg">رقم غير صحيح.</span>
+            </div>
+          </div>
+
+          <!-- 2. Delivery Options -->
+          <h2 class="panel-title" style="margin-top: 40px;"><i class="fas fa-shipping-fast"></i> طريقة الاستلام</h2>
+          
+          <div class="options-group">
+            <label class="option-card">
+              <input type="radio" name="fulfillmentMethod" value="delivery" class="option-input" required checked>
+              <div class="option-custom-radio"></div>
+              <div class="option-content">
+                <h4 class="option-title"><i class="fas fa-truck"></i> توصيل إلى المنزل</h4>
+                <p class="option-desc">متاح للقاهرة والجيزة فقط. تظهر رسوم الشحن في ملخص الطلب.</p>
+              </div>
+            </label>
+            
+            <label class="option-card">
+              <input type="radio" name="fulfillmentMethod" value="pickup" class="option-input" required>
+              <div class="option-custom-radio"></div>
+              <div class="option-content">
+                <h4 class="option-title"><i class="fas fa-store"></i> استلام من المعرض</h4>
+                <p class="option-desc">استلم طلبك بنفسك من معرضنا في الجيزة (بدون رسوم إضافية).</p>
+              </div>
+            </label>
+          </div>
+
+          <!-- Dynamic Delivery Details -->
+          <div id="deliveryDetailsSection">
+            <div class="form-row">
+              <div class="form-group">
+                <select id="deliveryGovernorate" class="form-select" required>
+                  <option value="" disabled selected></option>
+                  <option value="القاهرة">محافظة القاهرة</option>
+                  <option value="الجيزة">محافظة الجيزة</option>
+                </select>
+                <label for="deliveryGovernorate" class="form-label" style="transform: translateY(-10px) scale(0.85); color: var(--gold-primary);">المحافظة *</label>
+                <span class="error-msg">يرجى اختيار المحافظة.</span>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <textarea id="customerAddress" class="form-textarea" required placeholder=" " autocomplete="street-address"></textarea>
+              <label for="customerAddress" class="form-label">العنوان بالتفصيل (المنطقة، الشارع، العمارة، الشقة) *</label>
+              <span class="error-msg">العنوان بالتفصيل مطلوب.</span>
+            </div>
+
+            <div class="location-control">
+              <button type="button" class="btn-location" id="getLocationBtn">
+                <i class="fas fa-map-marker-alt"></i> تحديد موقعي الحالي (يجلب العنوان تلقائياً)
+              </button>
+              <p class="location-result" id="locationResultMsg"></p>
+            </div>
+          </div>
+
+          <!-- Dynamic Pickup Details -->
+          <div id="pickupDetailsSection" style="display: none;">
+            <div class="form-group">
+              <input type="datetime-local" id="pickupDateTime" class="form-input" placeholder=" ">
+              <label for="pickupDateTime" class="form-label" style="transform: translateY(-10px) scale(0.85); color: var(--gold-primary);">موعد الاستلام المتوقع *</label>
+            </div>
+          </div>
+
+          <!-- 3. Payment Method -->
+          <h2 class="panel-title" style="margin-top: 40px;"><i class="fas fa-hand-holding-usd"></i> طريقة الدفع</h2>
+          
+          <div class="options-group">
+            <label class="option-card">
+              <input type="radio" name="paymentMethod" value="cod" class="option-input" required checked>
+              <div class="option-custom-radio"></div>
+              <div class="option-content">
+                <h4 class="option-title"><i class="fas fa-hand-holding-usd"></i> الدفع عند الاستلام (Cash on Delivery)</h4>
+                <p class="option-desc">ادفع قيمة طلبك نقداً عند استلامه.</p>
+              </div>
+            </label>
+          </div>
+
+          <label for="whatsappOrderUpdates" style="display: flex; align-items: flex-start; gap: 10px; margin-top: 18px; color: var(--silver); line-height: 1.8; cursor: pointer;">
+            <input type="checkbox" id="whatsappOrderUpdates" style="margin-top: 7px; accent-color: #25D366;">
+            <span>أوافق على استقبال رسائل من مؤسسة ال بكار على واتساب بخصوص هذا الطلب، مثل تأكيد الاستلام أو التأكيد أو الإلغاء. أستطيع إيقافها في أي وقت بالرد بكلمة «إيقاف».</span>
+          </label>
+
+          <div class="secure-checkout-msg" style="justify-content: flex-start; text-align: right;">
+            <i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.1rem;"></i>
+            بعد موافقتك، تصلك رسالة استلام الطلب ثم رسالة تأكيده تلقائيًا بعد مراجعتنا له، من رقم واتساب الخاص بمؤسسة ال بكار.
+          </div>
+
+        </form>
+        <div class="checkout-submit-actions">
+          <button type="button" class="btn-confirm-order" id="confirmOrderBtn">
+            تأكيد وإرسال الطلب <i class="fas fa-check-circle"></i>
+          </button>
+          <a href="policies.html" style="display:inline-block;margin-top:10px;color:var(--silver);font-size:.9rem">سياسات الشحن والاستبدال والضمان والخصوصية</a>
+        </div>
+      </div>
+
+      <!-- Left Side: Order Summary (Sticky) -->
+      <aside class="checkout-summary-panel" id="orderSummaryPanel">
+        <h2 class="panel-title" style="font-size: 1.3rem; margin-bottom: 20px;"><i class="fas fa-shopping-bag"></i> ملخص الطلب</h2>
+        
+        <div class="summary-items-container" id="summaryItemsList">
+          <!-- سيتم حقن المنتجات هنا عبر JS -->
+          <div style="text-align: center; color: var(--silver); padding: 20px;"><i class="fas fa-circle-notch fa-spin"></i> جاري تحميل السلة...</div>
+        </div>
+
+        <div class="pricing-breakdown">
+          <div class="pricing-row">
+            <span>قيمة المشتريات</span>
+            <span id="summarySubtotal">0 ج.م</span>
+          </div>
+          
+          <div class="pricing-row" id="summaryDeliveryRow">
+            <span>رسوم التوصيل</span>
+            <span id="summaryDeliveryFee">0 ج.م</span>
+          </div>
+          
+          <div class="pricing-row total">
+            <span>الإجمالي النهائي</span>
+            <span class="val" id="summaryFinalTotal">0 ج.م</span>
+          </div>
+        </div>
+
+        <div class="secure-checkout-msg">
+          <i class="fas fa-shield-alt"></i> نضمن لك تسوق آمن وتشفير كامل لبياناتك
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- Empty Cart Screen -->
+  <div class="empty-cart-screen" id="emptyCartScreen">
+    <div class="empty-icon-wrap"><i class="fas fa-shopping-cart"></i></div>
+    <h2 class="empty-title">سلة التسوق فارغة</h2>
+    <p class="empty-desc">يبدو أنك لم تقم بإضافة أي أجهزة فاخرة إلى سلتك بعد. تصفح منتجاتنا واكتشف أفضل العروض.</p>
+    <a href="products.html" class="btn-confirm-order" style="display: inline-flex; width: auto; padding: 15px 40px;">
+      العودة للتسوق <i class="fas fa-arrow-left"></i>
+    </a>
+  </div>
+
+  <!-- Success Screen -->
+  <div class="checkout-success-screen" id="checkoutSuccessScreen">
+    <div class="success-icon-wrap"><i class="fas fa-check"></i></div>
+    <h2 class="success-title">تم استلام طلبك بنجاح!</h2>
+    <p class="success-desc">شكرًا لثقتك في مؤسسة ال بكار. تم تسجيل طلبك، وسيصلك تحديث على واتساب إذا وافقت على استقبال رسائل الطلب.</p>
+    
+    <div class="order-number-display">
+      <span>رقم الطلب الخاص بك:</span>
+      <strong id="successOrderId">#BK-00000</strong>
+    </div>
+
+    <div class="success-actions">
+      <a href="#" id="whatsappOrderLink" class="btn-success-action btn-track-order" target="_blank" rel="noopener noreferrer" style="background: #25D366; color: #fff;">
+        <i class="fab fa-whatsapp"></i> تواصل مع خدمة العملاء
+      </a>
+      <a href="#" id="trackOrderBtnLink" class="btn-success-action btn-track-order">
+        <i class="fas fa-map-marker-alt"></i> تتبع حالة الطلب
+      </a>
+      <a href="index.html" class="btn-success-action btn-back-home">
+        العودة للرئيسية
+      </a>
+    </div>
+  </div>
+
+  <!-- Order Confirmation Dialog -->
+  <div id="orderConfirmOverlay" style="position: fixed; inset: 0; background: rgba(0,0,0,0.78); backdrop-filter: blur(6px); z-index: 10000; display: none; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: var(--bg-surface); border: 1px solid var(--border-dark); border-top: 4px solid var(--gold-primary); border-radius: var(--radius-xl); max-width: 430px; width: 100%; padding: 35px 30px; text-align: center; font-family: var(--font-main); animation: fadeInUp 0.3s ease;">
+      <div style="width: 70px; height: 70px; border-radius: 50%; background: rgba(212,175,55,0.1); border: 2px solid var(--gold-primary); color: var(--gold-primary); font-size: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+        <i class="fas fa-circle-question"></i>
+      </div>
+      <h3 style="color: var(--text-main); font-family: var(--font-heading); font-size: 1.4rem; margin: 0 0 12px;">هل تود فعلاً تأكيد الطلب؟</h3>
+      <p style="color: var(--silver); font-size: 0.95rem; line-height: 1.7; margin: 0 0 25px;">
+        سيتم تسجيل طلبك. وإذا اخترت استقبال تحديثات واتساب، سنرسلها تلقائيًا إلى رقم الهاتف المسجل.
+      </p>
+      <div style="display: flex; gap: 12px;">
+        <button type="button" id="confirmOrderYes" style="flex: 1; background: linear-gradient(135deg, var(--gold-primary), #b5952f); color: var(--bg-base); border: none; padding: 14px; border-radius: var(--radius-md); font-family: var(--font-heading); font-weight: 800; font-size: 1.05rem; cursor: pointer;">تأكيد الطلب</button>
+        <button type="button" id="confirmOrderNo" style="flex: 1; background: var(--bg-elevated); color: var(--silver); border: 1px solid var(--border-dark); padding: 14px; border-radius: var(--radius-md); font-weight: 700; font-size: 1rem; cursor: pointer;">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="main.js"></script>
+  
+  <script type="module">
+    import { logClientError, logClientWarning } from './client-logger.js';
+    // ---------------------------------------------------------
+    // Premium Checkout Logic (Client Side) 
+    // إرسال بيانات الطلب إلى Cloud Function الآمنة لحسابها وتسجيلها على الخادم.
+    // ---------------------------------------------------------
+    
+    import { apiFetch } from './api.js';
+    import { safeImageUrl } from './html-utils.js';
+
+    // State Variables
+    let cartItems = [];
+    let cartSubtotal = 0;
+    
+    // Dynamic Shipping Variables
+    let shippingFees = { 'القاهرة': 60, 'الجيزة': 60 }; 
+    let currentDeliveryFee = 0; 
+    
+    let finalTotal = 0;
+    let userLocation = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initCheckout();
+    });
+
+    async function initCheckout() {
+      loadCartData();
+      
+      if (cartItems.length === 0) {
+        showEmptyCart();
+        return;
+      }
+
+      await loadShippingSettings();
+
+      renderOrderSummary();
+      loadSavedUserData();
+      setupFormListeners();
+      setupMobileSummaryToggle();
+      setupLocationAPI();
+    }
+
+    // هذه الدالة للعرض فقط في المتصفح، السيرفر سيحسبها بنفسه لضمان الأمان
+    async function loadShippingSettings() {
+      try {
+        const fees = await apiFetch('/shipping');
+        shippingFees['القاهرة'] = Number(fees.cairo) || 0;
+        shippingFees['الجيزة'] = Number(fees.giza) || 0;
+      } catch (error) {
+        logClientWarning('checkout.shipping_fee.fallback', { reason: error?.name || 'Error' });
+      }
+    }
+
+    function loadCartData() {
+      try {
+        const data = localStorage.getItem('bakar_cart');
+        const parsed = data ? JSON.parse(data) : [];
+        cartItems = Array.isArray(parsed) ? parsed
+          .filter(item => item && typeof item === 'object' && !Array.isArray(item) && item.id != null)
+          .map(item => ({
+            id: String(item.id),
+            name: String(item.name || item.title || 'منتج بدون اسم').slice(0, 160),
+            qty: Math.min(99, Math.max(1, Number.parseInt(item.qty ?? item.quantity ?? 1, 10) || 1)),
+            price: Number.isFinite(Number(item.price)) && Number(item.price) > 0 ? Number(item.price) : 0,
+            isOffer: item.isOffer === true,
+            image: safeImageUrl(item.image || item.image_urls?.[0] || item.image_url)
+          })) : [];
+      } catch (error) {
+        logClientError('checkout.cart.read_failed', error);
+        cartItems = [];
+      }
+    }
+
+    function renderOrderSummary() {
+      const listContainer = document.getElementById('summaryItemsList');
+      listContainer.replaceChildren();
+      cartSubtotal = 0;
+
+      cartItems.forEach(item => {
+        const qty = parseInt(item.qty) || 1;
+        const price = parseFloat(item.price) || 0; // السعر من الـ Cache للعرض فقط
+        const itemTotal = qty * price;
+        cartSubtotal += itemTotal;
+
+        const row = document.createElement('div');
+        row.className = 'summary-item';
+        const imageWrap = document.createElement('div');
+        imageWrap.className = 'summary-img-wrap';
+        const image = document.createElement('img');
+        image.src = item.image;
+        image.alt = item.name;
+        const quantity = document.createElement('div');
+        quantity.className = 'summary-qty-badge';
+        quantity.textContent = String(qty);
+        imageWrap.append(image, quantity);
+        const info = document.createElement('div');
+        info.className = 'summary-item-info';
+        const name = document.createElement('h4');
+        name.className = 'summary-item-name';
+        name.textContent = item.name;
+        const itemPrice = document.createElement('span');
+        itemPrice.className = 'summary-item-price';
+        itemPrice.textContent = `${price.toLocaleString('ar-EG')} ج.م`;
+        info.append(name, itemPrice);
+        row.append(imageWrap, info);
+        listContainer.append(row);
+      });
+
+      updateTotalsDisplay();
+    }
+
+    function updateTotalsDisplay() {
+      const fulfillmentChecked = document.querySelector('input[name="fulfillmentMethod"]:checked');
+      const isDelivery = fulfillmentChecked && fulfillmentChecked.value === 'delivery';
+      
+      if (isDelivery) {
+        const selectedGov = document.getElementById('deliveryGovernorate').value;
+        currentDeliveryFee = selectedGov ? (shippingFees[selectedGov] || 0) : 0;
+      } else {
+        currentDeliveryFee = 0;
+      }
+
+      finalTotal = cartSubtotal + currentDeliveryFee;
+
+      document.getElementById('summarySubtotal').textContent = `${cartSubtotal.toLocaleString('ar-EG')} ج.م`;
+      
+      const deliveryRow = document.getElementById('summaryDeliveryRow');
+      if (isDelivery) {
+        deliveryRow.style.display = 'flex';
+        document.getElementById('summaryDeliveryFee').textContent = `${currentDeliveryFee.toLocaleString('ar-EG')} ج.م`;
+      } else {
+        deliveryRow.style.display = 'none';
+      }
+
+      document.getElementById('summaryFinalTotal').textContent = `${finalTotal.toLocaleString('ar-EG')} ج.م`;
+      
+      if(document.getElementById('mobileToggleTotal')) {
+        document.getElementById('mobileToggleTotal').textContent = `${finalTotal.toLocaleString('ar-EG')} ج.م`;
+      }
+    }
+
+    function showEmptyCart() {
+      document.getElementById('checkoutMainSection').style.display = 'none';
+      document.getElementById('checkoutProgress').style.display = 'none';
+      document.getElementById('emptyCartScreen').style.display = 'block';
+    }
+
+    function setupFormListeners() {
+      const form = document.getElementById('premiumCheckoutForm');
+      const fulfillmentRadios = document.getElementsByName('fulfillmentMethod');
+      const govSelect = document.getElementById('deliveryGovernorate');
+      
+      govSelect.addEventListener('change', () => {
+        updateTotalsDisplay();
+        saveUserDataLocally();
+        updateStepperProgress();
+      });
+
+      fulfillmentRadios.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          const isDelivery = e.target.value === 'delivery';
+          document.getElementById('deliveryDetailsSection').style.display = isDelivery ? 'block' : 'none';
+          document.getElementById('pickupDetailsSection').style.display = !isDelivery ? 'block' : 'none';
+          
+          document.getElementById('deliveryGovernorate').required = isDelivery;
+          document.getElementById('customerAddress').required = isDelivery;
+          document.getElementById('pickupDateTime').required = !isDelivery; // السيرفر بيرفض استلام بدون موعد
+          
+          updateTotalsDisplay();
+          updateStepperProgress();
+        });
+      });
+
+
+      const inputs = form.querySelectorAll('.form-input, .form-textarea, .form-select');
+      inputs.forEach(input => {
+        input.addEventListener('blur', () => { validateField(input); updateStepperProgress(); });
+        input.addEventListener('input', () => {
+          if (input.closest('.form-group').classList.contains('has-error')) {
+            validateField(input);
+          }
+          saveUserDataLocally();
+          updateStepperProgress();
+        });
+      });
+
+      form.addEventListener('submit', handleCheckoutSubmit);
+
+      document.getElementById('confirmOrderBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+      });
+    }
+
+    function validateField(input) {
+      const group = input.closest('.form-group');
+      if (!group) return true;
+
+      let isValid = true;
+      
+      if (input.required && !input.value.trim()) {
+        isValid = false;
+      } else if (input.type === 'tel' && input.value.trim()) {
+        const phoneRegex = /^01[0125][0-9]{8}$/;
+        if (!phoneRegex.test(input.value.replace(/\s/g, ''))) isValid = false;
+      }
+
+      if (isValid) {
+        group.classList.remove('has-error');
+      } else {
+        group.classList.add('has-error');
+      }
+      return isValid;
+    }
+
+    function setupMobileSummaryToggle() {
+      const toggle = document.getElementById('mobileSummaryToggle');
+      const panel = document.getElementById('orderSummaryPanel');
+      if(toggle && panel) {
+        toggle.addEventListener('click', () => {
+          toggle.classList.toggle('expanded');
+          panel.classList.toggle('expanded');
+        });
+      }
+    }
+
+    function saveUserDataLocally() {
+      const userData = {
+        name: document.getElementById('customerName').value,
+        phone: document.getElementById('customerPhone').value,
+        altPhone: document.getElementById('alternatePhone').value,
+        gov: document.getElementById('deliveryGovernorate').value,
+        address: document.getElementById('customerAddress').value
+      };
+      localStorage.setItem('bakar_checkout_draft', JSON.stringify(userData));
+    }
+
+    function loadSavedUserData() {
+      try {
+        const draft = localStorage.getItem('bakar_checkout_draft');
+        if (draft) {
+          const data = JSON.parse(draft);
+          if (data.name) document.getElementById('customerName').value = data.name;
+          if (data.phone) document.getElementById('customerPhone').value = data.phone;
+          if (data.altPhone) document.getElementById('alternatePhone').value = data.altPhone;
+          if (data.gov) {
+            document.getElementById('deliveryGovernorate').value = data.gov;
+            updateTotalsDisplay(); 
+          }
+          if (data.address) document.getElementById('customerAddress').value = data.address;
+          updateStepperProgress();
+        }
+      } catch (e) {}
+    }
+
+    function setupLocationAPI() {
+      const btn = document.getElementById('getLocationBtn');
+      const msg = document.getElementById('locationResultMsg');
+      
+      if(btn && msg) {
+        btn.addEventListener('click', () => {
+          if (!navigator.geolocation) {
+            msg.textContent = "متصفحك لا يدعم تحديد الموقع.";
+            msg.style.display = 'block';
+            msg.style.color = '#ff4d4d';
+            return;
+          }
+          
+          btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحديد...';
+          btn.disabled = true;
+
+          navigator.geolocation.getCurrentPosition(
+            async (position) => {
+              userLocation = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+              
+              try {
+                  const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${userLocation.lat}&lon=${userLocation.lng}&accept-language=ar`);
+                  const data = await res.json();
+                  if(data && data.display_name) {
+                      const addressField = document.getElementById('customerAddress');
+                      if(!addressField.value.trim()) {
+                          addressField.value = data.display_name;
+                          addressField.focus();
+                          addressField.blur();
+                      }
+                  }
+              } catch(e) { logClientWarning('checkout.location.reverse_geocode_failed', { reason: e?.name || 'Error' }); }
+
+              const mapUrl = new URL('https://www.openstreetmap.org/');
+              mapUrl.searchParams.set('mlat', String(userLocation.lat));
+              mapUrl.searchParams.set('mlon', String(userLocation.lng));
+              mapUrl.hash = `map=16/${userLocation.lat}/${userLocation.lng}`;
+              msg.replaceChildren(
+                document.createElement('i'),
+                document.createTextNode(' تم تحديد الموقع. '),
+                document.createElement('a')
+              );
+              const locationIcon = msg.querySelector('i');
+              locationIcon.className = 'fas fa-check-circle';
+              const mapLink = msg.querySelector('a');
+              mapLink.href = mapUrl.toString();
+              mapLink.target = '_blank';
+              mapLink.rel = 'noopener noreferrer';
+              mapLink.style.cssText = 'color:var(--gold-primary);text-decoration:underline;';
+              mapLink.textContent = 'عرض الخريطة';
+              msg.style.display = 'block';
+              msg.style.color = '#10B981';
+              btn.innerHTML = '<i class="fas fa-map-marker-alt"></i> تحديث الموقع';
+              btn.disabled = false;
+            },
+            (error) => {
+              let errorStr = "تعذر الوصول للموقع. يرجى السماح بصلاحية الـ GPS.";
+              if(window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
+                 errorStr += " (الـ GPS يتطلب رابط HTTPS آمن ليعمل).";
+              }
+              msg.textContent = errorStr;
+              msg.style.display = 'block';
+              msg.style.color = '#ff4d4d';
+              btn.innerHTML = '<i class="fas fa-map-marker-alt"></i> تحديد موقعي الحالي';
+              btn.disabled = false;
+            },
+            { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+          );
+        });
+      }
+    }
+
+    function updateStepperProgress() {
+      const name = document.getElementById('customerName').value.trim();
+      const phone = document.getElementById('customerPhone').value.trim();
+      
+      const fulfillmentChecked = document.querySelector('input[name="fulfillmentMethod"]:checked');
+      const isDelivery = fulfillmentChecked ? fulfillmentChecked.value === 'delivery' : true;
+      
+      const address = document.getElementById('customerAddress').value.trim();
+      const gov = document.getElementById('deliveryGovernorate').value;
+
+      if (name && phone) {
+        document.getElementById('step1').classList.add('completed');
+        document.getElementById('step2').classList.add('active');
+      } else {
+        document.getElementById('step1').classList.remove('completed');
+        document.getElementById('step2').classList.remove('active', 'completed');
+        document.getElementById('step3').classList.remove('active', 'completed');
+        return;
+      }
+
+      const isDeliveryValid = isDelivery ? (address && gov) : true;
+      if (isDeliveryValid) {
+        document.getElementById('step2').classList.add('completed');
+        document.getElementById('step3').classList.add('active');
+      } else {
+        document.getElementById('step2').classList.remove('completed');
+        document.getElementById('step3').classList.remove('active', 'completed');
+      }
+    }
+
+    async function handleCheckoutSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('premiumCheckoutForm');
+      const alertBox = document.getElementById('checkoutFormAlert');
+      
+      let isFormValid = true;
+      const requiredInputs = form.querySelectorAll('input[required]:not(:disabled), textarea[required]:not(:disabled), select[required]:not(:disabled)');
+      
+      requiredInputs.forEach(input => {
+        const section = input.closest('div[id$="DetailsSection"]');
+        if (section && section.style.display === 'none') return;
+        if (!validateField(input)) isFormValid = false;
+      });
+
+      if (!isFormValid) {
+        alertBox.style.display = 'block';
+        alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      alertBox.style.display = 'none';
+
+      const fulfillmentMethod = document.querySelector('input[name="fulfillmentMethod"]:checked').value;
+
+      // تأكيد العميل النهائي قبل تسجيل الطلب (ضمانًا لحق الطرفين)
+      const confirmed = await showOrderConfirmDialog();
+      if (!confirmed) return;
+
+      const submitBtn = document.getElementById('confirmOrderBtn');
+      const originalBtnContent = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> جاري تأكيد الطلب المأمون...';
+      submitBtn.disabled = true;
+
+      // 4. إرسال الطلب للسيرفر الآمن (Backend)
+      try {
+        // تجهيز الداتا المختصرة (بدون أسعار) لإرسالها للسيرفر
+        const orderPayload = {
+          customer: {
+            name: document.getElementById('customerName').value.trim(),
+            phone: document.getElementById('customerPhone').value.trim(),
+            alt_phone: document.getElementById('alternatePhone').value.trim() || null,
+            address: fulfillmentMethod === 'delivery' ? document.getElementById('customerAddress').value.trim() : null, // أضفنا العنوان هنا
+            location_coords: userLocation, // أضفنا الإحداثيات هنا
+            whatsapp_opt_in: document.getElementById('whatsappOrderUpdates').checked
+          },
+          items: cartItems.map(item => ({ id: String(item.id), qty: parseInt(item.qty) || 1, ...(item.isOffer ? { isOffer: true } : {}) })), // السعر النهائي يعاد التحقق منه على الخادم
+          fulfillment_method: fulfillmentMethod,
+          governorate: fulfillmentMethod === 'delivery' ? document.getElementById('deliveryGovernorate').value : null,
+          pickup_time: fulfillmentMethod === 'pickup' ? document.getElementById('pickupDateTime').value : null,
+          payment_method: 'cod',
+          payment_provider: null,
+          wallet_reference: null
+        };
+
+        const result = await apiFetch('/create-order', { method: 'POST', body: JSON.stringify(orderPayload) });
+
+        if (result.success) {
+          // 5. في حالة النجاح، السيرفر هيرجع رقم الطلب
+          handleSuccess(result.orderId);
+        } else {
+          // في حالة فشل الخصم من المخزن أو تلاعب في الداتا
+          throw new Error(result.error || 'حدث خطأ أثناء معالجة الطلب');
+        }
+
+      } catch (error) {
+        logClientError('checkout.order.create_failed', error);
+        const icon = document.createElement('i');
+        icon.className = 'fas fa-exclamation-circle';
+        const message = document.createElement('span');
+        message.textContent = error.message || 'تعذر الاتصال بالخادم. تأكد من اتصالك بالإنترنت وحاول مجددًا.';
+        alertBox.replaceChildren(icon, document.createTextNode(' '), message);
+        alertBox.style.display = 'block';
+        submitBtn.innerHTML = originalBtnContent;
+        submitBtn.disabled = false;
+      }
+    }
+
+    function handleSuccess(displayOrderId) {
+      localStorage.removeItem('bakar_cart');
+      localStorage.removeItem('bakar_checkout_draft');
+      updateCartBadge(); 
+
+      document.getElementById('checkoutMainSection').style.display = 'none';
+      document.getElementById('checkoutProgress').style.display = 'none';
+      
+      const successScreen = document.getElementById('checkoutSuccessScreen');
+      document.getElementById('successOrderId').textContent = `#${displayOrderId}`;
+      
+      const trackLink = document.getElementById('trackOrderBtnLink');
+      trackLink.href = `contact.html?track=${encodeURIComponent(displayOrderId)}`;
+
+      // يبقى التواصل اليدوي متاحًا للعميل، أما تحديثات الطلب فترسل من الخادم بعد موافقته.
+      const supportMessage = `أرغب في الاستفسار عن الطلب رقم ${displayOrderId}.`;
+      const waLink = `https://wa.me/201022473694?text=${encodeURIComponent(supportMessage)}`;
+      document.getElementById('whatsappOrderLink').href = waLink;
+      
+      successScreen.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showOrderConfirmDialog() {
+      return new Promise(resolve => {
+        const overlay = document.getElementById('orderConfirmOverlay');
+        const yesBtn = document.getElementById('confirmOrderYes');
+        const noBtn = document.getElementById('confirmOrderNo');
+        overlay.style.display = 'flex';
+
+        const cleanup = (result) => {
+          overlay.style.display = 'none';
+          yesBtn.onclick = null;
+          noBtn.onclick = null;
+          resolve(result);
+        };
+
+        yesBtn.onclick = () => cleanup(true);
+        noBtn.onclick = () => cleanup(false);
+      });
+    }
+
+    function updateCartBadge() {
+      try {
+        const data = localStorage.getItem('bakar_cart');
+        const cart = data ? JSON.parse(data) : [];
+        const total = cart.reduce((sum, item) => sum + (parseInt(item.qty) || 1), 0);
+        document.querySelectorAll('.cart-count').forEach(el => {
+          el.textContent = total;
+        });
+      } catch(e){}
+    }
+
+  </script>
+</body>
+</html>

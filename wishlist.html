@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F7FAF8">
+  <title>قائمة المفضلة | مؤسسة ال بكار</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta property="og:site_name" content="مؤسسة ال بكار">
+  <meta property="og:locale" content="ar_EG">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="قائمة المفضلة | مؤسسة ال بكار">
+  <meta property="og:description" content="احفظ أجهزتك المنزلية المفضلة من مؤسسة ال بكار وارجع إليها عند التسوق.">
+  <meta property="og:image" content="https://al-bakar.web.app/assets/images/refrigerator.jpg">
+
+  <meta name="description" content="احفظ أجهزتك المنزلية المفضلة من مؤسسة ال بكار وارجع إليها عند التسوق.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="bottom-nav.css">
+  <style>
+    body { background: var(--bg-base, #0a0a0a); color: var(--text-main, #fff); font-family: Cairo, sans-serif; }
+    .wishlist-page { width: min(1120px, 100% - 32px); margin: 0 auto; padding: 36px 0 110px; }
+    .wishlist-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--border-dark, #2a2a2a); padding-bottom: 18px; }
+    .wishlist-heading h1 { margin: 0; font-size: 1.8rem; }
+    .wishlist-heading p { margin: 4px 0 0; color: var(--text-muted, #999); }
+    .wishlist-toolbar { display: flex; gap: 10px; margin: 18px 0; }
+    .wishlist-toolbar[hidden], .wishlist-count[hidden] { display: none !important; }
+    .wishlist-toolbar input, .wishlist-toolbar select { min-width: 0; min-height: 44px; padding: 8px 12px; border: 1px solid var(--border-dark, #333); border-radius: 6px; background: #141414; color: #fff; font: inherit; }
+    .wishlist-toolbar input { flex: 1; }
+    .wishlist-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .wishlist-card { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 14px; padding: 12px; border: 1px solid var(--border-dark, #333); border-radius: 6px; background: #141414; }
+    .wishlist-card img { width: 110px; height: 110px; object-fit: contain; background: #1e1e1e; border-radius: 4px; }
+    .wishlist-card-content { display: flex; min-width: 0; flex-direction: column; align-items: start; }
+    .wishlist-card h2 { margin: 0 0 6px; font-size: 1rem; line-height: 1.5; }
+    .wishlist-card h2 a { color: inherit; text-decoration: none; }
+    .wishlist-price { margin: 0 0 10px; color: #d4af37; font-weight: 800; }
+    .wishlist-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+    .wishlist-actions button { min-height: 38px; padding: 6px 10px; border: 1px solid #3b3b3b; border-radius: 5px; background: transparent; color: #fff; font: inherit; cursor: pointer; }
+    .wishlist-actions .add-button { background: #d4af37; color: #111; border-color: #d4af37; font-weight: 700; }
+    .wishlist-empty { padding: 50px 12px; text-align: center; color: var(--text-muted, #aaa); }
+    .wishlist-empty i { display: block; margin-bottom: 10px; color: #d4af37; font-size: 2rem; }
+    .wishlist-empty a { display: inline-block; margin-top: 10px; color: #d4af37; }
+    @media (max-width: 720px) { .wishlist-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 420px) {
+      .wishlist-page { width: min(100% - 24px, 1120px); padding-top: 24px; }
+      .wishlist-heading { align-items: start; flex-direction: column; }
+      .wishlist-toolbar { flex-direction: column; }
+      .wishlist-card { grid-template-columns: 88px minmax(0, 1fr); gap: 10px; padding: 9px; }
+      .wishlist-card img { width: 88px; height: 88px; }
+    }
+  </style>
+  <script>
+    (() => {
+      let theme = 'light';
+      try {
+        const savedTheme = localStorage.getItem('bakar-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') theme = savedTheme;
+      } catch {
+        // Keep the light theme if browser storage is unavailable.
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">ال بكار<span>.</span></a>
+      <div class="header-actions">
+        <a href="wishlist.html" class="icon-btn" aria-label="المفضلة"><i class="fas fa-heart"></i><span class="cart-badge-premium wishlist-count" hidden>0</span></a>
+        <a href="cart.html" class="icon-btn" aria-label="السلة"><i class="fas fa-shopping-bag"></i><span class="cart-badge-premium cart-count">0</span></a>
+      </div>
+    </div>
+  </header>
+  <main class="wishlist-page">
+    <div class="wishlist-heading">
+      <div><h1>قائمة المفضلة</h1><p id="wishlistCount">جاري تحميل المنتجات المحفوظة...</p></div>
+      <a href="products.html" class="btn-secondary">متابعة التسوق</a>
+    </div>
+    <div class="wishlist-toolbar" id="wishlistToolbar" hidden>
+      <input id="wishlistSearch" type="search" placeholder="ابحث في المفضلة" aria-label="البحث في المفضلة">
+      <select id="wishlistSort" aria-label="ترتيب المنتجات">
+        <option value="saved">ترتيب الحفظ</option>
+        <option value="name">الاسم</option>
+        <option value="price-asc">السعر من الأقل</option>
+        <option value="price-desc">السعر من الأعلى</option>
+      </select>
+    </div>
+    <div class="wishlist-grid" id="wishlistGrid" aria-live="polite"></div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><a href="policies.html">سياسات الشحن والاستبدال والخصوصية</a></div></footer>
+  <script type="module" src="main.js"></script>
+  <script type="module">
+    import { getProducts } from './api.js';
+    import { getWishlist, toggleWishlist } from './wishlist.js';
+    import { safeImageUrl } from './html-utils.js';
+
+    const grid = document.getElementById('wishlistGrid');
+    const search = document.getElementById('wishlistSearch');
+    const sort = document.getElementById('wishlistSort');
+    const toolbar = document.getElementById('wishlistToolbar');
+    const productsById = new Map();
+
+    renderWishlist();
+    window.addEventListener('bakar:wishlist-change', renderWishlist);
+    search.addEventListener('input', renderWishlist);
+    sort.addEventListener('change', renderWishlist);
+
+    async function renderWishlist() {
+      const ids = getWishlist();
+      updateBadges(ids.length);
+      const missingIds = ids.filter(id => !productsById.has(id));
+      if (missingIds.length) {
+        document.getElementById('wishlistCount').textContent = 'جاري تحميل المنتجات المحفوظة...';
+        try {
+          const loadedProducts = await getProducts(missingIds);
+          loadedProducts.forEach(product => productsById.set(String(product.id), product));
+          missingIds.filter(id => !productsById.has(id)).forEach(id => productsById.set(id, null));
+        }
+        catch {
+          document.getElementById('wishlistCount').textContent = 'تعذر تحميل المفضلة الآن. حاول مرة أخرى.';
+          return;
+        }
+      }
+
+      const saved = ids.map(id => productsById.get(id)).filter(Boolean);
+      const visible = saved.filter(product => String(product.name || '').toLocaleLowerCase().includes(search.value.trim().toLocaleLowerCase()));
+      if (sort.value === 'name') visible.sort((a, b) => String(a.name || '').localeCompare(String(b.name || ''), 'ar'));
+      if (sort.value === 'price-asc') visible.sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
+      if (sort.value === 'price-desc') visible.sort((a, b) => Number(b.price || 0) - Number(a.price || 0));
+      toolbar.hidden = saved.length === 0;
+      document.getElementById('wishlistCount').textContent = `${saved.length.toLocaleString('ar-EG')} منتج محفوظ`;
+      grid.replaceChildren();
+      if (!saved.length) {
+        grid.innerHTML = '<div class="wishlist-empty" style="grid-column:1/-1"><i class="far fa-heart"></i>لسه مفيش منتجات في المفضلة.<br><a href="products.html">اكتشف المنتجات</a></div>';
+        return;
+      }
+      if (!visible.length) {
+        grid.innerHTML = '<p class="wishlist-empty" style="grid-column:1/-1">لا توجد نتائج مطابقة للبحث.</p>';
+        return;
+      }
+      visible.forEach(product => grid.append(createCard(product)));
+    }
+
+    function createCard(product) {
+      const card = document.createElement('article');
+      card.className = 'wishlist-card';
+      const image = document.createElement('img');
+      image.src = safeImageUrl(product.image_urls?.[0] || product.image_url || product.image);
+      image.alt = String(product.name || 'منتج');
+      image.loading = 'lazy';
+      const content = document.createElement('div');
+      content.className = 'wishlist-card-content';
+      const title = document.createElement('h2');
+      const link = document.createElement('a');
+      link.href = `product.html?id=${encodeURIComponent(String(product.id))}`;
+      link.textContent = product.name || 'منتج';
+      title.append(link);
+      const price = document.createElement('p');
+      price.className = 'wishlist-price';
+      price.textContent = `${Number(product.price || 0).toLocaleString('ar-EG')} ج.م`;
+      const actions = document.createElement('div');
+      actions.className = 'wishlist-actions';
+      const add = document.createElement('button');
+      add.type = 'button'; add.className = 'add-button'; add.textContent = 'أضف للسلة';
+      add.disabled = Number(product.stock) === 0;
+      add.addEventListener('click', () => window.addToCart?.({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: image.src
+      }));
+      const remove = document.createElement('button');
+      remove.type = 'button'; remove.setAttribute('aria-label', 'إزالة من المفضلة');
+      remove.innerHTML = '<i class="fas fa-heart" aria-hidden="true"></i> إزالة';
+      remove.addEventListener('click', () => toggleWishlist(product.id));
+      actions.append(add, remove);
+      content.append(title, price, actions);
+      card.append(image, content);
+      return card;
+    }
+
+    function updateBadges(count) {
+      document.querySelectorAll('.wishlist-count').forEach(badge => {
+        badge.textContent = count.toLocaleString('ar-EG');
+        badge.hidden = count === 0;
+      });
+    }
+  </script>
+</body>
+</html>

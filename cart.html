@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#F7FAF8">
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سلة التسوق | مؤسسة ال بكار</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta property="og:site_name" content="مؤسسة ال بكار">
+  <meta property="og:locale" content="ar_EG">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="سلة التسوق | مؤسسة ال بكار">
+  <meta property="og:description" content="راجع المنتجات التي أضفتها إلى سلة التسوق لدى مؤسسة ال بكار قبل إتمام الطلب.">
+  <meta property="og:image" content="https://al-bakar.web.app/assets/images/refrigerator.jpg">
+
+  <meta name="description" content="راجع المنتجات التي أضفتها إلى سلة التسوق لدى مؤسسة ال بكار قبل إتمام الطلب.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="bottom-nav.css">
+
+  <style>
+    /* =========================================
+       1. PREMIUM DESIGN SYSTEM (Charcoal, Gold, Burgundy, Silver)
+    ========================================= */
+    :root {
+      --bg-base: #0a0a0a !important;        
+      --bg-surface: #141414 !important;     
+      --bg-elevated: #1e1e1e !important;    
+      
+      --gold-primary: #D4AF37 !important;   
+      --gold-hover: #b5952f !important;
+      
+      --burgundy: #800020 !important;       
+      --silver: #A0A0A0 !important;         
+      
+      --text-main: #ffffff !important;      
+      --text-muted: #888888 !important;     
+      
+      --border-dark: #2a2a2a !important;
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      
+      --font-main: 'Cairo', sans-serif;
+      --font-heading: 'Tajawal', sans-serif;
+      
+      --transition-fast: 0.2s ease;
+      --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      overflow-x: hidden;
+      margin: 0; padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* =========================================
+       2. GLASSMORHPISM HEADER
+    ========================================= */
+    .site-header {
+      background: rgba(10, 10, 10, 0.95) !important;
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+      position: sticky; top: 0; z-index: 1000; padding: 15px 0;
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+    .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--text-main) !important; text-decoration: none; letter-spacing: -0.5px; }
+    .logo span { color: var(--gold-primary); }
+    .header-actions { display: flex; align-items: center; gap: 20px; }
+    .icon-btn { background: none; border: none; color: var(--text-main) !important; font-size: 1.5rem; cursor: pointer; text-decoration: none; position: relative; transition: var(--transition-fast); }
+    .icon-btn:hover { color: var(--gold-primary) !important; transform: translateY(-2px); }
+    .cart-badge-premium { position: absolute; top: -6px; right: -8px; background: var(--burgundy); color: #fff; font-size: 0.7rem; font-weight: 800; min-width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg-base); transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .cart-badge-premium.pulse { transform: scale(1.4); }
+
+    /* =========================================
+       3. CART HERO SECTION
+    ========================================= */
+    .cart-hero {
+      padding: 60px 20px;
+      text-align: center;
+      background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-base) 100%);
+      border-bottom: 1px solid var(--border-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .cart-hero::before { content: ''; position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 300px; height: 100px; background: var(--gold-primary); filter: blur(80px); opacity: 0.1; pointer-events: none; }
+    .cart-hero h1 { font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; color: var(--text-main); margin: 0 0 10px; position: relative; z-index: 1; }
+    .cart-hero p { font-size: 1.1rem; color: var(--silver); margin: 0; position: relative; z-index: 1; }
+
+    /* =========================================
+       4. CART LAYOUT & ITEMS
+    ========================================= */
+    .cart-page { padding: 40px 0 100px; }
+    .cart-layout {
+      max-width: 1300px; margin: 0 auto; padding: 0 20px;
+      display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: start;
+    }
+    @media (max-width: 992px) {
+      .cart-layout { grid-template-columns: 1fr; gap: 30px; display: flex; flex-direction: column; }
+    }
+
+    .cart-items-container { display: flex; flex-direction: column; gap: 20px; }
+
+    /* Premium Cart Card */
+    .cart-item-card {
+      background: var(--bg-surface); border: 1px solid var(--border-dark); border-radius: var(--radius-lg);
+      padding: 20px; display: flex; align-items: center; gap: 25px; transition: var(--transition-smooth);
+      position: relative; overflow: hidden;
+    }
+    .cart-item-card:hover { border-color: rgba(212, 175, 55, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5); transform: translateY(-3px); }
+    .cart-item-card.removing { opacity: 0; transform: scale(0.95); pointer-events: none; }
+
+    .item-img-wrapper {
+      width: 110px; height: 110px; background: var(--bg-elevated); border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid var(--border-dark);
+    }
+    .item-img-wrapper img { width: 85%; height: 85%; object-fit: contain; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3)); transition: transform 0.4s ease; }
+    .cart-item-card:hover .item-img-wrapper img { transform: scale(1.08); }
+
+    .item-info { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+    .item-title { font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4; }
+    .item-price-unit { color: var(--silver); font-size: 0.95rem; }
+
+    .item-actions-row { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+    
+    /* Quantity Control */
+    .qty-control {
+      display: inline-flex; align-items: center; background: var(--bg-elevated); border: 1px solid var(--border-dark);
+      border-radius: 50px; overflow: hidden; padding: 2px;
+    }
+    .qty-btn {
+      background: transparent; border: none; color: var(--text-main); width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center; font-size: 0.9rem; cursor: pointer; transition: var(--transition-fast); border-radius: 50%;
+    }
+    .qty-btn:hover { background: var(--bg-surface); color: var(--gold-primary); }
+    .qty-btn:disabled { color: var(--border-dark); cursor: not-allowed; background: transparent; }
+    .qty-input {
+      background: transparent; border: none; color: var(--text-main); width: 40px; text-align: center;
+      font-weight: 700; font-size: 1.1rem; font-family: var(--font-main);
+    }
+    .qty-input:focus { outline: none; }
+    
+    /* Price & Remove */
+    .item-price-total { font-size: 1.25rem; font-weight: 800; color: var(--gold-primary); }
+    
+    .btn-remove {
+      background: rgba(128, 0, 32, 0.1); border: 1px solid rgba(128, 0, 32, 0.3); color: #ff4d4d;
+      width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: var(--transition-fast); font-size: 1rem;
+    }
+    .btn-remove:hover { background: var(--burgundy); color: #fff; border-color: var(--burgundy); transform: scale(1.1) rotate(90deg); }
+
+    /* Mobile Cart Item Adjustments */
+    @media (max-width: 600px) {
+      .cart-item-card { padding: 15px; gap: 15px; align-items: flex-start; }
+      .item-img-wrapper { width: 85px; height: 85px; }
+      .item-title { font-size: 1rem; }
+      .item-actions-row { flex-direction: column; align-items: flex-start; gap: 15px; }
+      .item-price-total { align-self: flex-end; margin-top: -35px; }
+      .btn-remove { position: absolute; top: 10px; left: 10px; width: 32px; height: 32px; font-size: 0.85rem; }
+    }
+
+    /* =========================================
+       5. ORDER SUMMARY (Sticky Sidebar)
+    ========================================= */
+    .cart-summary-panel {
+      background: var(--bg-surface); border: 1px solid var(--border-dark); border-radius: var(--radius-xl);
+      padding: 30px; position: sticky; top: 100px;
+    }
+    .cart-summary-panel::before { content: ''; position: absolute; top: 0; right: 0; width: 4px; height: 100%; background: var(--gold-primary); }
+    
+    .summary-title { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin: 0 0 25px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border-dark); padding-bottom: 15px; }
+    .summary-title i { color: var(--gold-primary); }
+
+    .pricing-breakdown { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
+    .pricing-row { display: flex; justify-content: space-between; align-items: center; color: var(--silver); font-size: 1.05rem; font-weight: 500; }
+    .pricing-row.discount { color: #10B981; display: none; } /* Hidden unless discount applies */
+    .pricing-row.total { border-top: 1px dashed var(--border-dark); padding-top: 20px; margin-top: 5px; color: var(--text-main); font-size: 1.5rem; font-weight: 800; }
+    .pricing-row.total .val { color: var(--gold-primary); }
+
+    /* CTA Buttons */
+    .btn-checkout {
+      width: 100%; background: linear-gradient(135deg, var(--gold-primary) 0%, #b5952f 100%);
+      color: var(--bg-base); border: none; padding: 18px; border-radius: var(--radius-md);
+      font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; cursor: pointer;
+      transition: var(--transition-fast); display: flex; align-items: center; justify-content: center; gap: 10px;
+      text-decoration: none; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2); margin-bottom: 15px;
+    }
+    .btn-checkout:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4); }
+
+    .btn-continue {
+      width: 100%; background: transparent; border: 1px solid var(--border-dark);
+      color: var(--silver); padding: 16px; border-radius: var(--radius-md);
+      font-size: 1.05rem; font-weight: 700; cursor: pointer; text-decoration: none;
+      display: flex; align-items: center; justify-content: center; gap: 8px; transition: var(--transition-fast);
+    }
+    .btn-continue:hover { background: var(--bg-elevated); color: var(--text-main); border-color: var(--silver); }
+
+    .trust-elements { margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border-dark); display: flex; justify-content: space-between; align-items: center; }
+    .trust-badge { display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--silver); font-size: 0.8rem; font-weight: 600; }
+    .trust-badge i { color: var(--gold-primary); font-size: 1.2rem; }
+
+    /* Mobile Summary Adjustments */
+    @media (max-width: 992px) {
+      .cart-summary-panel { position: static; }
+      /* Mobile Sticky Checkout Bar */
+      .mobile-sticky-checkout {
+        position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(10,10,10,0.95);
+        backdrop-filter: blur(10px); border-top: 1px solid var(--border-dark);
+        padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px;
+        z-index: 1000; box-shadow: 0 -10px 30px rgba(0,0,0,0.6); box-sizing: border-box;
+      }
+      .mobile-total-wrap { display: flex; flex-direction: column; }
+      .mobile-total-label { color: var(--silver); font-size: 0.8rem; }
+      .mobile-total-val { color: var(--gold-primary); font-size: 1.4rem; font-weight: 800; line-height: 1; }
+      .mobile-sticky-checkout .btn-checkout { margin: 0; flex: 1; padding: 14px; font-size: 1.1rem; }
+    }
+    @media (min-width: 993px) { .mobile-sticky-checkout { display: none; } }
+
+    /* =========================================
+       6. EMPTY CART STATE
+    ========================================= */
+    .empty-cart-screen {
+      display: none; text-align: center; max-width: 600px; margin: 40px auto; padding: 60px 20px;
+      background: var(--bg-surface); border: 1px solid var(--border-dark); border-radius: var(--radius-xl);
+      animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .empty-icon-wrap { width: 120px; height: 120px; border-radius: 50%; background: rgba(212, 175, 55, 0.1); border: 2px solid var(--gold-primary); color: var(--gold-primary); font-size: 3.5rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; animation: floatIcon 3s ease-in-out infinite; }
+    .empty-title { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: var(--text-main); margin: 0 0 15px; }
+    .empty-desc { color: var(--silver); font-size: 1.1rem; line-height: 1.6; margin: 0 0 35px; }
+    
+    @keyframes floatIcon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+    /* Loading Skeleton */
+    .loading-state { text-align: center; padding: 100px 20px; color: var(--silver); grid-column: 1/-1; }
+    .loading-state i { font-size: 3rem; color: var(--gold-primary); margin-bottom: 20px; }
+
+    /* =========================================
+       7. BURGUNDY TOAST NOTIFICATION
+    ========================================= */
+    .toast-container { position: fixed; bottom: 90px; left: 20px; z-index: 10001; display: flex; flex-direction: column; gap: 10px; }
+    @media (min-width: 993px) { .toast-container { bottom: 20px; } }
+    
+    .toast-premium { background: var(--burgundy); color: #fff; border-radius: var(--radius-md); padding: 12px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 15px; min-width: 250px; transform: translateY(100px); opacity: 0; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); border: 1px solid rgba(255,255,255,0.1); }
+    .toast-premium.show { transform: translateY(0); opacity: 1; }
+    .toast-premium.success { background: #10B981; }
+    .toast-premium i { font-size: 1.5rem; }
+    .toast-text h4 { margin: 0; font-size: 1rem; font-weight: 700; }
+
+    /* Animations */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+    @keyframes pulseText { 0% { opacity: 1; } 50% { opacity: 0.5; color: var(--gold-primary); } 100% { opacity: 1; } }
+    .price-update-anim { animation: pulseText 0.4s ease; }
+
+  </style>
+  <script>
+    (() => {
+      let theme = 'light';
+      try {
+        const savedTheme = localStorage.getItem('bakar-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') theme = savedTheme;
+      } catch {
+        // Keep the light theme if browser storage is unavailable.
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+  <!-- Premium Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">ال بكار<span>.</span></a>
+      <div class="header-actions">
+        <a href="cart.html" class="icon-btn" aria-label="السلة">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge-premium cart-count" id="cartCount">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cart Hero -->
+  <section class="cart-hero" id="cartHero">
+    <h1>سلة <span>المشتريات</span></h1>
+    <p id="cartItemCountText">راجع منتجاتك الفاخرة قبل إتمام الطلب.</p>
+  </section>
+
+  <!-- Main Cart Layout -->
+  <section class="cart-page">
+    <div class="cart-layout" id="cartMainLayout" style="display: none;">
+      
+      <!-- Left: Cart Items -->
+      <div class="cart-items-container" id="cartItemsContainer">
+        <!-- يتم حقن المنتجات هنا عبر الـ JS -->
+      </div>
+
+      <!-- Right: Order Summary -->
+      <aside class="cart-summary-panel">
+        <h2 class="summary-title"><i class="fas fa-receipt"></i> ملخص الطلب</h2>
+        
+        <div class="pricing-breakdown">
+          <div class="pricing-row">
+            <span>قيمة المنتجات</span>
+            <span id="summarySubtotal" class="val">0 ج.م</span>
+          </div>
+          
+          <div class="pricing-row discount" id="summaryDiscountRow">
+            <span>الخصم</span>
+            <span id="summaryDiscount">- 0 ج.م</span>
+          </div>
+          
+          <!-- Shipping note (Actual shipping calculated in checkout) -->
+          <div class="pricing-row" style="font-size: 0.9rem;">
+            <span>رسوم الشحن</span>
+            <span>تحسب في خطوة الدفع</span>
+          </div>
+
+          <div class="pricing-row total">
+            <span>الإجمالي</span>
+            <span id="summaryTotal" class="val">0 ج.م</span>
+          </div>
+        </div>
+
+        <p id="cartPriceWarning" role="status" style="display:none; color:#ffb4b4; line-height:1.7; margin:0 0 18px;">
+          يوجد منتج بلا سعر صالح. احذفه أو حدّث سعره قبل إتمام الشراء.
+        </p>
+
+        <a href="checkout.html" class="btn-checkout">
+          إتمام الشراء <i class="fas fa-arrow-left"></i>
+        </a>
+        
+        <a href="products.html" class="btn-continue">
+          متابعة التسوق <i class="fas fa-shopping-bag"></i>
+        </a>
+
+        <div class="trust-elements">
+          <div class="trust-badge"><i class="fas fa-shield-alt"></i> دفع آمن</div>
+          <div class="trust-badge"><i class="fas fa-truck-fast"></i> توصيل سريع</div>
+          <div class="trust-badge"><i class="fas fa-headset"></i> دعم فني</div>
+        </div>
+        <a href="policies.html" style="display:inline-block;margin-top:12px;color:var(--silver)">سياسات الشحن والاستبدال</a>
+      </aside>
+    </div>
+
+    <!-- Mobile Sticky Checkout Bar -->
+    <div class="mobile-sticky-checkout" id="mobileStickyCheckout" style="display: none;">
+      <div class="mobile-total-wrap">
+        <span class="mobile-total-label">الإجمالي</span>
+        <span class="mobile-total-val" id="mobileSummaryTotal">0 ج.م</span>
+      </div>
+      <a href="checkout.html" class="btn-checkout">
+        إتمام الشراء <i class="fas fa-arrow-left"></i>
+      </a>
+    </div>
+
+    <!-- Loading State -->
+    <div class="loading-state" id="cartLoadingState">
+      <i class="fas fa-circle-notch fa-spin"></i>
+      <h2 style="color: var(--text-main); font-weight: 600;">جاري تحميل سلتك...</h2>
+    </div>
+
+    <!-- Empty Cart Screen -->
+    <div class="empty-cart-screen" id="emptyCartScreen">
+      <div class="empty-icon-wrap"><i class="fas fa-shopping-cart"></i></div>
+      <h2 class="empty-title">سلة التسوق فارغة</h2>
+      <p class="empty-desc">يبدو أنك لم تقم بإضافة أي أجهزة فاخرة إلى سلتك بعد. تصفح تشكيلتنا واكتشف أفضل العروض المتاحة الآن.</p>
+      <a href="products.html" class="btn-checkout" style="display: inline-flex; width: auto; padding: 16px 40px; margin: 0 auto;">
+        ابدأ التسوق <i class="fas fa-arrow-left"></i>
+      </a>
+    </div>
+
+  </section>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script type="module" src="main.js"></script>
+  <script type="module" src="cart.js"></script>
+</body>
+</html>
