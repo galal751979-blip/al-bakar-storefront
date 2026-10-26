@@ -41,14 +41,17 @@ function normalizeCartItem(item) {
   const rawPrice = Number(item.price);
   const price = Number.isFinite(rawPrice) && rawPrice > 0 ? rawPrice : null;
 
+  const storedId = String(rawId);
+  const isLegacyOffer = storedId.startsWith('offer_');
+
   return {
     ...item,
-    id: String(rawId),
+    id: isLegacyOffer ? storedId.slice('offer_'.length) : storedId,
     name: String(item.name ?? item.title ?? 'منتج بدون اسم'),
     price,
     qty: quantity,
     image: safeImageUrl(String(item.image || item.image_urls?.[0] || item.image_url || '')),
-    isOffer: Boolean(item.isOffer || String(rawId).startsWith('offer_'))
+    isOffer: Boolean(item.isOffer || isLegacyOffer)
   };
 }
 

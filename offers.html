@@ -638,20 +638,28 @@
 
         const data = localStorage.getItem('bakar_cart');
         let cart = data ? JSON.parse(data) : [];
-        const cartItemId = `offer_${offer.id}`;
-        const existingIndex = cart.findIndex(item => String(item.id) === String(cartItemId));
+        const cartItemId = String(offer.id);
+        const existingIndex = cart.findIndex(item => {
+          const storedId = String(item?.id || '');
+          const isOffer = item?.isOffer === true || storedId.startsWith('offer_');
+          const normalizedId = storedId.startsWith('offer_') ? storedId.slice('offer_'.length) : storedId;
+          return isOffer && normalizedId === cartItemId;
+        });
         
         const imageUrl = safeImageUrl((offer.image_urls && offer.image_urls.length > 0) ? offer.image_urls[0] : offer.image_url);
 
         if (existingIndex > -1) {
+          cart[existingIndex].id = cartItemId;
+          cart[existingIndex].isOffer = true;
           cart[existingIndex].qty = (parseInt(cart[existingIndex].qty) || 1) + 1;
         } else {
           cart.push({
-            id: String(cartItemId),
+            id: cartItemId,
             name: `عرض: ${offer.title}`,
             price: parseFloat(offer.offer_price),
             image: imageUrl,
-            qty: 1
+            qty: 1,
+            isOffer: true
           });
         }
 

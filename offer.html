@@ -628,13 +628,21 @@
         try {
           const data = localStorage.getItem('bakar_cart');
           const cart = data ? JSON.parse(data) : [];
-          const existingIndex = cart.findIndex(item => String(item.id) === String(offer.id) && item.isOffer);
+          const offerId = String(offer.id);
+          const existingIndex = cart.findIndex(item => {
+            const storedId = String(item?.id || '');
+            const isOffer = item?.isOffer === true || storedId.startsWith('offer_');
+            const normalizedId = storedId.startsWith('offer_') ? storedId.slice('offer_'.length) : storedId;
+            return isOffer && normalizedId === offerId;
+          });
 
           if (existingIndex > -1) {
+            cart[existingIndex].id = offerId;
+            cart[existingIndex].isOffer = true;
             cart[existingIndex].qty = (parseInt(cart[existingIndex].qty) || 1) + 1;
           } else {
             cart.push({
-              id: String(offer.id),
+              id: offerId,
               name: `عرض: ${offer.title}`,
               price: Number(offer.offer_price),
               image: window.offerImages[0],
