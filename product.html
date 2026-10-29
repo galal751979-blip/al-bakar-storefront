@@ -5,16 +5,16 @@
   <meta name="theme-color" content="#F7FAF8">
   <link rel="icon" href="favicon.ico" sizes="16x16 32x32" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>تفاصيل الأجهزة المنزلية | مؤسسة ال بكار</title>
+  <title>تفاصيل الأجهزة المنزلية | مؤسسة B.K</title>
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta property="og:site_name" content="مؤسسة ال بكار">
+  <meta property="og:site_name" content="مؤسسة B.K">
   <meta property="og:locale" content="ar_EG">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="تفاصيل الأجهزة المنزلية | مؤسسة ال بكار">
-  <meta property="og:description" content="اكتشف تفاصيل وأسعار الأجهزة المنزلية من مؤسسة ال بكار، وتحقق من المواصفات والتوفر قبل إتمام طلبك أونلاين.">
+  <meta property="og:title" content="تفاصيل الأجهزة المنزلية | مؤسسة B.K">
+  <meta property="og:description" content="اكتشف تفاصيل وأسعار الأجهزة المنزلية من مؤسسة B.K، وتحقق من المواصفات والتوفر قبل إتمام طلبك أونلاين.">
   <meta property="og:image" content="https://al-bakar.web.app/assets/images/refrigerator.jpg">
 
-  <meta name="description" content="اكتشف تفاصيل وأسعار الأجهزة المنزلية من مؤسسة ال بكار، وتحقق من المواصفات والتوفر قبل إتمام طلبك أونلاين.">
+  <meta name="description" content="اكتشف تفاصيل وأسعار الأجهزة المنزلية من مؤسسة B.K، وتحقق من المواصفات والتوفر قبل إتمام طلبك أونلاين.">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -476,7 +476,7 @@
   <!-- Premium Header -->
   <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="logo">ال بكار<span>.</span></a>
+      <a href="index.html" class="logo">مؤسسة <span dir="ltr">B.K</span></a>
       <div class="header-actions">
         <a href="products.html?focus=search" class="icon-btn" aria-label="البحث عن منتج"><i class="fas fa-search"></i></a>
         <a href="wishlist.html" class="icon-btn" aria-label="المفضلة" title="المفضلة"><i class="far fa-heart"></i><span class="cart-badge-premium wishlist-count" hidden>0</span></a>
@@ -563,8 +563,8 @@
         window.currentProduct = product;
         const p = window.currentProduct;
         
-        document.title = `${p.name} | مؤسسة ال بكار`;
-        const productDescription = String(p.description || `تسوق ${p.name} من مؤسسة ال بكار. تعرف على المواصفات والسعر والتوفر واطلب أونلاين.`).replace(/\s+/g, ' ').slice(0, 300);
+        document.title = `${p.name} | مؤسسة B.K`;
+        const productDescription = String(p.description || `تسوق ${p.name} من مؤسسة B.K. تعرف على المواصفات والسعر والتوفر واطلب أونلاين.`).replace(/\s+/g, ' ').slice(0, 300);
         const productUrl = new URL(`product.html?id=${encodeURIComponent(String(p.id))}`, window.location.href).href;
         const placeholderImage = safeImageUrl('assets/images/placeholder.svg');
         const productImageCandidates = [
@@ -589,11 +589,11 @@
         const productSchema = {
           '@context': 'https://schema.org',
           '@type': 'Product',
-          name: String(p.name || 'منتج من مؤسسة ال بكار'),
+          name: String(p.name || 'منتج من مؤسسة B.K'),
           description: productDescription,
           image: productImages.length ? productImages : [productImage],
           sku: String(p.id),
-          brand: { '@type': 'Brand', name: String(p.brand || p.brand_name || 'ال بكار') },
+          brand: { '@type': 'Brand', name: String(p.brand || p.brand_name || 'B.K') },
           offers: {
             '@type': 'Offer',
             url: productUrl,
@@ -625,7 +625,7 @@
           button.addEventListener('click', () => window.changeMainImage(Number(button.dataset.galleryIndex)));
         });
         detailContainer.querySelector('[data-share-product]')?.addEventListener('click', () => {
-          window.shareProduct(String(p.name || 'منتج من مؤسسة ال بكار'));
+          window.shareProduct(String(p.name || 'منتج من مؤسسة B.K'));
         });
         
         // إظهار البار السفلي للموبايل
@@ -687,7 +687,7 @@
           <!-- الجانب الأيسر: المعلومات -->
           <div class="info-section">
             <div class="info-header-row">
-              <div class="info-brand">${escapeHtml(p.brand || 'ال بكار')}</div>
+              <div class="info-brand">${escapeHtml(p.brand || 'B.K')}</div>
               <div class="info-header-actions">
                 <button class="btn-wishlist-detail" type="button" data-product-wishlist aria-label="أضف للمفضلة" title="أضف للمفضلة"><i class="far fa-heart" aria-hidden="true"></i></button>
                 <button class="btn-share" type="button" data-share-product title="مشاركة رابط المنتج" aria-label="مشاركة رابط المنتج">
@@ -927,8 +927,8 @@
     // =========================================
     window.shareProduct = async function(productName) {
       const shareData = {
-        title: `${productName} | ال بكار للأجهزة الفاخرة`,
-        text: `شاهد هذا المنتج الفاخر من مؤسسة ال بكار: ${productName}`,
+        title: `${productName} | مؤسسة B.K للأجهزة الفاخرة`,
+        text: `شاهد هذا المنتج الفاخر من مؤسسة B.K: ${productName}`,
         url: window.location.href // يجلب الرابط الحالي تلقائياً
       };
 

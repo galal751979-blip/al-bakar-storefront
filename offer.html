@@ -5,16 +5,16 @@
   <meta name="theme-color" content="#F7FAF8">
   <link rel="icon" href="favicon.ico" sizes="16x16 32x32" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تفاصيل عروض ال بكار للأجهزة المنزلية</title>
+  <title>تفاصيل عروض مؤسسة B.K للأجهزة المنزلية</title>
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta property="og:site_name" content="مؤسسة ال بكار">
+  <meta property="og:site_name" content="مؤسسة B.K">
   <meta property="og:locale" content="ar_EG">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="تفاصيل عروض ال بكار للأجهزة المنزلية">
-  <meta property="og:description" content="تفاصيل عروض مؤسسة ال بكار على الأجهزة المنزلية: المنتجات المشمولة، الأسعار، وقيمة التوفير.">
+  <meta property="og:title" content="تفاصيل عروض مؤسسة B.K للأجهزة المنزلية">
+  <meta property="og:description" content="تفاصيل عروض مؤسسة B.K على الأجهزة المنزلية: المنتجات المشمولة، الأسعار، وقيمة التوفير.">
   <meta property="og:image" content="https://al-bakar.web.app/assets/images/refrigerator.jpg">
 
-  <meta name="description" content="تفاصيل عروض مؤسسة ال بكار على الأجهزة المنزلية: المنتجات المشمولة، الأسعار، وقيمة التوفير.">
+  <meta name="description" content="تفاصيل عروض مؤسسة B.K على الأجهزة المنزلية: المنتجات المشمولة، الأسعار، وقيمة التوفير.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -248,7 +248,7 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="logo">ال بكار<span>.</span></a>
+      <a href="index.html" class="logo">مؤسسة <span dir="ltr">B.K</span></a>
       <div class="header-actions">
         <a href="cart.html" class="icon-btn" aria-label="السلة">
           <i class="fas fa-shopping-bag"></i>
@@ -335,8 +335,8 @@
           : offer.product_id ? [offer.product_id] : [];
         const products = await getProducts(productIds);
         window.currentOffer = offer;
-        document.title = `${offer.title} | عروض ال بكار الفاخرة`;
-        const offerDescription = String(offer.description || `استفد من عرض ${offer.title} من مؤسسة ال بكار على الأجهزة المنزلية. اطلب أونلاين الآن.`).replace(/\s+/g, ' ').slice(0, 300);
+        document.title = `${offer.title} | عروض مؤسسة B.K الفاخرة`;
+        const offerDescription = String(offer.description || `استفد من عرض ${offer.title} من مؤسسة B.K على الأجهزة المنزلية. اطلب أونلاين الآن.`).replace(/\s+/g, ' ').slice(0, 300);
         const offerUrl = new URL(`offer.html?id=${encodeURIComponent(String(offer.id))}`, window.location.href).href;
         const offerImage = safeImageUrl(offer.image_urls?.[0] || offer.image_url || 'assets/images/refrigerator.jpg');
         document.querySelector('meta[name="description"]')?.setAttribute('content', offerDescription);
@@ -459,7 +459,7 @@
            </div>`;
       }
 
-      const desc = offer.description || 'احصل على هذه الباقة الحصرية بأفضل سعر من مؤسسة ال بكار. العرض ساري لفترة محدودة أو حتى نفاذ الكمية.';
+      const desc = offer.description || 'احصل على هذه الباقة الحصرية بأفضل سعر من مؤسسة B.K. العرض ساري لفترة محدودة أو حتى نفاذ الكمية.';
 
       return `
         <div class="offer-layout">

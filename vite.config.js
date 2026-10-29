@@ -47,9 +47,9 @@ export default defineConfig(({ mode }) => {
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'مؤسسة ال بكار للأجهزة المنزلية',
-        short_name: 'ال بكار',
-        description: 'تسوق الأجهزة المنزلية من مؤسسة ال بكار.',
+        name: 'مؤسسة B.K للأجهزة المنزلية',
+        short_name: 'مؤسسة B.K',
+        description: 'تسوق الأجهزة المنزلية من مؤسسة B.K.',
         lang: 'ar',
         dir: 'rtl',
         start_url: base,
