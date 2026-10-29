@@ -68,8 +68,8 @@ export default defineConfig(({ mode }) => {
       },
       workbox: {
         globIgnores: ['**/*.mp4'],
-        // Preserve multipage routes such as product.html?id=... in the precache.
-        ignoreURLParametersMatching: [/^utm_/, /^fbclid$/, /^id$/, /^cat$/]
+        // Preserve multipage routes and order tracking links in the precache.
+        ignoreURLParametersMatching: [/^utm_/, /^fbclid$/, /^id$/, /^cat$/, /^track$/]
       }
     }),
     githubPagesMetadata
