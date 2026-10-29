@@ -687,6 +687,7 @@
       if (savedId) {
         document.getElementById('orderIdInput').value = savedId.replace(/^#/, '').trim();
       }
+      if (trackParam) document.getElementById('trackingForm').requestSubmit();
       localStorage.removeItem('bakar_last_tracked_phone');
     }
 
