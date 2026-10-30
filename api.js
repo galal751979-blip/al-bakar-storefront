@@ -25,6 +25,7 @@ const supportedRoutes = new Set([
   'GET /categories',
   'GET /offers',
   'GET /shipping',
+  'GET /app-update',
   'GET /order-status',
   'POST /create-order'
 ]);
@@ -117,6 +118,7 @@ export const getProductsPage = ({ categoryId, categoryName, cursor } = {}) => {
   return apiFetch(`/products-page${search ? `?${search}` : ''}`);
 };
 export const getCategories = () => apiFetch('/categories');
+export const getAppUpdateStatus = () => apiFetch('/app-update');
 export async function getProductsPageBanners() {
   try {
     const banners = await apiFetch('/products-banners');

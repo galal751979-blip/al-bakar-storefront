@@ -145,34 +145,50 @@
     }
 
     .filter-list {
-      display: flex;
-      gap: 12px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+      align-items: start;
+      gap: 14px;
       list-style: none;
       padding: 0;
       margin: 0 0 20px 0;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; 
     }
-    .filter-list::-webkit-scrollbar { display: none; }
-
-    .filter-list li {
+    .filter-list > li { min-width: 0; }
+    .category-group {
       background: var(--bg-surface);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+    }
+    .category-filter-button {
+      width: 100%;
+      background: transparent;
       color: var(--silver);
-      padding: 10px 24px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.95rem;
+      padding: 10px 14px;
+      border-radius: 9px;
+      font: inherit;
+      font-weight: 700;
+      text-align: start;
       cursor: pointer;
       border: 1px solid var(--border-dark);
-      white-space: nowrap;
       transition: var(--transition-fast);
     }
-    .filter-list li:hover, .filter-list li.active {
+    .category-filter-button:hover, .category-filter-button.active {
       background: var(--gold-primary);
       color: var(--bg-base);
       border-color: var(--gold-primary);
     }
+    .category-filter-button.category-parent { font-size: 1rem; }
+    .category-children {
+      display: grid;
+      gap: 8px;
+      list-style: none;
+      padding: 10px 16px 0 0;
+      margin: 10px 0 0;
+      border-top: 1px solid var(--border-dark);
+    }
+    .category-children .category-filter-button { font-size: .92rem; font-weight: 600; }
+    .category-children .category-children { margin-top: 8px; padding-top: 8px; }
 
     .filter-controls-premium {
       display: grid;
@@ -566,8 +582,8 @@
       await Promise.all([loadCategories(), loadProductsPageBanners()]);
 
       if (currentCategory !== 'all' && !categoriesById.has(String(currentCategory))) currentCategory = 'all';
-      const activeCategory = document.querySelector(`#filterList li[data-id="${CSS.escape(currentCategory)}"]`);
-      document.querySelectorAll('#filterList li').forEach(item => item.classList.remove('active'));
+      const activeCategory = document.querySelector(`#filterList button[data-id="${CSS.escape(currentCategory)}"]`);
+      document.querySelectorAll('#filterList .category-filter-button').forEach(item => item.classList.remove('active'));
       if (activeCategory) activeCategory.classList.add('active');
       await loadProductsPage();
 
@@ -581,12 +597,42 @@
         allCategories = categories.filter(category => category && category.id);
         categoriesById = new Map(allCategories.map(category => [String(category.id), category]));
         const filterList = document.getElementById('filterList');
-        allCategories.forEach(cat => {
-          const li = document.createElement('li');
-          li.setAttribute('data-id', cat.id);
-          li.textContent = cat.name;
-          filterList.appendChild(li);
+        filterList.replaceChildren();
+        const allItem = document.createElement('li');
+        allItem.innerHTML = '<button type="button" class="category-filter-button" data-id="all">كل المنتجات</button>';
+        filterList.append(allItem);
+
+        const childrenByParent = new Map();
+        const roots = [];
+        allCategories.forEach(category => {
+          const parentId = category.parent_category_id ?? category.parentCategoryId ?? category.parent_id ?? category.parentId;
+          if (parentId != null && String(parentId) !== '' && categoriesById.has(String(parentId))) {
+            const key = String(parentId);
+            if (!childrenByParent.has(key)) childrenByParent.set(key, []);
+            childrenByParent.get(key).push(category);
+          } else {
+            roots.push(category);
+          }
         });
+        const appendCategory = (category, list, depth = 0) => {
+          const item = document.createElement('li');
+          item.className = depth === 0 && childrenByParent.has(String(category.id)) ? 'category-group' : 'category-node';
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = `category-filter-button${depth === 0 && childrenByParent.has(String(category.id)) ? ' category-parent' : ''}`;
+          button.dataset.id = category.id;
+          button.textContent = category.name || 'قسم بدون اسم';
+          item.append(button);
+          const children = childrenByParent.get(String(category.id)) || [];
+          if (children.length) {
+            const childList = document.createElement('ul');
+            childList.className = 'category-children';
+            children.forEach(child => appendCategory(child, childList, depth + 1));
+            item.append(childList);
+          }
+          list.append(item);
+        };
+        roots.forEach(category => appendCategory(category, filterList));
       } catch (error) {
         logClientError('products.categories.load_failed', error);
         document.getElementById('filterList').insertAdjacentHTML('beforeend', '<li class="api-error">تعذر تحميل الأقسام</li>');
@@ -900,10 +946,11 @@
       // Category Filter
       const filterList = document.getElementById('filterList');
       filterList.addEventListener('click', (e) => {
-        if (e.target.tagName === 'LI' && e.target.dataset.id) {
-          filterList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
-          e.target.classList.add('active');
-          currentCategory = e.target.getAttribute('data-id');
+        const button = e.target.closest('button.category-filter-button[data-id]');
+        if (button) {
+          filterList.querySelectorAll('.category-filter-button').forEach(item => item.classList.remove('active'));
+          button.classList.add('active');
+          currentCategory = button.dataset.id;
           currentProductPage = 1;
           productPageCursors = [null];
           productPageHasNext = false;

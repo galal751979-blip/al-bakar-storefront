@@ -181,7 +181,8 @@
     .inc-product-card h4 { color: var(--text-main); font-size: 0.95rem; margin: 0 0 5px; font-weight: 600; }
     .inc-product-card span { color: var(--silver); font-size: 0.9rem; }
 
-    .main-actions { margin-top: 10px; display: flex; gap: 15px; }
+    .main-actions, .general-offer-action { margin-top: 10px; display: flex; gap: 15px; }
+    .general-offer-action .btn-add-offer { width: 100%; text-decoration: none; }
     .btn-add-offer {
       flex: 1; padding: 18px 24px; border-radius: var(--radius-md);
       font-family: inherit;
@@ -333,8 +334,10 @@
         const productIds = Array.isArray(offer.product_ids)
           ? offer.product_ids
           : offer.product_id ? [offer.product_id] : [];
+        const isGeneralOffer = offer.offer_type === 'general' || productIds.length === 0;
         const products = await getProducts(productIds);
         window.currentOffer = offer;
+        window.currentOfferIsGeneral = isGeneralOffer;
         document.title = `${offer.title} | عروض مؤسسة B.K الفاخرة`;
         const offerDescription = String(offer.description || `استفد من عرض ${offer.title} من مؤسسة B.K على الأجهزة المنزلية. اطلب أونلاين الآن.`).replace(/\s+/g, ' ').slice(0, 300);
         const offerUrl = new URL(`offer.html?id=${encodeURIComponent(String(offer.id))}`, window.location.href).href;
@@ -362,8 +365,8 @@
         }
         const availableProductIds = new Set(includedProducts.filter(isOfferProductAvailable).map(product => String(product.id)));
         const configuredProductIds = Array.isArray(offer.product_ids) ? offer.product_ids : [];
-        window.currentOfferAvailable = configuredProductIds.length > 0
-          && configuredProductIds.every(id => availableProductIds.has(String(id)));
+        window.currentOfferAvailable = isGeneralOffer || (configuredProductIds.length > 0
+          && configuredProductIds.every(id => availableProductIds.has(String(id))));
 
         let fallbackImg = PLACEHOLDER;
         if (includedProducts.length > 0) {
@@ -375,8 +378,9 @@
           ? offer.image_urls.map(url => safeImageUrl(url))
           : [safeImageUrl(offer.image_url || fallbackImg)];
 
-        const offerPrice = Number(offer.offer_price);
-        if (!Number.isFinite(offerPrice)) throw new Error('سعر العرض غير صالح.');
+        const parsedOfferPrice = offer.offer_price == null || offer.offer_price === '' ? NaN : Number(offer.offer_price);
+        if (!isGeneralOffer && (!Number.isFinite(parsedOfferPrice) || parsedOfferPrice <= 0)) throw new Error('سعر العرض غير صالح.');
+        const offerPrice = Number.isFinite(parsedOfferPrice) && parsedOfferPrice > 0 ? parsedOfferPrice : 0;
 
         const hasSavings = originalTotalPrice > offerPrice;
         const savingsAmount = originalTotalPrice - offerPrice;
@@ -392,10 +396,13 @@
           document.getElementById('mobileAddBtn').disabled = true;
         }
 
-        document.getElementById('mobilePrice').textContent = `${fmt(offerPrice)} ج.م`;
-        const mobileBtn = document.getElementById('mobileAddBtn');
-        mobileBtn.onclick = () => window.handleOfferAddToCart(mobileBtn);
-        mobileStickyBar.classList.add('ready');
+        mobileStickyBar.classList.remove('ready');
+        if (!isGeneralOffer) {
+          document.getElementById('mobilePrice').textContent = `${fmt(offerPrice)} ج.م`;
+          const mobileBtn = document.getElementById('mobileAddBtn');
+          mobileBtn.onclick = () => window.handleOfferAddToCart(mobileBtn);
+          mobileStickyBar.classList.add('ready');
+        }
 
         setupInteractions();
         setupCountdown(offer.end_date);
@@ -413,6 +420,8 @@
     }
 
     function buildOfferHTML(offer, products, originalTotal, offerPrice, hasSavings, savingsAmount, discountPercent) {
+      const isGeneralOffer = window.currentOfferIsGeneral === true;
+      const hasOfferPrice = Number.isFinite(Number(offer.offer_price)) && Number(offer.offer_price) > 0;
       const badgeHTML = hasSavings
         ? `<div class="badge-premium-deal"><i class="fas fa-tag"></i> خصم ${discountPercent}%</div>`
         : `<div class="badge-premium-deal"><i class="fas fa-star"></i> عرض حصري</div>`;
@@ -441,6 +450,33 @@
              <span class="old-price-value">${fmt(originalTotal)} ج.م</span>
            </div>`
         : '';
+      const pricingHTML = isGeneralOffer && !hasOfferPrice ? '' : `
+        <div class="pricing-box">
+          <div class="price-row">
+            ${oldPriceHTML}
+            <div class="new-price-block">
+              <span class="new-price-label">${isGeneralOffer ? 'سعر العرض:' : 'سعر العرض الحصري:'}</span>
+              <span class="new-price-value">${fmt(offerPrice)} <small style="font-size:1.2rem;">ج.م</small></span>
+            </div>
+          </div>
+          ${savingsHTML}
+          ${!isGeneralOffer ? `
+            <div class="countdown-wrapper" id="countdownWrapper">
+              <div class="countdown-title"><i class="fas fa-stopwatch"></i> ينتهي هذا العرض خلال:</div>
+              <div class="countdown-timer">
+                <div class="cd-box"><span class="cd-num" id="cdDays">00</span><span class="cd-label">يوم</span></div>
+                <div class="cd-box"><span class="cd-num" id="cdHours">00</span><span class="cd-label">ساعة</span></div>
+                <div class="cd-box"><span class="cd-num" id="cdMins">00</span><span class="cd-label">دقيقة</span></div>
+                <div class="cd-box"><span class="cd-num" id="cdSecs">00</span><span class="cd-label">ثانية</span></div>
+              </div>
+            </div>` : ''}
+        </div>`;
+      const generalActionUrl = offer.action_url && /^https?:\/\//i.test(String(offer.action_url))
+        ? String(offer.action_url)
+        : 'contact.html';
+      const actionHTML = isGeneralOffer
+        ? `<div class="general-offer-action"><a class="btn-add-offer" href="${esc(generalActionUrl)}">${esc(offer.action_label || 'استفسر عن العرض')} <i class="fas fa-arrow-left"></i></a></div>`
+        : `<div class="main-actions"><button class="btn-add-offer" id="desktopAddBtn" onclick="window.handleOfferAddToCart(this)">أضف العرض للسلة <i class="fas fa-cart-plus"></i></button></div>`;
 
       let includedHTML = '';
       if (products.length > 0) {
@@ -477,34 +513,11 @@
             <h1 class="offer-title">${esc(offer.title)}</h1>
             <p class="offer-desc">${esc(desc)}</p>
 
-            <div class="pricing-box">
-              <div class="price-row">
-                ${oldPriceHTML}
-                <div class="new-price-block">
-                  <span class="new-price-label">سعر العرض الحصري:</span>
-                  <span class="new-price-value">${fmt(offerPrice)} <small style="font-size:1.2rem;">ج.م</small></span>
-                </div>
-              </div>
-              ${savingsHTML}
-
-              <div class="countdown-wrapper" id="countdownWrapper">
-                <div class="countdown-title"><i class="fas fa-stopwatch"></i> ينتهي هذا العرض خلال:</div>
-                <div class="countdown-timer">
-                  <div class="cd-box"><span class="cd-num" id="cdDays">00</span><span class="cd-label">يوم</span></div>
-                  <div class="cd-box"><span class="cd-num" id="cdHours">00</span><span class="cd-label">ساعة</span></div>
-                  <div class="cd-box"><span class="cd-num" id="cdMins">00</span><span class="cd-label">دقيقة</span></div>
-                  <div class="cd-box"><span class="cd-num" id="cdSecs">00</span><span class="cd-label">ثانية</span></div>
-                </div>
-              </div>
-            </div>
+            ${pricingHTML}
 
             ${includedHTML}
 
-            <div class="main-actions">
-              <button class="btn-add-offer" id="desktopAddBtn" onclick="window.handleOfferAddToCart(this)">
-                أضف العرض للسلة <i class="fas fa-cart-plus"></i>
-              </button>
-            </div>
+            ${actionHTML}
 
             <div class="benefits-grid">
               <div class="benefit-item">
@@ -611,6 +624,7 @@
     window.handleOfferAddToCart = function (btn) {
       const offer = window.currentOffer;
       if (!offer || window.offerExpired) return;
+      if (window.currentOfferIsGeneral) return;
       if (window.currentOfferAvailable === false) {
         window.alert('أحد أجهزة العرض غير متوفر في المخزون حاليًا.');
         return;
