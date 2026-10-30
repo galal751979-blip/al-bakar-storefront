@@ -178,7 +178,45 @@
       color: var(--bg-base);
       border-color: var(--gold-primary);
     }
-    .category-filter-button.category-parent { font-size: 1rem; }
+    .category-disclosure {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: 100%;
+      background: transparent;
+      color: var(--silver);
+      padding: 10px 14px;
+      border: 1px solid var(--border-dark);
+      border-radius: 9px;
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: start;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .category-disclosure:hover,
+    .category-disclosure[aria-expanded="true"] {
+      color: var(--gold-primary);
+      border-color: var(--gold-primary);
+    }
+    .category-disclosure-icon {
+      flex: 0 0 auto;
+      transition: transform .24s ease;
+    }
+    .category-disclosure[aria-expanded="true"] .category-disclosure-icon { transform: rotate(180deg); }
+    .category-children-panel {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition: grid-template-rows .28s ease, opacity .2s ease;
+    }
+    .category-children-panel.is-open {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+    .category-children-panel-inner { min-height: 0; overflow: hidden; }
     .category-children {
       display: grid;
       gap: 8px;
@@ -582,9 +620,18 @@
       await Promise.all([loadCategories(), loadProductsPageBanners()]);
 
       if (currentCategory !== 'all' && !categoriesById.has(String(currentCategory))) currentCategory = 'all';
-      const activeCategory = document.querySelector(`#filterList button[data-id="${CSS.escape(currentCategory)}"]`);
+      const activeCategory = document.querySelector(`#filterList button.category-filter-button[data-id="${CSS.escape(currentCategory)}"]`);
       document.querySelectorAll('#filterList .category-filter-button').forEach(item => item.classList.remove('active'));
-      if (activeCategory) activeCategory.classList.add('active');
+      if (activeCategory) {
+        activeCategory.classList.add('active');
+        let panel = activeCategory.closest('.category-children-panel');
+        while (panel) {
+          panel.classList.add('is-open');
+          const disclosure = filterList.querySelector(`.category-disclosure[aria-controls="${CSS.escape(panel.id)}"]`);
+          disclosure?.setAttribute('aria-expanded', 'true');
+          panel = panel.parentElement?.closest('.category-children-panel') || null;
+        }
+      }
       await loadProductsPage();
 
       setupEventListeners();
@@ -614,21 +661,53 @@
             roots.push(category);
           }
         });
+        let panelIndex = 0;
         const appendCategory = (category, list, depth = 0) => {
           const item = document.createElement('li');
-          item.className = depth === 0 && childrenByParent.has(String(category.id)) ? 'category-group' : 'category-node';
-          const button = document.createElement('button');
-          button.type = 'button';
-          button.className = `category-filter-button${depth === 0 && childrenByParent.has(String(category.id)) ? ' category-parent' : ''}`;
-          button.dataset.id = category.id;
-          button.textContent = category.name || 'قسم بدون اسم';
-          item.append(button);
           const children = childrenByParent.get(String(category.id)) || [];
           if (children.length) {
+            item.className = 'category-group';
+            const panelId = `category-children-panel-${++panelIndex}`;
+            const disclosure = document.createElement('button');
+            disclosure.type = 'button';
+            disclosure.className = 'category-disclosure';
+            disclosure.setAttribute('aria-expanded', 'false');
+            disclosure.setAttribute('aria-controls', panelId);
+            const label = document.createElement('span');
+            label.textContent = category.name || 'قسم بدون اسم';
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-chevron-down category-disclosure-icon';
+            icon.setAttribute('aria-hidden', 'true');
+            disclosure.append(label, icon);
+            item.append(disclosure);
+
+            const panel = document.createElement('div');
+            panel.className = 'category-children-panel';
+            panel.id = panelId;
+            const panelInner = document.createElement('div');
+            panelInner.className = 'category-children-panel-inner';
             const childList = document.createElement('ul');
             childList.className = 'category-children';
+            const allParentItem = document.createElement('li');
+            const allParentButton = document.createElement('button');
+            allParentButton.type = 'button';
+            allParentButton.className = 'category-filter-button';
+            allParentButton.dataset.id = category.id;
+            allParentButton.textContent = `كل منتجات ${category.name || 'القسم'}`;
+            allParentItem.append(allParentButton);
+            childList.append(allParentItem);
             children.forEach(child => appendCategory(child, childList, depth + 1));
-            item.append(childList);
+            panelInner.append(childList);
+            panel.append(panelInner);
+            item.append(panel);
+          } else {
+            item.className = 'category-node';
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'category-filter-button';
+            button.dataset.id = category.id;
+            button.textContent = category.name || 'قسم بدون اسم';
+            item.append(button);
           }
           list.append(item);
         };
@@ -946,6 +1025,16 @@
       // Category Filter
       const filterList = document.getElementById('filterList');
       filterList.addEventListener('click', (e) => {
+        const disclosure = e.target.closest('button.category-disclosure');
+        if (disclosure) {
+          const panel = document.getElementById(disclosure.getAttribute('aria-controls'));
+          if (panel) {
+            const opening = disclosure.getAttribute('aria-expanded') !== 'true';
+            disclosure.setAttribute('aria-expanded', String(opening));
+            panel.classList.toggle('is-open', opening);
+          }
+          return;
+        }
         const button = e.target.closest('button.category-filter-button[data-id]');
         if (button) {
           filterList.querySelectorAll('.category-filter-button').forEach(item => item.classList.remove('active'));
