@@ -16,6 +16,11 @@ function startForcedUpdateChecks() {
   const check = () => {
     if (document.visibilityState === 'visible') void checkForcedUpdate();
   };
+  window.addEventListener('storage', event => {
+    if (event.key !== forcedUpdateStorageKey || !event.newValue || forcedUpdateCheckRunning) return;
+    forcedUpdateCheckRunning = true;
+    void applyForcedUpdate();
+  });
   check();
   window.setInterval(check, 90_000);
   document.addEventListener('visibilitychange', check);
