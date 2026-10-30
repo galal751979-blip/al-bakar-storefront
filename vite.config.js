@@ -46,6 +46,7 @@ export default defineConfig(({ mode }) => {
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
+      injectRegister: false,
       manifest: {
         name: 'مؤسسة B.K للأجهزة المنزلية',
         short_name: 'مؤسسة B.K',

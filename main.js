@@ -1,64 +1,27 @@
 import './bottom-nav.js';
-import { getAppUpdateStatus } from './api.js';
+import { registerSW } from 'virtual:pwa-register';
 
-const forcedUpdateStorageKey = 'bk-forced-update-revision';
-let forcedUpdateCheckRunning = false;
+const serviceWorkerCheckIntervalMs = 60_000;
+registerSW({
+  immediate: true,
+  onRegisteredSW: (_serviceWorkerUrl, registration) => {
+    if (!registration) return;
+    const checkForAppUpdate = () => {
+      if (document.visibilityState !== 'visible' || !navigator.onLine || registration.installing) return;
+      void registration.update().catch(() => {});
+    };
+    window.setInterval(checkForAppUpdate, serviceWorkerCheckIntervalMs);
+    window.addEventListener('online', checkForAppUpdate);
+    document.addEventListener('visibilitychange', checkForAppUpdate);
+    checkForAppUpdate();
+  }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initMobileMenu();
   updateCartCount();
-  startForcedUpdateChecks();
 });
-
-function startForcedUpdateChecks() {
-  if (typeof window === 'undefined') return;
-  const check = () => {
-    if (document.visibilityState === 'visible') void checkForcedUpdate();
-  };
-  window.addEventListener('storage', event => {
-    if (event.key !== forcedUpdateStorageKey || !event.newValue || forcedUpdateCheckRunning) return;
-    forcedUpdateCheckRunning = true;
-    void applyForcedUpdate();
-  });
-  check();
-  window.setInterval(check, 90_000);
-  document.addEventListener('visibilitychange', check);
-}
-
-async function checkForcedUpdate() {
-  if (forcedUpdateCheckRunning) return;
-  try {
-    const update = await getAppUpdateStatus();
-    if (update?.forceUpdate !== true || !update.revision) return;
-    let appliedRevision = '';
-    try { appliedRevision = localStorage.getItem(forcedUpdateStorageKey) || ''; } catch { /* Storage can be disabled. */ }
-    if (String(update.revision) === appliedRevision) return;
-    forcedUpdateCheckRunning = true;
-    try { localStorage.setItem(forcedUpdateStorageKey, String(update.revision)); } catch { /* Continue with the update for this session. */ }
-    await applyForcedUpdate();
-  } catch (error) {
-    // Update checks are best-effort and must never interrupt shopping.
-  }
-}
-
-async function applyForcedUpdate() {
-  const controller = navigator.serviceWorker?.controller;
-  let registration = null;
-  try { registration = await navigator.serviceWorker?.getRegistration(); } catch { /* A browser may block service worker access. */ }
-  if (registration) {
-    const controllerChanged = controller
-      ? new Promise(resolve => navigator.serviceWorker.addEventListener('controllerchange', resolve, { once: true }))
-      : Promise.resolve();
-    try { await registration.update(); } catch { /* Reload below still picks up network-hosted files. */ }
-    registration.waiting?.postMessage({ type: 'SKIP_WAITING' });
-    await Promise.race([
-      controllerChanged,
-      new Promise(resolve => window.setTimeout(resolve, registration.waiting || registration.installing ? 8000 : 1500))
-    ]);
-  }
-  window.location.reload();
-}
 
 function initThemeToggle() {
   const headerInner = document.querySelector('.site-header .header-inner');
