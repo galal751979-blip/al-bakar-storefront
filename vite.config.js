@@ -68,6 +68,7 @@ export default defineConfig(({ mode }) => {
         ]
       },
       workbox: {
+        importScripts: [`${base}force-update-on-activate.js`],
         globIgnores: ['**/*.mp4'],
         // Preserve multipage routes and order tracking links in the precache.
         ignoreURLParametersMatching: [/^utm_/, /^fbclid$/, /^id$/, /^cat$/, /^track$/]
